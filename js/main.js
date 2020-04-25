@@ -3,7 +3,7 @@ $(document).ready(() => {
 
     // get and update header, and cases by province table footer
     $.ajax({
-        url: url + "summary"
+        url: api_url + "summary"
     }).then(res => {
         var data = res.data[0];
 
@@ -30,7 +30,7 @@ $(document).ready(() => {
 
     // draw map and cases by province graph and table
     $.ajax({
-        url: url + "summary/split",
+        url: api_url + "summary/split",
         type: "GET",
     }).then(res => {
         drawMap(res.data);
@@ -40,7 +40,7 @@ $(document).ready(() => {
 
     // draw new and cumulative cases graphs
     $.ajax({
-        url: url + "reports?fill_dates=true",
+        url: api_url + "reports?fill_dates=true",
         type: "GET",
     }).then(res => {
         fillNulls(res.data);
@@ -50,7 +50,7 @@ $(document).ready(() => {
 
     // draw latest cases table
     $.ajax({
-        url: url + "cases",
+        url: api_url + "cases",
         type: "GET",
     }).then(res => {
 

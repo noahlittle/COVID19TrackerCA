@@ -1,4 +1,7 @@
-var url = "https://api.covid19tracker.ca/";
+// current url (should update links to not require this)
+var url = window.location.protocol + '//' + window.location.hostname + '/';
+// api
+var api_url = "https://api.covid19tracker.ca/";
 
 function provinceProperties(code, name) {
     var hashmap = {

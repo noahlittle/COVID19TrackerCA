@@ -9,7 +9,7 @@ $(document).ready(() => {
 
     // update header
     $.ajax({
-        url: url + "summary" + (province ? "/split" : ""),
+        url: api_url + "summary" + (province ? "/split" : ""),
         type: "GET"
     }).then(res => {
         var data = !province ? res.data[0] : res.data.filter(item => item.province === province)[0];
@@ -20,7 +20,7 @@ $(document).ready(() => {
     buildTable(province);
     // update table
    /* $.ajax({
-        url: url + "cases?per_page=100" + (province ? ("&province=" + province) : ""),
+        url: api_url + "cases?per_page=100" + (province ? ("&province=" + province) : ""),
         type: "GET"
     }).then(res => {
         $(".all-cases-title").text((province ? (provinceProperties(province).name + ": ") : "") + "All Cases");
@@ -32,7 +32,7 @@ $(document).ready(() => {
         while (requests > 0) {
             setTimeout(function() {
                 $.ajax({
-                    url: url + "cases?per_page=1000" + (province ? ("&province=" + province) : ""),
+                    url: api_url + "cases?per_page=1000" + (province ? ("&province=" + province) : ""),
                     type: "GET"
                 }).then(res => {
                     requests--;
@@ -51,7 +51,7 @@ function buildTable(province) {
         "searching": false,
         "bSort" : false,
         "ajax": {
-            url: url + "cases?" + (province ? ("&province=" + province) : ""),
+            url: api_url + "cases?" + (province ? ("&province=" + province) : ""),
             dataFilter: function(data) {
                 var json = jQuery.parseJSON(data);
                 json.recordsTotal = json.total;
