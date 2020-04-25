@@ -10220,7 +10220,7 @@ body {
 
 
 #map {
-  height: 358px;
+  height: 100%;
   width: 100%;
 }
 #map.advanced {
@@ -10231,7 +10231,7 @@ body {
   right: 0;
   top: 0;
   margin: 5px;
-  margin-top: 54px;
+  margin-top: 4px;
   background: white;
   padding: 5px;
   max-width: 150px;
@@ -10308,4 +10308,42 @@ body {
   content: "\00a0";
   background: #3f6cb5;
   color: #fff;
+}
+
+#dailyCaseChartDiv,
+#displayCumulative .card-body,
+#displayMap .card-body,
+#provinceCasesChartDiv,
+#provinceCumulativeCasesChartDiv,
+#provinceNewCasesChartDiv {
+  position: relative;
+  height: 55vh;
+  padding-bottom: 50px;
+}
+
+#provinceCasesChartDiv {
+  height: 55vh;
+}
+
+@media screen and (max-width: 700px) {
+  #displayMap .card-body {
+    height: 30vh;
+  }
+
+  #dailyCaseChartDiv,
+  #displayCumulative .card-body,
+  #provinceCasesChartDiv,
+  #provinceCumulativeCasesChartDiv,
+  #provinceNewCasesChartDiv {
+    height: 40vh;
+  }
+
+  #provinceCasesChartDiv {
+    height: 45vh;
+  }
+}
+
+.chart-options {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
