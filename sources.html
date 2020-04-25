@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>COVID-19 Canada Tracker - Sources</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css" type="text/css" />
+    <script type="text/javascript" src="js/mapbox_map.js"></script>
+    <script src="assets/demo/datatables-demo.js"></script>
+    <!-- <script type="text/javascript" src="js/mapdata.js"></script> -->
+    <!-- <script type="text/javascript" src="js/canadamap.js"></script> -->
+    <script type="text/javascript" src="js/drawChart.js"></script>
+    <!-- <script type="text/javascript" src="js/state.js"></script> -->
+    <script type="text/javascript" src="js/advanced.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160029240-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-160029240-1');
+    </script>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">COVID-19 Tracker Canada</a>
+
+
+
+        <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            </div>
+
+
+        <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Menu</b></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="about.html">About</a>
+                        <a class="dropdown-item" href="sources.html">Sources</a>
+                        <a class="dropdown-item" href="ontario.html">Ontario Data</a>
+                        <a class="dropdown-item" href="notes.html">Data Notes</a>
+                        <a class="dropdown-item" href="https://api.covid19tracker.ca">API Access</a>
+                        <a class="dropdown-item" href="acknowledgements.html">Acknowledgments</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="mailto:noah.little@usask.ca">Contact</a>
+                    </div>
+                </li>
+        </ul>
+
+
+
+
+
+    </nav>
+    <div class="sb-sidenav-footer">
+    </div>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid">
+
+                 <br>
+                 <br>
+                 <br>
+
+                
+
+                <div class="card mb-4">
+                    <div class="card-header">Sources</div>
+                    <div class="card-body">
+                        <H1>How We Get Our Data</H1>
+                         <p>The data on this site is, for the most part, entirely manually compiled from a huge variety of government and news media sources in near real-time as information is announced. The variety of sources is used to ensure that an accurate and complete dataset is available. For every case, a source URL is provided. For reference, a list of links to the common sources for each province is found below. Do note that data from this site is largely updated by the live press briefings, and the sources below are usually delayed.</p>
+
+                        <h2>Provincial Sources</h2>
+                        <ul>
+                            <li><a href="https://www.alberta.ca/covid-19-alberta-data.aspx">Alberta</a></li>
+                            <li><a href="http://www.bccdc.ca/health-info/diseases-conditions/covid-19/data">British Columbia</a></li>
+                            <li><a href="https://www.gov.mb.ca/covid19/updates/index.html">Manitoba</a></li>
+                            <li><a href="https://www2.gnb.ca/content/gnb/en/departments/ocmoh/cdc/content/respiratory_diseases/coronavirus.html">New Brunswick</a></li>
+                            <li><a href="https://covid-19-newfoundland-and-labrador-gnl.hub.arcgis.com/">Newfoundland and Labrador</a></li>
+                            <li><a href="https://novascotia.ca/coronavirus/data/">Nova Scotia</a></li>
+                            <li><a href="https://www.princeedwardisland.ca/en/information/health-and-wellness/pei-covid-19-testing-data">Prince Edward Island</a></li>
+                            <li><a href="https://www.quebec.ca/sante/problemes-de-sante/a-z/coronavirus-2019/situation-coronavirus-quebec/">Quebec</a></li>
+                            <li><a href="https://www.saskatchewan.ca/government/health-care-administration-and-provider-resources/treatment-procedures-and-guidelines/emerging-public-health-issues/2019-novel-coronavirus/cases-and-risk-of-covid-19-in-saskatchewan">Saskatchewan</a></li>
+                        </ul>
+
+                        <h2>Ontario Sources</h2>
+                        <p>Ontario is a unique province in that the provincial reporting is nearly a day out-of-date by the time it is released. In order to provide the most up-to-date data available, we source data from each of the individual 34 Public Health Units in Ontario. They report throughout the day and the link for each is included below for your convenience.</p>
+                        <ul>
+                            <li><a href="https://www.tbdhu.com/status#">Thunder Bay District Health Unit</a></li>
+                            <li><a href="https://www.nwhu.on.ca/covid19/Pages/regional-COVID-19-results.aspx">Northwestern Health Unit</a></li>
+                            <li><a href="http://www.porcupinehu.on.ca/en/your-health/infectious-diseases/novel-coronavirus/">Porcupine Health Unit</a></li>
+                            <li><a href="https://www.phsd.ca/health-topics-programs/diseases-infections/coronavirus/current-status-covid-19">Sudbury & Districts Public Health</a></li>
+                            <li><a href="http://www.algomapublichealth.com/disease-and-illness/infectious-diseases/novel-coronavirus/current-status-covid-19/">Algoma Public Health</a></li>
+                            <li><a href="https://www.myhealthunit.ca/en/health-topics/coronavirus.asp">North Bay Parry Sound District Health Unit</a></li>
+                            <li><a href="https://www.timiskaminghu.com/90484/covid-19">Timiskaming Health Unit</a></li>
+                            <li><a href="https://www.publichealthgreybruce.on.ca/">Public Health Grey Bruce</a></li>
+                            <li><a href="http://www.simcoemuskokahealthstats.org/topics/infectious-diseases/a-h/covid-19">Simcoe Muskoka District Health Unit</a></li>
+                            <li><a href="https://www.rcdhu.com/novel-coronavirus-covid-19-2/">Renfrew County and District Health Unit</a></li>
+                            <li><a href="https://www.ottawapublichealth.ca/en/reports-research-and-statistics/la-maladie-coronavirus-covid-19.aspx">Ottawa Public Health</a></li>
+                            <li><a href="https://eohu.ca/en/my-health/covid-19-status-update-for-eohu-region">Eastern Ontario Health Unit</a></li>
+                            <li><a href="https://healthunit.org/coronavirus/">Leeds, Grenville and Lanark District Health Unit</a></li>
+                            <li><a href="https://www.hkpr.on.ca/">Haliburton, Kawartha, Pine Ridge District Health Unit</a></li>
+                            <li><a href="https://www.kflaph.ca/en/healthy-living/status-of-cases-in-kfla.aspx">KFL&A Public Health</a></li>
+                            <li><a href="https://hpepublichealth.ca/the-novel-coronavirus-2019ncov/">Hastings Prince Edward Public Health</a></li>
+                            <li><a href="https://app.powerbi.com/view?r=eyJrIjoiNDZkYzgzN2YtNGM2Yi00ZTQ0LTkzOTUtY2IwOTlhNzlmMWE2IiwidCI6IjUyZDdjOWMyLWQ1NDktNDFiNi05YjFmLTlkYTE5OGRjM2YxNiJ9">Durham Region Health Department</a></li>
+                            <li><a href="https://www.toronto.ca/home/covid-19/media-room/covid-19-status-of-cases-in-toronto/">Toronto Public Health</a></li>
+                            <li><a href="https://www.peterboroughpublichealth.ca/your-health/diseases-infections-immunization/diseases-and-infections/novel-coronavirus-2019-ncov/local-covid-19-status/">Peterborough Public Health</a></li>
+                            <li><a href="https://www.york.ca/wps/portal/yorkhome/health/yr/infectiousdiseasesandprevention/covid19/covid19/!ut/p/z1/tVRNU8MgEP01PWbYfBjwiLE2SW1atV_JxaEJtqghNcHW-uulHaunmnEUDrAwu295D-ahDM1RJtlGLJkSlWTPep9m_n1Ee1EY9iEeeiQACkMaO5hA99xGs0OC43h-aAcQQzgkEF3h0dklCW3oOyj7uX6KMpStc1Gg1CWswMWCW8xzmeXZJLdYsfAtdwFQ-B4hNmb77FyqtVqhdFff55VUXKoO7Kr6SW8aJdTr4WBVlVzPnD2rVQeEfOC5pvTaFKLhrOENk8W65hudq4l2IK82orDPv4JPXj9cfM8LTgwKuj5rS0l1C3yyxa2DZhvBt2giq7rUT3H3S6XCYwdMAhrSHoxgPMFw08Ue8a8Ho-tb-48dWggYhneNwmMwC--Yhf8fceIIAptq-J7bdYE6UUAu3JgkiVntE7PaJ2a1T8z---lfxYnbLFl7vlMPgsFSwzK1srR5VmjeYqFofnTO7wCl4vHlJaPasvc-_abQ3Khnr8tJSdydJd8vEqsXLMh2_FC2LLstn30AgDE6rg!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/#.XpfGmlNKiJ9">York Region</a></li>
+                            <li><a href="https://www.halton.ca/For-Residents/Immunizations-Preventable-Disease/Diseases-Infections/New-Coronavirus">Halton Region</a></li>
+                            <li><a href="https://www.peelregion.ca/coronavirus/testing/#cases">Region of Peel</a></li>
+                            <li><a href="https://wdgpublichealth.ca/your-health/covid-19-information-public/status-cases-wdg">Public Health Wellington-Dufferin-Guelph</a></li>
+                            <li><a href="https://www.niagararegion.ca/health/covid-19/statistics.aspx">Niagara Region</a></li>
+                            <li><a href="https://hnhu.org/health-topic/coronavirus-covid-19/">Health and Social Services Haldimand and Norfolk</a></li>
+                            <li><a href="https://www.hamilton.ca/coronavirus/status-cases">Hamilton Public Health Services</a></li>
+                            <li><a href="https://www.bchu.org/ServicesWeProvide/InfectiousDiseases/Pages/coronavirus.aspx">Brant County Health Unit</a></li>
+                            <li><a href="https://www.regionofwaterloo.ca/en/health-and-wellness/positive-cases-in-waterloo-region.aspx">Waterloo Region</a></li>
+                            <li><a href="https://www.hpph.ca/en/health-matters/covid-19-in-huron-and-perth.aspx">Huron Perth Public Health</a></li>
+                            <li><a href="https://www.swpublichealth.ca/content/community-update-novel-coronavirus-covid-19">Southwestern Public Health</a></li>
+                            <li><a href="https://www.healthunit.com/novel-coronavirus#local-case-count">Middlesex-London Health Unit</a></li>
+                            <li><a href="https://www.wechu.org/cv/local-updates">Windsor-Essex County Health Unit</a></li>
+                            <li><a href="https://lambtonpublichealth.ca/2019-novel-coronavirus/">Lambton Public Health</a></li>
+                            <li><a href="https://ckphu.com/current-situation-in-chatham-kent-and-surrounding-areas/">Chatham-Kent Public Health</a></li>              
+                        </ul>
+
+                        <p>In addition to the Public Health Unit data, some information regarding testing and recoveries is sourced from provincial data.</p>
+                        <ul>
+                            <li><a href="https://www.ontario.ca/page/2019-novel-coronavirus#section-0">Ontario Ministry of Health</a></li>
+                        </ul>
+
+                        <h2>Other Sources</h2>
+                        <p>Occasionally, news media and other sources are required for individual case data for a variety of reasons. This is especially true when there are changes to reporting methods, such as when we transitioned to reporting Ontario data from Public Health Units. Some of these sources are listed below.</p>
+                        <ul>
+                        <li><a href="https://www.cbc.ca/">CBC News</a></li>
+                        <li><a href="https://globalnews.ca/">Global News</a></li>
+                        <li><a href="https://github.com/ishaberry/Covid19Canada">Epidemiological Data from the COVID-19 Outbreak in Canada</a></li>   
+                        <li><a href="https://www.ctvnews.ca/">CTV News</a></li>
+
+                        </ul>
+
+                        <p>If you have any additional questions about this change, please feel free to <a href="mailto:noah.little@usask.ca">reach out</a>.
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; COVID19Tracker.ca 2020 // Noah.Little@usask.ca</div>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+    </div>
+
+
+
+</html>
