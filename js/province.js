@@ -18,7 +18,7 @@ $(document).ready(() => {
 
         // update header
         $.ajax({
-            url: url + "api/controller/proxy.php?get=summary/split",
+            url: api_url + "summary/split",
             type: "GET"
         }).then(res => {
             var province = res.data.filter(item => item.province === code)[0];
@@ -36,7 +36,7 @@ $(document).ready(() => {
 
         // update graphs
         $.ajax({
-            url: url + "api/controller/proxy.php?get=reports/province/" + code,
+            url: api_url + "reports/province/" + code,
             type: "GET"
         }).then(res => {
             buildGraphs(res.data, value);
@@ -44,7 +44,7 @@ $(document).ready(() => {
 
         // update table
         $.ajax({
-            url: url + "api/controller/proxy.php?get=cases?province=" + code,
+            url: api_url + "cases?province=" + code,
             type: "GET"
         }).then(res => {
             buildTable(res.data);

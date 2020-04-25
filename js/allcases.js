@@ -9,7 +9,7 @@ $(document).ready(() => {
 
     // update header
     $.ajax({
-        url: url + "api/controller/proxy.php?get=summary" + (province ? "/split" : ""),
+        url: api_url + "summary" + (province ? "/split" : ""),
         type: "GET"
     }).then(res => {
         var data = !province ? res.data[0] : res.data.filter(item => item.province === province)[0];
@@ -34,7 +34,7 @@ function buildTable(province) {
         "searching": false,
         "bSort" : false,
         "ajax": {
-            url: url + "api/controller/proxy.php?get=cases?" + (province ? ("&province=" + province) : ""),
+            url: api_url + "cases?" + (province ? ("&province=" + province) : ""),
             dataFilter: function(data) {
                 var json = jQuery.parseJSON(data);
                 json.recordsTotal = json.total;
