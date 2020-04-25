@@ -9,7 +9,7 @@ $(document).ready(() => {
 
     // update header
     $.ajax({
-        url: url + "api/controller/proxy.php?get=summary" + (province ? "/split" : ""),
+        url: url + "summary" + (province ? "/split" : ""),
         type: "GET"
     }).then(res => {
         var data = !province ? res.data[0] : res.data.filter(item => item.province === province)[0];
@@ -20,7 +20,7 @@ $(document).ready(() => {
     buildTable(province);
     // update table
    /* $.ajax({
-        url: url + "api/controller/proxy.php?get=cases?per_page=100" + (province ? ("&province=" + province) : ""),
+        url: url + "cases?per_page=100" + (province ? ("&province=" + province) : ""),
         type: "GET"
     }).then(res => {
         $(".all-cases-title").text((province ? (provinceProperties(province).name + ": ") : "") + "All Cases");
@@ -32,7 +32,7 @@ $(document).ready(() => {
         while (requests > 0) {
             setTimeout(function() {
                 $.ajax({
-                    url: url + "api/controller/proxy.php?get=cases?per_page=1000" + (province ? ("&province=" + province) : ""),
+                    url: url + "cases?per_page=1000" + (province ? ("&province=" + province) : ""),
                     type: "GET"
                 }).then(res => {
                     requests--;
@@ -51,7 +51,7 @@ function buildTable(province) {
         "searching": false,
         "bSort" : false,
         "ajax": {
-            url: url + "api/controller/proxy.php?get=cases?" + (province ? ("&province=" + province) : ""),
+            url: url + "cases?" + (province ? ("&province=" + province) : ""),
             dataFilter: function(data) {
                 var json = jQuery.parseJSON(data);
                 json.recordsTotal = json.total;

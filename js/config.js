@@ -1,4 +1,4 @@
-var url = "https://covid19tracker.ca/";
+var url = "https://api.covid19tracker.ca/";
 
 function provinceProperties(code, name) {
     var hashmap = {
@@ -87,7 +87,7 @@ function preProcessRequest(e, data) {
         var start = parseInt(data.url.match(/&start=(.*?)&/)[1]);
         var length = parseInt(data.url.match(/&length=(.*?)&/)[1]);
         var page = Math.ceil(start / length) + 1;
-        data.url = url + "api/controller/proxy.php?get=cases?page=" + page + "&per_page=" + length + (province ? ("&province=" + province) : "");
+        data.url = url + "cases?page=" + page + "&per_page=" + length + (province ? ("&province=" + province) : "");
     }
 
     return data;
