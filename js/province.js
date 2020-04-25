@@ -18,25 +18,18 @@ $(document).ready(() => {
 
         // update header
         $.ajax({
-            url: api_url + "summary/split",
+            url: url + "api/controller/proxy.php?get=summary/split",
             type: "GET"
         }).then(res => {
             var province = res.data.filter(item => item.province === code)[0];
             fillNulls(res.data);
-            $(".summary-header").show();
-            $(".summary-header-cases > h1").text(province.total_cases + " cases");
-            $(".summary-header-cases > b").text("(+" + province.change_cases + " today" + ")");
-            $(".summary-header-deaths > h1").text(province.total_fatalities + " deaths");
-            $(".summary-header-deaths > b").text("(+" + province.change_fatalities + " today" + ")");
-            $(".summary-header-hospitalized > h1").text(province.total_hospitalizations + " hospitalized");
-            $(".summary-header-hospitalized > b").text("(+" + province.change_hospitalizations + " today" + ")");
-            $(".summary-header-recoveries > h1").text(province.total_recoveries + " recoveries");
-            $(".summary-header-recoveries > b").text("(+" + province.change_recoveries + " today" + ")");
+            $('#provinceTotalCases')[0].innerHTML = "Total Cases: " + province.total_cases;
+            $('#provinceTotalDeaths')[0].innerHTML = "Total Deaths: " + province.total_fatalities;
         });
 
         // update graphs
         $.ajax({
-            url: api_url + "reports/province/" + code,
+            url: url + "api/controller/proxy.php?get=reports/province/" + code,
             type: "GET"
         }).then(res => {
             buildGraphs(res.data, value);
@@ -44,7 +37,7 @@ $(document).ready(() => {
 
         // update table
         $.ajax({
-            url: api_url + "cases?province=" + code,
+            url: url + "api/controller/proxy.php?get=cases?province=" + code,
             type: "GET"
         }).then(res => {
             buildTable(res.data);
@@ -58,8 +51,8 @@ function buildGraphs(data, province) {
     $('#provinceNewCases')[0].innerHTML = province + " New Cases by Day";
     $('#provinceCumulativeCases')[0].innerHTML = province + " Cumulative Cases";
 
-    $('#provinceCumulativeCasesChartDiv').empty();
-    $('#provinceNewCasesChartDiv').empty()
+    $('#provinceNewCasesChart').remove();
+    $('#provinceCumulativeCasesChart').remove()
 
     $('#provinceCumulativeCasesChartDiv').append("<canvas id=\"provinceCumulativeCasesChart\" width=\"100%\" height=\"40\"></canvas>");
     $('#provinceNewCasesChartDiv').append("<canvas id=\"provinceNewCasesChart\" width=\"100%\" height=\"40\"></canvas>")

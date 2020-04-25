@@ -2,11 +2,6 @@
 // @param data: [] case data
 // @param id: string graph container
 // @param flag: boolean cumulative or not
-
-Chart.Legend.prototype.afterFit = function() {
-    this.height = this.height + 20;
-};
-
 function lineGraph(data, id, flag) {
     var name = [];
     var prefix = flag ? "total" : "change";
@@ -118,7 +113,7 @@ function lineGraph(data, id, flag) {
                     hidden: true
                 },
                 {
-                    label: "Testing",
+                    label: "Tests",
                     lineTension: 0.3,
                     pointRadius: 5,
                     pointHoverRadius: 5,
@@ -211,7 +206,7 @@ function barGraph(data, id) {
                     hidden: true
                 },
                 {
-                    label: "Testing",
+                    label: "Tests",
                     backgroundColor: "#5c3b8d",
                     borderColor: "#5c3b8d",
                     data: allData["tests"],
@@ -237,8 +232,6 @@ function draw(graphConfig) {
         type: graphConfig.type,
         data: graphConfig.chartdata,
         options: {
-            responsive: true,
-            maintainAspectRatio: false,
             scales: {
                 xAxes: [{
                     time: {
