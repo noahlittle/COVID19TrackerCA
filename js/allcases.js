@@ -9,38 +9,21 @@ $(document).ready(() => {
 
     // update header
     $.ajax({
-        url: api_url + "summary" + (province ? "/split" : ""),
+        url: url + "api/controller/proxy.php?get=summary" + (province ? "/split" : ""),
         type: "GET"
     }).then(res => {
         var data = !province ? res.data[0] : res.data.filter(item => item.province === province)[0];
-        $('#totalCases')[0].innerHTML = "Total Cases: " + data.total_cases;
-        $('#totalDeaths')[0].innerHTML = "Total Deaths: " + data.total_fatalities;
+        $(".summary-header-cases > h1").text(data.total_cases + " cases");
+        $(".summary-header-cases > b").text("(+" + data.change_cases + " today" + ")");
+        $(".summary-header-deaths > h1").text(data.total_fatalities + " deaths");
+        $(".summary-header-deaths > b").text("(+" + data.change_fatalities + " today" + ")");
+        $(".summary-header-hospitalized > h1").text(data.total_hospitalizations + " hospitalized");
+        $(".summary-header-hospitalized > b").text("(+" + data.change_hospitalizations + " today" + ")");
+        $(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
+        $(".summary-header-recoveries > b").text("(+" + data.change_recoveries + " today" + ")");
     });
 
     buildTable(province);
-    // update table
-   /* $.ajax({
-        url: api_url + "cases?per_page=100" + (province ? ("&province=" + province) : ""),
-        type: "GET"
-    }).then(res => {
-        $(".all-cases-title").text((province ? (provinceProperties(province).name + ": ") : "") + "All Cases");
-        buildTable(res.data);
-
-        var total = res.total;
-        var requests = Math.ceil(total / 1000);
-
-        while (requests > 0) {
-            setTimeout(function() {
-                $.ajax({
-                    url: api_url + "cases?per_page=1000" + (province ? ("&province=" + province) : ""),
-                    type: "GET"
-                }).then(res => {
-                    requests--;
-                    buildTable(res.data);
-                });
-            })
-        }
-    });*/
 })
 
 function buildTable(province) {
@@ -51,7 +34,7 @@ function buildTable(province) {
         "searching": false,
         "bSort" : false,
         "ajax": {
-            url: api_url + "cases?" + (province ? ("&province=" + province) : ""),
+            url: url + "api/controller/proxy.php?get=cases?" + (province ? ("&province=" + province) : ""),
             dataFilter: function(data) {
                 var json = jQuery.parseJSON(data);
                 json.recordsTotal = json.total;

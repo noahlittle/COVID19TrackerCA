@@ -2,6 +2,11 @@
 // @param data: [] case data
 // @param id: string graph container
 // @param flag: boolean cumulative or not
+
+Chart.Legend.prototype.afterFit = function() {
+    this.height = this.height + 20;
+};
+
 function lineGraph(data, id, flag) {
     var name = [];
     var prefix = flag ? "total" : "change";
@@ -232,6 +237,8 @@ function draw(graphConfig) {
         type: graphConfig.type,
         data: graphConfig.chartdata,
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 xAxes: [{
                     time: {
