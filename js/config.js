@@ -90,7 +90,7 @@ function preProcessRequest(e, data) {
         var start = parseInt(data.url.match(/&start=(.*?)&/)[1]);
         var length = parseInt(data.url.match(/&length=(.*?)&/)[1]);
         var page = Math.ceil(start / length) + 1;
-        data.url = url + "cases?page=" + page + "&per_page=" + length + (province ? ("&province=" + province) : "");
+        data.url = api_url + "cases?page=" + page + "&per_page=" + length + (province ? ("&province=" + province) : "");
     }
 
     return data;
