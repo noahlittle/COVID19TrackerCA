@@ -5,5 +5,7 @@ It is currently in use on https://covid19tracker.ca
 
 ## Getting Started
 Setup is quite simple; modification of the following files is requried.
-js/config.js
-api/config/configs.php
+
+`js/config.js`
+
+`api/config/configs.php`
