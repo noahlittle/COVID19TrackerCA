@@ -8,7 +8,7 @@ $(document).ready(() => {
         var data = res.data[0];
 
         // update timestamp
-        $("#updateTime").text("Updated " + moment(data.last_updated).format("dddd, MMMM D") + " at " + moment(data.last_updated).format("HH:mm") + " CST");
+        $("#updateTime").text("Updated " + moment(res.last_updated).format("dddd, MMMM Do YYYY, h:mm") + " CST");
 
         // update header
         $(".summary-header-cases > h1").text(data.total_cases + " cases");
