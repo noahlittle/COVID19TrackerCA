@@ -25,13 +25,13 @@ $(document).ready(() => {
             fillNulls(res.data);
             $(".summary-header").show();
             $(".summary-header-cases > h1").text(province.total_cases + " cases");
-            $(".summary-header-cases > b").text("(+" + province.change_cases + " today" + ")");
+            $(".summary-header-cases > b").text(displayNewCases(province.change_cases));
             $(".summary-header-deaths > h1").text(province.total_fatalities + " deaths");
-            $(".summary-header-deaths > b").text("(+" + province.change_fatalities + " today" + ")");
+            $(".summary-header-deaths > b").text(displayNewCases(province.change_fatalities));
             $(".summary-header-hospitalized > h1").text(province.total_hospitalizations + " hospitalized");
-            $(".summary-header-hospitalized > b").text("(+" + province.change_hospitalizations + " today" + ")");
+            $(".summary-header-hospitalized > b").text(displayNewCases(province.change_hospitalizations));
             $(".summary-header-recoveries > h1").text(province.total_recoveries + " recoveries");
-            $(".summary-header-recoveries > b").text("(+" + province.change_recoveries + " today" + ")");
+            $(".summary-header-recoveries > b").text(displayNewCases(province.change_recoveries));
         });
 
         // update graphs
