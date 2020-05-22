@@ -14,13 +14,13 @@ $(document).ready(() => {
     }).then(res => {
         var data = !province ? res.data[0] : res.data.filter(item => item.province === province)[0];
         $(".summary-header-cases > h1").text(data.total_cases + " cases");
-        $(".summary-header-cases > b").text("(+" + data.change_cases + " today" + ")");
+        $(".summary-header-cases > b").text(displayNewCases(data.change_cases));
         $(".summary-header-deaths > h1").text(data.total_fatalities + " deaths");
-        $(".summary-header-deaths > b").text("(+" + data.change_fatalities + " today" + ")");
+        $(".summary-header-deaths > b").text(displayNewCases(data.change_fatalities));
         $(".summary-header-hospitalized > h1").text(data.total_hospitalizations + " hospitalized");
-        $(".summary-header-hospitalized > b").text("(+" + data.change_hospitalizations + " today" + ")");
+        $(".summary-header-hospitalized > b").text(displayNewCases(data.change_hospitalizations));
         $(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
-        $(".summary-header-recoveries > b").text("(+" + data.change_recoveries + " today" + ")");
+        $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
     });
 
     buildTable(province);

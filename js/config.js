@@ -3,6 +3,26 @@ var url = window.location.protocol + '//' + window.location.hostname + '/';
 // api  
 var api_url = "https://api.covid19tracker.ca/";
 
+function expectedTime(code) {
+    var expectedTimes = {
+        ON: "17:05 CST",
+        QC: "11:05 CST",
+        BC: "16:05 CST",
+        AB: "15:35 CST",
+        SK: "13:30 CST",
+        MB: "12:05 CST",
+        PE: "Varies",
+        NL: "11:35 CST",
+        NS: "09:30 CST",
+        NB: "11:00 CST",
+        NU: "Varies",
+        NT: "15:00 CST",
+        YT: "15:00 CST"
+    }
+
+    return expectedTimes[code] || '';
+}
+
 function provinceProperties(code, name) {
     var hashmap = {
         "QC": {
@@ -102,6 +122,11 @@ function seeProvince() {
 
 function seeAllCases(province) {
     window.location.href = url + "allcases.html" + (province ? ('?province=' + province) : '');
+}
+
+function displayNewCases(cases) {
+    if (cases >= 0) cases = "+" + cases;
+    return "(" + cases + " today)";
 }
 
 function goCases() {
