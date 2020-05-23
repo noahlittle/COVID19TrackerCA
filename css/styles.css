@@ -10347,3 +10347,37 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.province-update-status {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  margin-right: 10px;
+  background-image: url("../assets/img/custom.png");
+  background-size: 16px 16px;
+}
+
+.status-reported {
+  background-image: url("../assets/img/reported.png");
+}
+
+.status-waiting-for-report {
+  background-image: url("../assets/img/waiting-for-report.png");
+}
+
+.status-in-progress {
+  background-image: url("../assets/img/in-progress.png");
+}
+
+.status-no-report-expected-today {
+  background-image: url("../assets/img/no-report-expected-today.png");
+}
+
+.province-status-tooltip .tooltip-inner {
+  white-space: pre;
+  max-width: none;
+  padding: 10px;
+  text-align: left;
+}
