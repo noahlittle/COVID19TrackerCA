@@ -116,7 +116,7 @@ function buildProvinceTable(data, provinceData) {
             " data-toggle='tooltip' data-placement='bottom' data-html='true' title='" +
             "Status: <b>" + provinceStatus + "</b><br>" +
             "Last updated: <b>" + updatedAt + "</b><br>" +
-            "Update expected at: <b>" + expectedTime(item.province) + "</b>" +
+            "Update expected by: <b>" + expectedTime(item.province) + "</b>" +
             "'></span>" +
             "<span>" + provinceProperties(item.province).name + "</span>" +
             "</td>" +
