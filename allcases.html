@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>COVID-19 Canada Tracker</title>
-    <link href="css/styles.css?v=2.1" rel="stylesheet" />
+    <link href="css/styles.css?v=2.2" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js" crossorigin="anonymous"></script>
@@ -22,9 +22,9 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css" type="text/css" />
 
-    <script type="text/javascript" src="js/config.js?v=1.0.2"></script>
+    <script type="text/javascript" src="js/config.js?v=1.0.3"></script>
     <script type="text/javascript" src="js/map.js"></script>
-    <script type="text/javascript" src="js/charts.js"></script>
+    <script type="text/javascript" src="js/charts.js?v=1.0.3"></script>
     <script type="text/javascript" src="js/allcases.js?v=1.0.2"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -56,27 +56,49 @@
                 <br>
 
                 <div class="row">
-                    <div class="col-xl-3 col-md-6">
+                    <div class="col-md">
                         <div class="card bg-primary text-white mb-3">
-                            <div class="card-body summary-header-cases"><h1></h1> <b></b></div>
+                            <div class="card-body summary-header-cases"><h1></h1> <b></b> <div class="material-switch pull-right">
+                                <div class="switch-label d-inline-block">Active</div>
+                                <div class="d-inline-block">
+                                    <input id="activeCases" name="activeCases" type="checkbox"/>
+                                    <label for="activeCases" class="label-success"></label>
+                                </div>
+                            </div>
+                                <div class="summary-arrow" data-field="cases"><span class="arrow-down">➧</span></div><div class="summary-dropdown-container"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6">
+                    <div class="col-md">
                         <div class="card bg-danger text-white mb-3">
-                            <div class="card-body summary-header-deaths"><h1></h1> <b></b></div>
+                            <div class="card-body summary-header-deaths"><h1></h1> <b></b> <div class="summary-arrow" data-field="fatalities"><span class="arrow-down">➧</span></div><div class="summary-dropdown-container"></div></div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6">
+                    <div class="col-md">
                         <div class="card bg-warning text-white mb-3">
-                            <div class="card-body summary-header-hospitalized"><h1></h1> <b></b></div>
+                            <div class="card-body summary-header-hospitalized"><h1></h1> <b></b> <div class="material-switch pull-right">
+                                <div class="switch-label d-inline-block">Critical</div>
+                                <div class="d-inline-block">
+                                    <input id="criticalCases" name="criticalCases" type="checkbox"/>
+                                    <label for="criticalCases" class="label-success"></label>
+                                </div>
+                            </div>
+                                <div class="summary-arrow" data-field="hospitalizations"><span class="arrow-down">➧</span></div><div class="summary-dropdown-container"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6">
+                    <div class="col-md">
                         <div class="card bg-success text-white mb-3">
-                            <div class="card-body summary-header-recoveries"><h1></h1> <b></b></div>
+                            <div class="card-body summary-header-recoveries"><h1></h1> <b></b> <div class="summary-arrow" data-field="recoveries"><span class="arrow-down">➧</span></div><div class="summary-dropdown-container"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card bg-purple text-white mb-3">
+                            <div class="card-body summary-header-tests"><h1></h1> <b></b> <div class="summary-arrow" data-field="tests"><span class="arrow-down">➧</span></div><div class="summary-dropdown-container"></div></div>
                         </div>
                     </div>
                 </div>

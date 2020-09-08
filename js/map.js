@@ -36,6 +36,9 @@ function drawProvinces(data) {
             feature.properties.province_cases_total = provinceData.total_cases;
             feature.properties.province_cases_per_population = provinceData.total_cases / (feature.properties.population / 100000);
             feature.properties.province_deaths_total = provinceData.total_fatalities;
+            feature.properties.province_hospitalizations_total = provinceData.total_hospitalizations;
+            feature.properties.province_recoveries_total = provinceData.total_recoveries;
+            feature.properties.province_tests_total = provinceData.total_tests;
 
             // Making centroids
             var centroidFeature = JSON.parse(JSON.stringify(feature));
@@ -170,7 +173,11 @@ function drawProvinces(data) {
             popup.setLngLat([e.lngLat.lng, e.lngLat.lat]).setHTML(`
               <center><strong>${properties.name}</strong><br />
               Total Cases : ${properties.province_cases_total} <br />
-              Total Deaths : ${properties.province_deaths_total} </center>
+              Total Deaths : ${properties.province_deaths_total} <br />
+              Total Recoveries : ${properties.province_recoveries_total} <br />
+              Total Tests : ${properties.province_tests_total} <br />
+              Hospitalizations : ${properties.province_hospitalizations_total}  
+              </center>
             `).addTo(map);
         });
 

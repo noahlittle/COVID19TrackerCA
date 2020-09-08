@@ -10381,3 +10381,141 @@ body {
   padding: 10px;
   text-align: left;
 }
+
+.material-switch input[type="checkbox"] {
+  display: none;
+}
+
+.material-switch label {
+  cursor: pointer;
+  height: 0px;
+  position: relative;
+  width: 40px;
+}
+
+.material-switch label::before {
+  background: rgb(0, 0, 0);
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  content: '';
+  height: 16px;
+  margin-top: -8px;
+  position:absolute;
+  opacity: 0.3;
+  transition: all 0.4s ease-in-out;
+  width: 40px;
+}
+
+.material-switch label::after {
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  content: '';
+  height: 24px;
+  left: -4px;
+  margin-top: -8px;
+  position: absolute;
+  top: -4px;
+  transition: all 0.3s ease-in-out;
+  width: 24px;
+}
+
+.material-switch input[type="checkbox"]:checked + label::before {
+  background: inherit;
+  background-color: #5cb85c;
+}
+
+.material-switch input[type="checkbox"]:checked + label::after {
+  background: inherit;
+  left: 20px;
+  background-color: #5cb85c;
+}
+
+.switch-label {
+  vertical-align: text-bottom;
+  margin-right: 10px;
+}
+
+.material-switch {
+  float: right;
+}
+
+.arrow-down {
+  transform: rotate(90deg);
+  display: inline-block;
+}
+
+.summary-arrow {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-bottom: -20px;
+  user-select: none;
+  clear: both;
+}
+
+.summary-dropdown-container {
+  position: absolute;
+  left: 0;
+  border: 1px solid #CCC;
+  color: #666;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+  display: none;
+  background: white;
+  z-index: 10;
+}
+
+.summary-dropdown-container > div > span:nth-child(1) {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+#statisticsNotice {
+  display: none;
+}
+
+.toggle-regions .arrow-down {
+  cursor: pointer;
+  float: right;
+  user-select: none;
+}
+
+.toggle-regions .arrow-down[data-toggle='1'] {
+  transform: rotate(270deg);
+}
+
+.regionTable table {
+  table-layout: fixed;
+}
+
+.regionTable > td {
+  padding: 0;
+}
+
+.regionTable > td table tr td:first-child {
+  border-left: 0;
+}
+
+.regionTable > td table tr td:last-child {
+  border-left: 0;
+}
+
+.regionTable > td table tr:first-child td {
+  border-top: 0;
+}
+
+.regionTable > td table tr:last-child td {
+  border-bottom: 0;
+}
+
+.bg-purple {
+  background-color: #BA55D3 !important;
+}
+
+div[class*="summary-header"] h1 {
+  font-size: 2rem !important;
+}

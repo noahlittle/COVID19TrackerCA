@@ -2,6 +2,23 @@
 var url = window.location.protocol + '//' + window.location.hostname + '/'; 
 // api  
 var api_url = "https://api.covid19tracker.ca/";
+var devapi_url = "https://devapi.covid19tracker.ca/";
+
+var provinceSources = {
+    ON: "https://covid19tracker.ca/sources.html",
+    QC: "https://www.quebec.ca/sante/problemes-de-sante/a-z/coronavirus-2019/situation-coronavirus-quebec/",
+    BC: "http://www.bccdc.ca/health-info/diseases-conditions/covid-19/data",
+    AB: "https://www.alberta.ca/covid-19-alberta-data.aspx",
+    SK: "https://www.saskatchewan.ca/government/health-care-administration-and-provider-resources/treatment-procedures-and-guidelines/emerging-public-health-issues/2019-novel-coronavirus/cases-and-risk-of-covid-19-in-saskatchewan",
+    MB: "https://manitoba.ca/covid19/",
+    PE: "https://www.princeedwardisland.ca/en/information/health-and-wellness/pei-covid-19-case-data",
+    NL: "https://covid-19-newfoundland-and-labrador-gnl.hub.arcgis.com/",
+    NS: "https://novascotia.ca/coronavirus/data/",
+    NB: "https://experience.arcgis.com/experience/8eeb9a2052d641c996dba5de8f25a8aa",
+    NU: "https://www.gov.nu.ca/health/information/covid-19-novel-coronavirus",
+    NT: "https://www.gov.nt.ca/covid-19/",
+    YT: "https://yukon.ca/en/case-counts-covid-19"
+};
 
 function expectedTime(code) {
     var expectedTimes = {
@@ -129,10 +146,44 @@ function displayNewCases(cases) {
     return "(" + cases + " today)";
 }
 
+function displayNewCasesOlder(cases) {
+    if (cases >= 0) cases = "+" + cases;
+    return "(" + cases + ")";
+}
+
 function goCases() {
     window.location.href = "https://docs.google.com/spreadsheets/d/1e0QhkGT3XzJJh7l7EfUkK3be-81TawOEqO3JHMD8Y8s/edit?usp=sharing";
 }
 
 function goBack() {
     window.location.href = url + "index.html";
+}
+
+function compareProvinces() {
+    window.location.href = url + "compareprovinces.html";
+}
+
+function getLast5Days(data, prefix) {
+    var last5days = {};
+
+    var fields = ["cases", "fatalities", "hospitalizations", "recoveries", "tests"];
+    fields.forEach(field => {
+        last5days[field] = [];
+        for (var i = 2; i <= 6; i++) {
+            let row = data[data.length-i];
+            if (row !== undefined && row !== null &&
+                row[prefix + field] !== undefined && row[prefix + field] !== null) {
+                last5days[field].push({total: row[prefix + field], change: row["change_" + field], label: (i - 1) + (i === 2 ? " day " : " days ") + "ago"});
+            }
+        }
+    });
+
+    return last5days;
+}
+
+function parseRegions(data, regions) {
+    data.forEach(item => {
+        if (regions[item.province] === undefined) regions[item.province] = [];
+        regions[item.province].push(item);
+    });
 }

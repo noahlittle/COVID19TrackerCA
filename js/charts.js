@@ -7,7 +7,7 @@ Chart.Legend.prototype.afterFit = function() {
     this.height = this.height + 20;
 };
 
-function lineGraph(data, id, flag) {
+function lineGraph(data, id, flag, type) {
     var name = [];
     var prefix = flag ? "total" : "change";
     var allData = {
@@ -29,7 +29,7 @@ function lineGraph(data, id, flag) {
         }).format(date));
 
         for (var key in allData) {
-            var dataItem = data[i][prefix + "_" + key];
+            var dataItem = data[i][prefix ? (prefix + "_" + key) : key];
             if (!dataItem) dataItem = 0;
             allData[key].push(dataItem);
         }
@@ -137,10 +137,261 @@ function lineGraph(data, id, flag) {
         ticks: 7
     }
 
+    if (type === "region") graphConfig.chartdata.datasets = [graphConfig.chartdata.datasets[0], graphConfig.chartdata.datasets[1]];
+
     // renders the graph
     draw(graphConfig);
 }
 
+function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
+    var name = [];
+    var prefix = flag ? "total" : "change";
+    var allData = {
+        "cases1": [],
+        "fatalities1": [],
+        "recoveries1": [],
+        "hospitalizations1": [],
+        "criticals1": [],
+        "tests1": [],
+        "cases2": [],
+        "fatalities2": [],
+        "recoveries2": [],
+        "hospitalizations2": [],
+        "criticals2": [],
+        "tests2": []
+    };
+
+    for (var i in data1) {
+        var date = new Date(data1[i].date);
+        date.setDate(date.getDate() + 1);
+
+        name.push(new Intl.DateTimeFormat('en-us', {
+            month: 'short',
+            day: 'numeric'
+        }).format(date));
+
+        for (var key in allData) {
+            var data = key.indexOf("1") !== -1 ? data1 : data2;
+            var realKey = key.substr(0, key.length - 1);
+            var dataItem = data[i][prefix + "_" + realKey];
+            if (!dataItem) dataItem = 0;
+            allData[key].push(dataItem);
+        }
+    }
+
+    // used to setup graph that needs to be drawn
+    var graphConfig = {
+        graphTarget: $(id),
+        type: 'line',
+        unit: 'date',
+        chartdata: {
+            labels: name,
+            datasets: []
+        },
+        ticks: 7
+    }
+
+    if (field === "cases") {
+        graphConfig.chartdata.datasets = [
+            {
+                label: label1 + " Cases",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(2,117,216,1)",
+                pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                backgroundColor: "rgba(2,117,216,0.2)",
+                borderColor: "rgba(2,117,216,1)",
+                data: allData["cases1"]
+            },
+            {
+                label: label2 + " Cases",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(220,53,69,0.8)",
+                pointHoverBackgroundColor: "#dc3545",
+                backgroundColor: "rgba(220,53,69,0.2)",
+                borderColor: "#dc3545",
+                data: allData["cases2"]
+            }
+        ];
+    }
+
+    if (field === "fatalities") {
+        graphConfig.chartdata.datasets = [
+            {
+                label: label1 + " Deaths",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(2,117,216,1)",
+                pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                backgroundColor: "rgba(2,117,216,0.2)",
+                borderColor: "rgba(2,117,216,1)",
+                data: allData["fatalities1"]
+            },
+            {
+                label: label2 + " Deaths",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(220,53,69,0.8)",
+                pointHoverBackgroundColor: "#dc3545",
+                backgroundColor: "rgba(220,53,69,0.2)",
+                borderColor: "#dc3545",
+                data: allData["fatalities2"]
+            }
+        ];
+    }
+
+    if (field === "recoveries") {
+        graphConfig.chartdata.datasets = [
+            {
+                label: label1 + " Recoveries",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(2,117,216,1)",
+                pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                backgroundColor: "rgba(2,117,216,0.2)",
+                borderColor: "rgba(2,117,216,1)",
+                data: allData["recoveries1"]
+            },
+            {
+                label: label2 + " Recoveries",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(220,53,69,0.8)",
+                pointHoverBackgroundColor: "#dc3545",
+                backgroundColor: "rgba(220,53,69,0.2)",
+                borderColor: "#dc3545",
+                data: allData["recoveries2"]
+            }
+        ];
+    }
+
+    if (field === "hospitalizations") {
+        graphConfig.chartdata.datasets = [
+            {
+                label: label1 + " Hospitalizations",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(2,117,216,1)",
+                pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                backgroundColor: "rgba(2,117,216,0.2)",
+                borderColor: "rgba(2,117,216,1)",
+                data: allData["hospitalizations1"]
+            },
+            {
+                label: label2 + " Hospitalizations",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(220,53,69,0.8)",
+                pointHoverBackgroundColor: "#dc3545",
+                backgroundColor: "rgba(220,53,69,0.2)",
+                borderColor: "#dc3545",
+                data: allData["hospitalizations2"]
+            }
+        ];
+    }
+
+    if (field === "criticals") {
+        graphConfig.chartdata.datasets = [
+            {
+                label: label1 + " Criticals",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(2,117,216,1)",
+                pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                backgroundColor: "rgba(2,117,216,0.2)",
+                borderColor: "rgba(2,117,216,1)",
+                data: allData["criticals1"]
+            },
+            {
+                label: label2 + " Criticals",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(220,53,69,0.8)",
+                pointHoverBackgroundColor: "#dc3545",
+                backgroundColor: "rgba(220,53,69,0.2)",
+                borderColor: "#dc3545",
+                data: allData["criticals2"]
+            }
+        ];
+    }
+
+    if (field === "tests") {
+        graphConfig.chartdata.datasets = [
+            {
+                label: label1 + " Testing",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(2,117,216,1)",
+                pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                backgroundColor: "rgba(2,117,216,0.2)",
+                borderColor: "rgba(2,117,216,1)",
+                data: allData["tests1"]
+            },
+            {
+                label: label2 + " Testing",
+                lineTension: 0.3,
+                pointRadius: 5,
+                pointHoverRadius: 5,
+                pointHitRadius: 50,
+                pointBorderWidth: 2,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(220,53,69,0.8)",
+                pointHoverBackgroundColor: "#dc3545",
+                backgroundColor: "rgba(220,53,69,0.2)",
+                borderColor: "#dc3545",
+                data: allData["tests2"]
+            }
+        ];
+    }
+    
+    // renders the graph
+    draw(graphConfig);
+}
 
 // barGraph: configures data for bar graphs
 // @param data: [] case data
@@ -286,6 +537,7 @@ function updateGraph(container) {
 
     var recentOnly = container.find(".chart-options > span:nth-child(1) input")[0].checked;
     var logarithmicScale = container.find(".chart-options > span:nth-child(2) input")[0].checked;
+    var rollingAverage = container.find(".chart-options > span:nth-child(3) input")[0].checked;
 
     var data = $.extend(true, {}, originalData);
 
@@ -304,7 +556,59 @@ function updateGraph(container) {
     // apply log scale to graph, if set
     graph.config.options.scales.yAxes[0].type = logarithmicScale ? "logarithmic" : "linear";
 
+    // apply rolling average
+    data.datasets.forEach(dataset => {
+        if (dataset.originalData === undefined) dataset.originalData = [...dataset.data];
+    });
+
+    if (rollingAverage) {
+        data.datasets.forEach(dataset => {
+            dataset.data = movingAvg([...dataset.originalData], 7);
+        });
+    }
+    else {
+        data.datasets.forEach(dataset => {
+            dataset.data = [...dataset.originalData];
+        });
+    }
+
     // set new data based on original data
     graph.config.data = data;
     graph.update();
+}
+
+function movingAvg(array, count, qualifier){
+
+    // calculate average for subarray
+    var avg = function(array, qualifier){
+
+        var sum = 0, count = 0, val;
+        for (var i in array){
+            val = array[i];
+            if (!qualifier || qualifier(val)){
+                sum += val;
+                count++;
+            }
+        }
+
+        return sum / count;
+    };
+
+    var result = [], val;
+
+    // pad beginning of result with null values
+    for (var i=0; i < count-1; i++)
+        result.push(null);
+
+    // calculate average for each subarray and add to result
+    for (var i=0, len=array.length - count; i <= len; i++){
+
+        val = avg(array.slice(i, i + count), qualifier);
+        if (isNaN(val))
+            result.push(null);
+        else
+            result.push(val);
+    }
+
+    return result;
 }

@@ -9,7 +9,7 @@
     <meta name="author" content="" />
     <title>COVID-19 Canada Tracker</title>
 
-    <link href="css/styles.css?v=2.1" rel="stylesheet" />
+    <link href="css/styles.css?v=2.2" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js" crossorigin="anonymous"></script>
@@ -22,9 +22,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5.1.6/turf.min.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
 
-    <script type="text/javascript" src="js/config.js?v=1.0.2"></script>
+    <script type="text/javascript" src="js/config.js?v=1.0.3"></script>
     <script type="text/javascript" src="js/map.js"></script>
-    <script type="text/javascript" src="js/charts.js"></script>
+    <script type="text/javascript" src="js/charts.js?v=1.0.3"></script>
     <script type="text/javascript" src="js/main.js?v=2.0.2"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -78,32 +78,55 @@
                 <br>
 
                 <div class="row">
-                    <div class="col-xl-3 col-md-6">
+                    <div class="col-md">
                         <div class="card bg-primary text-white mb-3">
-                            <div class="card-body summary-header-cases"><h1></h1> <b></b></div>
+                            <div class="card-body summary-header-cases"><h1></h1> <b></b> <div class="material-switch pull-right">
+                                <div class="switch-label d-inline-block">Active</div>
+                                <div class="d-inline-block">
+                                    <input id="activeCases" name="activeCases" type="checkbox"/>
+                                    <label for="activeCases" class="label-success"></label>
+                                </div>
+                            </div>
+                            <div class="summary-arrow" data-field="cases"><span class="arrow-down">➧</span></div><div class="summary-dropdown-container"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6">
+                    <div class="col-md">
                         <div class="card bg-danger text-white mb-3">
-                            <div class="card-body summary-header-deaths"><h1></h1> <b></b></div>
+                            <div class="card-body summary-header-deaths"><h1></h1> <b></b> <div class="summary-arrow" data-field="fatalities"><span class="arrow-down">➧</span></div><div class="summary-dropdown-container"></div></div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6">
+                    <div class="col-md">
                         <div class="card bg-warning text-white mb-3">
-                            <div class="card-body summary-header-hospitalized"><h1></h1> <b></b></div>
+                            <div class="card-body summary-header-hospitalized"><h1></h1> <b></b> <div class="material-switch pull-right">
+                                <div class="switch-label d-inline-block">Critical</div>
+                                <div class="d-inline-block">
+                                    <input id="criticalCases" name="criticalCases" type="checkbox"/>
+                                    <label for="criticalCases" class="label-success"></label>
+                                </div>
+                            </div>
+                            <div class="summary-arrow" data-field="hospitalizations"><span class="arrow-down">➧</span></div><div class="summary-dropdown-container"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6">
+                    <div class="col-md">
                         <div class="card bg-success text-white mb-3">
-                            <div class="card-body summary-header-recoveries"><h1></h1> <b></b></div>
+                            <div class="card-body summary-header-recoveries"><h1></h1> <b></b> <div class="summary-arrow" data-field="recoveries"><span class="arrow-down">➧</span></div><div class="summary-dropdown-container"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card bg-purple text-white mb-3">
+                            <div class="card-body summary-header-tests"><h1></h1> <b></b> <div class="summary-arrow" data-field="tests"><span class="arrow-down">➧</span></div><div class="summary-dropdown-container"></div></div>
                         </div>
                     </div>
                 </div>
                 <br>
-                <button type="button" class="btn btn-secondary" onClick="seeProvince()">Select Province</button>
+                <button type="button" class="btn btn-secondary mr-2" onClick="seeProvince()">Select Province</button>
+                <button type="button" class="btn btn-secondary" onClick="compareProvinces()">Compare Provinces</button>
                 <br>
                 <br>
 
@@ -129,6 +152,9 @@
                                     <span class="mx-2">
                                         <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
                                     </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -148,6 +174,9 @@
                                     <span class="mx-2">
                                         <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
                                     </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -164,16 +193,21 @@
                                     <span class="mx-2">
                                         <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
                                     </span>
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                
-
-<br>
-                <br>
+                <div class="col-xl-12 col-md-12" id="statisticsNotice">
+                    <div class="card bg-primary text-white mb-12">
+                        <div class="card-body"></div>
+                    </div>
+                    <br>
+                </div>
 
                 <div class="card mb-4">
                     <div class="card-header"><i class="fas fa-table mr-1"></i>Total Cases By Province</div>
@@ -183,18 +217,35 @@
                                 <thead>
                                     <tr>
                                         <th>Province</th>
-                                        <th>Total Cases</th>
-                                        <th>Infected per 100 000</th>
+                                        <th>Cases</th>
                                         <th>Deaths</th>
+                                        <th>Hospitalizations</th>
+                                        <th>Criticals</th>
+                                        <th>Recoveries</th>
+                                        <th>Tests</th>
+                                        <th>
+                                            <select id="perCapita">
+                                                <option value="cases" selected="selected">Cases/100K</option>
+                                                <option value="fatalities">Fatalities/100K</option>
+                                                <option value="hospitalizations">Hospitalizations/100K</option>
+                                                <option value="criticals">Criticals/100K</option>
+                                                <option value="recoveries">Recoveries/100K</option>
+                                                <option value="tests">Tests/100K</option>
+                                            </select>
+                                        </th>
                                         <th>Source</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <td><i><b>Canada</b></i></td>
-                                        <td><i><b id="totalCasesCanada"></b></i></td>
+                                        <td><i><b id="totalCasesCanada" data-per-capita=""></b></i></td>
+                                        <td><i><b id="totalFatalitiesCanada" data-per-capita=""></b></i></td>
+                                        <td><i><b id="totalHospitalizationsCanada" data-per-capita=""></b></i></td>
+                                        <td><i><b id="totalCriticalsCanada" data-per-capita=""></b></i></td>
+                                        <td><i><b id="totalRecoveriesCanada" data-per-capita=""></b></i></td>
+                                        <td><i><b id="totalTestsCanada" data-per-capita=""></b></i></td>
                                         <td><b id="infectedPerCanada"></b></td>
-                                        <td><i><b class="death_total"></b></i></td>
                                         <td><a href="https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html">Source</a></td>
                                     </tr>
                                 </tfoot>

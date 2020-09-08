@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>COVID-19 Canada Tracker - Data Notes</title>
-    <link href="css/styles.css?v=2.1" rel="stylesheet" />
+    <link href="css/styles.css?v=2.2" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js" crossorigin="anonymous"></script>
@@ -24,7 +24,7 @@
     <!-- <script type="text/javascript" src="js/mapdata.js"></script> -->
     <!-- <script type="text/javascript" src="js/canadamap.js"></script> -->
     <!-- <script type="text/javascript" src="js/state.js"></script> -->
-    <script type="text/javascript" src="js/config.js?v=1.0.2"></script>
+    <script type="text/javascript" src="js/config.js?v=1.0.3"></script>
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -90,10 +90,10 @@
                         <h3>Some things you need to know about the dataset</h3>
                         <p>While most case and other data is completely accurate, there are some unavoidable assumptions that have been required in order to present a complete dataset. Some provinces don't report every day, data released by some provinces has been later retracted or modified, and definitions for 'recovered' or even region boundaries have changed.</p>
 
-                        <p>A full document will be linked soon, but in the meantime a list of common rules used is listed below:</p>
+                        <p>A few important notes:</p>
                         <ul>
                         <li>If a case is removed from any region, the latest case from that specific region is removed from the dataset</li>
-                        <li>British Columbia does not report cases on Sundays; however they do report the number of Sunday cases on Monday, resulting in correct case numbers but arbitrary regional distribution</li>
+                        <li>Some provinces (such as British Columbia and Alberta) do not report cases on weekends and others do not report cases on holidays; however they do report the number of Weekend/Holiday cases on the next weekday, resulting in correct case numbers but arbitrary regional distribution</li>
                         <li>If cases in a province are removed from a 'pending' region, they are added to the region with the greatest number of new cases on that particular day</li>
                         <li>In the event of changes in regional boundaries, any cases from regions with decreases in case numbers are moved to the closest region with the greatest increase of cases as a result of such regional distribution</li>
                         </ul>
