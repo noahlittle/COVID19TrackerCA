@@ -45,7 +45,7 @@ function lineGraph(data, id, flag, type) {
             datasets: [
                 {
                     label: "Cases",
-                    lineTension: 0.5,
+                    lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -59,7 +59,7 @@ function lineGraph(data, id, flag, type) {
                 },
                 {
                     label: "Deaths",
-                    lineTension: 0.5,
+                    lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -74,7 +74,7 @@ function lineGraph(data, id, flag, type) {
                 },
                 {
                     label: "Recoveries",
-                    lineTension: 0.5,
+                    lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -89,7 +89,7 @@ function lineGraph(data, id, flag, type) {
                 },
                 {
                     label: "Hospitalizations",
-                   lineTension: 0.5,
+                   lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -104,7 +104,7 @@ function lineGraph(data, id, flag, type) {
                 },
                 {
                     label: "Criticals",
-                    lineTension: 0.5,
+                    lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -119,7 +119,7 @@ function lineGraph(data, id, flag, type) {
                 },
                 {
                     label: "Testing",
-                    lineTension: 0.5,
+                    lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -195,7 +195,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
         graphConfig.chartdata.datasets = [
             {
                 label: label1 + " Cases",
-                lineTension: 0.5,
+                lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -209,7 +209,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
             },
             {
                 label: label2 + " Cases",
-                lineTension: 0.5,
+                lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -228,7 +228,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
         graphConfig.chartdata.datasets = [
             {
                 label: label1 + " Deaths",
-                lineTension: 0.5,
+                lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -242,7 +242,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
             },
             {
                 label: label2 + " Deaths",
-                lineTension: 0.5,
+                lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -261,7 +261,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
         graphConfig.chartdata.datasets = [
             {
                 label: label1 + " Recoveries",
-               lineTension: 0.5,
+               lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -275,7 +275,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
             },
             {
                 label: label2 + " Recoveries",
-                lineTension: 0.5,
+                lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -294,7 +294,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
         graphConfig.chartdata.datasets = [
             {
                 label: label1 + " Hospitalizations",
-                lineTension: 0.5,
+                lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -308,7 +308,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
             },
             {
                 label: label2 + " Hospitalizations",
-                lineTension: 0.5,
+                lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -327,7 +327,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
         graphConfig.chartdata.datasets = [
             {
                 label: label1 + " Criticals",
-                lineTension: 0.5,
+                lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -341,7 +341,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
             },
             {
                 label: label2 + " Criticals",
-                lineTension: 0.5,
+                lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -360,7 +360,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
         graphConfig.chartdata.datasets = [
             {
                 label: label1 + " Testing",
-                lineTension: 0.5,
+                lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
@@ -374,7 +374,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
             },
             {
                 label: label2 + " Testing",
-                lineTension: 0.5,
+                lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 5,
                     pointHitRadius: 5,
