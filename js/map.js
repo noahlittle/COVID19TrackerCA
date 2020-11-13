@@ -22,7 +22,7 @@ function drawMap(data) {
 }
 
 function drawProvinces(data) {
-    fetch('./assets/data/provinces.json').then(resp => resp.json()).then(response => {
+    fetch('.assets/data/provinces.json').then(resp => resp.json()).then(response => {
 
         var centroidGeoJSON = {
             type: "FeatureCollection",
@@ -34,7 +34,9 @@ function drawProvinces(data) {
             feature.id = feature.properties.cartodb_id;
             var provinceData = data.filter(item => item.province === feature.properties.abbreviation)[0];
             feature.properties.province_cases_total = provinceData.total_cases;
-            feature.properties.province_cases_per_population = provinceData.total_cases / (feature.properties.population / 100000);
+           // feature.properties.province_cases_per_population = provinceData.total_cases / (feature.properties.population / 100000);
+            feature.properties.province_cases_per_population = (provinceData.total_cases - provinceData.total_fatalities - provinceData.total_recoveries) / (feature.properties.population / 100000);
+            feature.properties.province_cases_active = provinceData.total_cases - provinceData.total_fatalities - provinceData.total_recoveries;
             feature.properties.province_deaths_total = provinceData.total_fatalities;
             feature.properties.province_hospitalizations_total = provinceData.total_hospitalizations;
             feature.properties.province_recoveries_total = provinceData.total_recoveries;
@@ -68,13 +70,14 @@ function drawProvinces(data) {
             ['linear'],
             ["number", ['get', 'province_cases_per_population']],
             fillRange[0], '#007000',
-            fillRange[1] * 0.3, '#238823',
-            fillRange[1] * 0.6, '#FFbF00', 
-            fillRange[1] * 0.9, '#D2222D'
+            fillRange[1] * 0.2, '#FFFF00',
+            fillRange[1] * 0.4, '#FFA500',
+            fillRange[1] * 0.6, '#FF0000', 
+            fillRange[1] * 0.8, '#ff0800'
         ];
 
         var mapHTML = `
-          <strong>Cases Per 100,000</strong>
+          <strong>Active Cases Per 100,000</strong>
           <div class="gradient-swatch"></div>
           <ul>
             <li style="text-align:left;">${fillRange[0].toFixed(1)}</li>
@@ -172,11 +175,11 @@ function drawProvinces(data) {
             var properties = e.features[0].properties;
             popup.setLngLat([e.lngLat.lng, e.lngLat.lat]).setHTML(`
               <center><strong>${properties.name}</strong><br />
-              Total Cases : ${properties.province_cases_total} <br />
-              Total Deaths : ${properties.province_deaths_total} <br />
-              Total Recoveries : ${properties.province_recoveries_total} <br />
-              Total Tests : ${properties.province_tests_total} <br />
-              Hospitalizations : ${properties.province_hospitalizations_total}  
+              Active Cases: ${properties.province_cases_active} <br />
+              Total Cases: ${properties.province_cases_total} <br />
+              Deaths: ${properties.province_deaths_total} <br />
+              Tests: ${properties.province_tests_total} <br />
+              Hospitalizations: ${properties.province_hospitalizations_total}  
               </center>
             `).addTo(map);
         });
