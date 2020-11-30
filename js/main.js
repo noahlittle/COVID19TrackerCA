@@ -269,29 +269,35 @@ $(document).ready(() => {
             $(this).closest("tr").next().remove();
             $(this).attr("data-toggle", "0");
         }
-        else {
-            $(this).attr("data-toggle", "1");
-            container.after("<tr class='regionTable'><td colspan='9'><table></table></td>");
-            var regionsTable = container.next().find("table");
-            var theseRegions = regions[province];
-            theseRegions.forEach(item => {
-                var itemTotalCases = item.data.total_cases;
-                var itemTotalFatalities = item.data.total_fatalities;
-                var itemTotalHospitalizations = item.data.total_hospitalizations;
-                var itemTotalCriticals = item.data.total_criticals;
-                var itemTotalRecoveries = item.data.total_recoveries;
-                var itemTotalTests = item.data.total_tests;
-                if (itemTotalCases === null || itemTotalCases === undefined) itemTotalCases = "N/A";
-                if (itemTotalFatalities === null || itemTotalFatalities === undefined) itemTotalFatalities = "N/A";
-                if (itemTotalHospitalizations === null || itemTotalHospitalizations === undefined) itemTotalHospitalizations = "N/A";
-                if (itemTotalCriticals === null || itemTotalCriticals === undefined) itemTotalCriticals = "N/A";
-                if (itemTotalRecoveries === null || itemTotalRecoveries === undefined) itemTotalRecoveries = "N/A";
-                if (itemTotalTests === null || itemTotalTests === undefined) itemTotalTests = "N/A";
-                if (item.data) {
-                    regionsTable.append('<tr><td>' + item.engname + '</td><td>' + itemTotalCases + '</td><td>' + itemTotalFatalities + '</td><td>' + itemTotalHospitalizations + '</td>' +
-                    '<td>' + itemTotalCriticals + '</td><td>' + itemTotalRecoveries + '</td><td>' + itemTotalTests + '</td><td>&nbsp;</td><td>&nbsp;</td>');
-                }
-            });
+                        else {
+                    $(this).attr("data-toggle", "1");
+                    container.after("<tr class='regionTable'><td colspan='9'><table></table></td>");
+                    var regionsTable = container.next().find("table");
+                    var theseRegions = regions[province];
+                    theseRegions.forEach(item => {
+                        var itemTotalCases = item.data.total_cases;
+                        var itemTotalFatalities = item.data.total_fatalities;
+                        var itemTotalHospitalizations = item.data.total_hospitalizations;
+                        var itemTotalCriticals = item.data.total_criticals;
+                        var itemTotalRecoveries = item.data.total_recoveries;
+                        var itemTotalTests = item.data.total_tests;
+                        if (itemTotalCases === null || itemTotalCases === undefined) itemTotalCases = "N/A";
+                        else if (item.data.change_cases) itemTotalCases += "<i> " + displayNewCases(item.data.change_cases);
+                        if (itemTotalFatalities === null || itemTotalFatalities === undefined) itemTotalFatalities = "N/A";
+                        else if (item.data.change_fatalities) itemTotalFatalities += "<i> " + displayNewCases(item.data.change_fatalities);
+                        if (itemTotalHospitalizations === null || itemTotalHospitalizations === undefined) itemTotalHospitalizations = "N/A";
+                        else if (item.data.change_hospitalizations) itemTotalHospitalizations += "<i> " + displayNewCases(item.data.change_hospitalizations);
+                        if (itemTotalCriticals === null || itemTotalCriticals === undefined) itemTotalCriticals = "N/A";
+                        else if (item.data.change_criticals) itemTotalCriticals += "<i> " + displayNewCases(item.data.change_criticals);
+                        if (itemTotalRecoveries === null || itemTotalRecoveries === undefined) itemTotalRecoveries = "N/A";
+                        else if (item.data.change_recoveries) itemTotalRecoveries += "<i> " + displayNewCases(item.data.change_recoveries);
+                        if (itemTotalTests === null || itemTotalTests === undefined) itemTotalTests = "N/A";
+                        else if (item.data.change_tests) itemTotalTests += "<i> " + displayNewCases(item.data.change_tests);
+                        if (item.data) {
+                            regionsTable.append('<tr><td>' + item.engname + '</td><td>' + itemTotalCases + '</td><td>' + itemTotalFatalities + '</td><td>' + itemTotalHospitalizations + '</td>' +
+                                '<td>' + itemTotalCriticals + '</td><td>' + itemTotalRecoveries + '</td><td>' + itemTotalTests + '</td><td>&nbsp;</td><td>&nbsp;</td>');
+                        }
+                    });
             var firstCells = container.find("td");
             var regionsRows = regionsTable.find("tr");
             regionsRows.each((index, row) => {
@@ -348,7 +354,7 @@ function buildProvinceTable(data, provinceData) {
             "Last updated: <b>" + updatedAt + "</b><br>" +
             "Update expected by: <b>" + expectedTime(item.province) + "</b>" +
             "'></span>" +
-            "<span>" + provinceProperties(item.province).name + "</span><span class='toggle-regions'></span>" +
+            "<span>" + provinceProperties(item.province).name + "</span><span class='toggle-regions'><span class='arrow-down' data-toggle='0' data-province='" + item.province + "'><b>+</b></span></span>" +
             "</td>" +
             "<td data-per-capita='" + casesPer100000 + "'><b><i>" + item.total_cases + (item.change_cases ? (" " + displayNewCases(item.change_cases)) : "") + "</i></b></td>" +
             "<td data-per-capita='" + fatalitiesPer100000 + "'><b><i>" + item.total_fatalities + (item.change_fatalities ? (" " + displayNewCases(item.change_fatalities)) : "") + "</i></b></td>" +
