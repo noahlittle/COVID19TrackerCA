@@ -23,9 +23,29 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
 
     <script type="text/javascript" src="js/config.js?v=1.1.4"></script>
-    <script type="text/javascript" src="js/map.js?v=1.2.4"></script>
-    <script type="text/javascript" src="js/charts.js?v=1.1.4"></script>
-    <script type="text/javascript" src="js/main.js?v=2.1.4"></script>
+    <script type="text/javascript" src="js/map.js?v=1.1.4"></script>
+    <script type="text/javascript" src="js/charts.js?v=1.2.4"></script>
+    <script type="text/javascript" src="js/main.js?v=2.2.4"></script>
+
+    <script>
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the header
+var header = document.getElementById("myHeader");
+
+// Get the offset position of the navbar
+var sticky = header.offsetTop;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+    </script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160029240-1"></script>
@@ -226,6 +246,7 @@
                                         <th>
                                             <select id="perCapita">
                                                 <option value="cases" selected="selected">Cases/100K</option>
+                                                <option value="active" >Active/100K</option>
                                                 <option value="fatalities">Fatalities/100K</option>
                                                 <option value="hospitalizations">Hospitalizations/100K</option>
                                                 <option value="criticals">Criticals/100K</option>
