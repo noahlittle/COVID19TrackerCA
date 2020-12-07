@@ -41,6 +41,27 @@
 
         gtag('config', 'UA-160029240-1');
     </script>
+
+<script>
+    $(document).ready(function () {
+    // Check if user saw the modal
+    var key = 'hadModal',
+        hadModal = localStorage.getItem(key);
+
+    // Show the modal only if new user
+    if (!hadModal) {
+        $('#myModal').modal('show');
+    }
+
+    // If modal is displayed, store that in localStorage
+    $('#myModal').on('shown.bs.modal', function () {
+        localStorage.setItem(key, true);
+    })
+});
+
+</script>
+
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -297,6 +318,39 @@
                 </div>
             </div>
         </main>
+
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle"><span class="badge badge-success">New</span>  <b>Regional Data Now Available</b></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <h5>We're now tracking data at the health region level, in near real-time.</h5>
+
+<p>This means you'll be able to see new data and visualizations both provincially and at the city/region level.<p></p>
+                <div class="modal-body"> 
+                      <img src="update.gif" class="img-fluid">
+                </div>
+<p>The provincial data table on our homepage is also now expandable to show data for each region of interest, and to allow for comparison between the regions of each province.</p>
+                <div class="modal-body"> 
+                      <img src="update1.gif" class="img-fluid">
+                </div>
+
+<p>More information on this change is available via our update on <a href="https://twitter.com/covid_canada/status/1335011481985826818">Twitter</a>.</p>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='https://covid19tracker.ca/province.html'">Try It</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid">
