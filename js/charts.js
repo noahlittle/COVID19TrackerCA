@@ -16,7 +16,8 @@ function lineGraph(data, id, flag, type) {
         "recoveries": [],
         "hospitalizations": [],
         "criticals": [],
-        "tests": []
+        "tests": [],
+        "vaccinations": []
     };
 
 
@@ -132,6 +133,21 @@ function lineGraph(data, id, flag, type) {
                     borderColor: "#5c3b8d",
                     data: allData["tests"],
                     hidden: true
+                },
+                {
+                    label: "Vaccinations",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "rgba(255,255,255,0.8)",
+                    pointBackgroundColor: "#353A3F",
+                    pointHoverBackgroundColor: "#353A3F",
+                    backgroundColor: "rgba(92,59,141,0.2)",
+                    borderColor: "#353A3F",
+                    data: allData["vaccinations"],
+                    hidden: true
                 }
             ]
         },
@@ -154,12 +170,16 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
         "hospitalizations1": [],
         "criticals1": [],
         "tests1": [],
+        "vaccinations1": [],
         "cases2": [],
         "fatalities2": [],
         "recoveries2": [],
         "hospitalizations2": [],
         "criticals2": [],
-        "tests2": []
+        "tests2": [],
+        "vaccinations2": []
+
+
     };
 
     for (var i in data1) {
@@ -467,6 +487,13 @@ function barGraph(data, id) {
                     backgroundColor: "#5c3b8d",
                     borderColor: "#5c3b8d",
                     data: allData["tests"],
+                    hidden: true
+                },
+                {
+                    label: "Vaccinations",
+                    backgroundColor: "#353A3F",
+                    borderColor: "#353A3F",
+                    data: allData["vaccinations"],
                     hidden: true
                 }
             ]

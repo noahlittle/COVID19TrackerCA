@@ -10,6 +10,8 @@ var critical = 0;
 var criticalChange = 0;
 var hospitalizations = 0;
 var hospitalizationsChange = 0;
+var vaccinations = 0;
+var vaccinationsChange = 0;
 var last5days = {};
 
 $(document).ready(() => {
@@ -67,6 +69,8 @@ $(document).ready(() => {
             criticalChange = lastItem.change_criticals || 0;
             hospitalizations = lastItem.total_hospitalizations || 0;
             hospitalizationsChange = lastItem.change_hospitalizations || 0;
+            vaccinations = lastItem.total_vaccinations || 0;
+            vaccinationsChange = lastItem.change_vaccinations || 0;
 
             if (lastItem.total_cases === null || lastItem.total_cases === undefined)
                 $(".summary-header-cases").closest(".col-md").hide();
@@ -106,6 +110,14 @@ $(document).ready(() => {
                 $(".summary-header-tests > h1").text(lastItem.total_tests + " tests");
                 if (lastItem.change_tests !== null && lastItem.change_tests !== undefined)
                     $(".summary-header-tests > b").text(displayNewCases(lastItem.change_tests));
+            }
+
+            if (lastItem.total_vaccinations === null || lastItem.total_vaccinations === undefined)
+                $(".summary-header-vaccinations").closest(".col-md").hide();
+            else {
+                $(".summary-header-vaccinations > h1").text(lastItem.total_vaccinations + " vaccinated");
+                if (lastItem.change_vaccinations !== null && lastItem.change_vaccinations !== undefined)
+                    $(".summary-header-vaccinations > b").text(displayNewCases(lastItem.change_vaccinations));
             }
 
             buildGraphs(res.data, province + " " + label, "region");
@@ -169,6 +181,8 @@ $(document).ready(() => {
             $(".summary-header-recoveries > b").text(displayNewCases(province.change_recoveries));
             $(".summary-header-tests > h1").text(province.total_tests + " tests");
             $(".summary-header-tests > b").text(displayNewCases(province.change_tests));
+            $(".summary-header-vaccinations > h1").text(province.total_vaccinations + " vaccinated");
+            $(".summary-header-vaccinations > b").text(displayNewCases(province.change_vaccinations));
         });
 
         // update graphs
@@ -301,7 +315,7 @@ function buildTable(data) {
 }
 
 function calculateRegionChanges(lastItem, previousItem) {
-    var fields = ["cases", "fatalities", "hospitalizations", "recoveries", "tests", "criticals"];
+    var fields = ["cases", "fatalities", "hospitalizations", "recoveries", "tests", "criticals", "vaccinations"];
     fields.forEach(field => {
         if (lastItem[field] !== undefined && lastItem[field] !== null &&
             previousItem[field] !== undefined && previousItem[field] !== null) {

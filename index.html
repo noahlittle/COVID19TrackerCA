@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>COVID-19 Canada Tracker</title>
+    <title>COVID-19 Tracker Canada</title>
 
     <link href="css/styles.css?v=4.4" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -146,6 +146,14 @@
                             <div class="card-body summary-header-tests"><h1></h1> <b></b> <div class="summary-arrow" data-field="tests"><span class="arrow-down"><i class="fa fa-angle-down"></i></span></div><div class="summary-dropdown-container"></div></div>
                         </div>
                     </div>
+
+                    <div class="col-md">
+                        <div class="card bg-dark text-white mb-3">
+                            <div class="card-body summary-header-vaccinations"><h1></h1> <b></b> <div class="summary-arrow" data-field="vaccinations"><span class="arrow-down"><i class="fa fa-angle-down"></i></span></div><div class="summary-dropdown-container"></div></div>
+                        </div>
+                    </div>
+
+
                 </div>
                 <br>
                 <button type="button" class="btn btn-secondary mr-2" onClick="seeProvince()" provinceSelection="Saskatchewan">Select Province</button>
@@ -236,7 +244,7 @@
                     <div class="card-header"><i class="fas fa-table mr-1"></i>Total Cases By Province</div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable1" width="100%" cellspacing="0">
+                            <table class="table table-bordered table-hover" id="dataTable1" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>Province</th>
@@ -246,6 +254,7 @@
                                         <th>Criticals</th>
                                         <th>Recoveries</th>
                                         <th>Tests</th>
+                                        <th><span class="badge badge-primary">New</span>Vaccinated</th>
                                         <th>
                                             <select id="perCapita">
                                                 <option value="cases" selected="selected">Cases/100K</option>
@@ -254,6 +263,7 @@
                                                 <option value="criticals">Criticals/100K</option>
                                                 <option value="recoveries">Recoveries/100K</option>
                                                 <option value="tests">Tests/100K</option>
+                                                <option value="tests">Vaccinated/100K</option>
                                             </select>
                                         </th>
                                         <th>Source</th>
@@ -268,6 +278,7 @@
                                         <td><i><b id="totalCriticalsCanada" data-per-capita=""></b></i></td>
                                         <td><i><b id="totalRecoveriesCanada" data-per-capita=""></b></i></td>
                                         <td><i><b id="totalTestsCanada" data-per-capita=""></b></i></td>
+                                        <td><i><b id="totalVaccinationsCanada" data-per-capita=""></b></i></td>
                                         <td><b id="infectedPerCanada"></b></td>
                                         <td><a href="https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html">Source</a></td>
                                     </tr>
