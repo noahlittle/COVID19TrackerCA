@@ -10,6 +10,7 @@
     <title>COVID-19 Tracker Canada</title>
 
     <link href="css/styles.css?v=4.5" rel="stylesheet" />
+
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -42,6 +43,7 @@
         gtag('config', 'UA-160029240-1');
     </script>
 
+<!-- 
 <script>
     $(document).ready(function () {
     // Check if user saw the modal
@@ -60,6 +62,7 @@
 });
 
 </script>
+-->
 
 
 </head>
@@ -254,7 +257,7 @@
                                         <th>Criticals</th>
                                         <th>Recoveries</th>
                                         <th>Tests</th>
-                                        <th><span class="badge badge-primary">New</span>Vaccinated</th>
+                                        <th><span class="badge badge-primary">New</span> Vaccinated</th>
                                         <th>
                                             <select id="perCapita">
                                                 <option value="cases" selected="selected">Cases/100K</option>
@@ -263,7 +266,7 @@
                                                 <option value="criticals">Criticals/100K</option>
                                                 <option value="recoveries">Recoveries/100K</option>
                                                 <option value="tests">Tests/100K</option>
-                                                <option value="tests">Vaccinated/100K</option>
+                                                <option value="vaccinations">Vaccinated/100K</option>
                                             </select>
                                         </th>
                                         <th>Source</th>
@@ -345,30 +348,21 @@
         </footer>
     </div>
 
-
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!--
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"><span class="badge badge-success">New</span>  <b>Regional Data Now Available</b></h5>
+        <h5 class="modal-title" id="exampleModalLongTitle"><span class="badge badge-success">New</span>  <b>Tracking COVID-19 Vaccinations in Canada</b></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
 
-        <h5>We're now tracking data at the health region level, in near real-time.</h5>
+        <h5>Today, Health Canada authorized the first COVID-19 vaccine for use in Canada.</h5>
 
-<p>This means you'll be able to see new data and visualizations both provincially and at the city/region level.<p></p>
-                <div class="modal-body"> 
-                      <img src="update.gif" class="img-fluid">
-                </div>
-<p>The provincial data table on our homepage is also now expandable to show data for each region of interest, and to allow for comparison between the regions of each province.</p>
-                <div class="modal-body"> 
-                      <img src="update1.gif" class="img-fluid">
-                </div>
-
-<p>More information on this change is available via our update on <a href="https://twitter.com/covid_canada/status/1335011481985826818">Twitter</a>.</p>
+<p>We've started tracking COVID-19 vaccinations<p></p>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" onclick="location.href='https://covid19tracker.ca/province.html'">Try It</button>
@@ -376,6 +370,8 @@
     </div>
   </div>
 </div>
+
+-->
 
 </body>
 
