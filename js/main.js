@@ -6,6 +6,8 @@ var critical = 0;
 var criticalChange = 0;
 var hospitalizations = 0;
 var hospitalizationsChange = 0;
+var totalVaccinations = 0;
+var totalVaccinationsChange = 0;
 var last5days = {};
 var regions = [];
 
@@ -29,6 +31,8 @@ $(document).ready(() => {
         criticalChange = data.change_criticals;
         hospitalizations = data.total_hospitalizations;
         hospitalizationsChange = data.change_hospitalizations;
+        vaccinations = data.total_vaccinations;
+        vaccinationsChange = data.change_vaccinations;
 
         // update timestamp
         $("#updateTime").text("Updated " + moment(res.last_updated).format("dddd, MMMM Do [at] h:mm a") + " CST");
@@ -44,6 +48,8 @@ $(document).ready(() => {
         $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
         $(".summary-header-tests > h1").text(data.total_tests + " tests");
         $(".summary-header-tests > b").text(displayNewCases(data.change_tests));
+        $(".summary-header-vaccinations > h1").text(data.total_vaccinations + " vaccinated");
+        $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
 
         // update province table footer
         var canadaPopulation = 37679286;
@@ -53,12 +59,14 @@ $(document).ready(() => {
         var criticalsPer100000 = Math.floor(((100000 * data.total_criticals) / canadaPopulation) * 100) / 100;
         var recoveriesPer100000 = Math.floor(((100000 * data.total_recoveries) / canadaPopulation) * 100) / 100;
         var testsPer100000 = Math.floor(((100000 * data.total_tests) / canadaPopulation) * 100) / 100;
+        var vaccinationsPer100000 = Math.floor(((100000 * data.total_vaccinations) / canadaPopulation) * 100) / 100;
         $('#totalCasesCanada').attr("data-per-capita", casesPer100000);
         $('#totalFatalitiesCanada').attr("data-per-capita", fatalitiesPer100000);
         $('#totalHospitalizationsCanada').attr("data-per-capita", hospitalizationsPer100000);
         $('#totalCriticalsCanada').attr("data-per-capita", criticalsPer100000);
         $('#totalRecoveriesCanada').attr("data-per-capita", recoveriesPer100000);
         $('#totalTestsCanada').attr("data-per-capita", testsPer100000);
+        $('#totalVaccinationsCanada').attr("data-per-capita", vaccinationsPer100000);
 
         $('#totalCasesCanada').text(data.total_cases + (data.change_cases ? (" " + displayNewCases(data.change_cases)) : ""));
         $('#totalFatalitiesCanada').text(data.total_fatalities + (data.change_fatalities ? (" " + displayNewCases(data.change_fatalities)) : ""));
@@ -66,6 +74,7 @@ $(document).ready(() => {
         $('#totalCriticalsCanada').text(data.total_criticals + (data.change_criticals ? (" " + displayNewCases(data.change_criticals)) : ""));
         $('#totalRecoveriesCanada').text(data.total_recoveries + (data.change_recoveries ? (" " + displayNewCases(data.change_recoveries)) : ""));
         $('#totalTestsCanada').text(data.total_tests + (data.change_tests ? (" " + displayNewCases(data.change_tests)) : ""));
+        $('#totalVaccinationsCanada').text(data.total_vaccinations + (data.change_vaccinations ? (" " + displayNewCases(data.change_vaccinations)) : ""));
         $('#infectedPerCanada').text(casesPer100000);
     });
 
@@ -76,37 +85,43 @@ $(document).ready(() => {
             case "cases":
                 $('#infectedPerCanada').text($('#totalCasesCanada').attr("data-per-capita"));
                 $('#totalCasesProvinceTable tr.provinceRow').each((index, item) => {
-                    $(item).find("td:nth-child(8)").text($(item).find("td:nth-child(2)").attr("data-per-capita"));
+                    $(item).find("td:nth-child(9)").text($(item).find("td:nth-child(2)").attr("data-per-capita"));
                 });
                 break;
             case "fatalities":
                 $('#infectedPerCanada').text($('#totalFatalitiesCanada').attr("data-per-capita"));
                 $('#totalCasesProvinceTable tr.provinceRow').each((index, item) => {
-                    $(item).find("td:nth-child(8)").text($(item).find("td:nth-child(3)").attr("data-per-capita"));
+                    $(item).find("td:nth-child(9)").text($(item).find("td:nth-child(3)").attr("data-per-capita"));
                 });
                 break;
             case "hospitalizations":
                 $('#infectedPerCanada').text($('#totalHospitalizationsCanada').attr("data-per-capita"));
                 $('#totalCasesProvinceTable tr.provinceRow').each((index, item) => {
-                    $(item).find("td:nth-child(8)").text($(item).find("td:nth-child(4)").attr("data-per-capita"));
+                    $(item).find("td:nth-child(9)").text($(item).find("td:nth-child(4)").attr("data-per-capita"));
                 });
                 break;
             case "criticals":
                 $('#infectedPerCanada').text($('#totalCriticalsCanada').attr("data-per-capita"));
                 $('#totalCasesProvinceTable tr.provinceRow').each((index, item) => {
-                    $(item).find("td:nth-child(8)").text($(item).find("td:nth-child(5)").attr("data-per-capita"));
+                    $(item).find("td:nth-child(9)").text($(item).find("td:nth-child(5)").attr("data-per-capita"));
                 });
                 break;
             case "recoveries":
                 $('#infectedPerCanada').text($('#totalRecoveriesCanada').attr("data-per-capita"));
                 $('#totalCasesProvinceTable tr.provinceRow').each((index, item) => {
-                    $(item).find("td:nth-child(8)").text($(item).find("td:nth-child(6)").attr("data-per-capita"));
+                    $(item).find("td:nth-child(9)").text($(item).find("td:nth-child(6)").attr("data-per-capita"));
                 });
                 break;
             case "tests":
                 $('#infectedPerCanada').text($('#totalTestsCanada').attr("data-per-capita"));
                 $('#totalCasesProvinceTable tr.provinceRow').each((index, item) => {
-                    $(item).find("td:nth-child(8)").text($(item).find("td:nth-child(7)").attr("data-per-capita"));
+                    $(item).find("td:nth-child(9)").text($(item).find("td:nth-child(7)").attr("data-per-capita"));
+                });
+                break;
+            case "vaccinations":
+                $('#infectedPerCanada').text($('#totalVaccinationsCanada').attr("data-per-capita"));
+                $('#totalCasesProvinceTable tr.provinceRow').each((index, item) => {
+                    $(item).find("td:nth-child(9)").text($(item).find("td:nth-child(8)").attr("data-per-capita"));
                 });
                 break;
         }
@@ -271,7 +286,7 @@ $(document).ready(() => {
         }
                         else {
                     $(this).attr("data-toggle", "1");
-                    container.after("<tr class='regionTable'><td colspan='9'><table></table></td>");
+                    container.after("<tr class='regionTable'><td colspan='10'><table></table></td>");
                     var regionsTable = container.next().find("table");
                     var theseRegions = regions[province];
                     theseRegions.forEach(item => {
@@ -281,6 +296,8 @@ $(document).ready(() => {
                         var itemTotalCriticals = item.data.total_criticals;
                         var itemTotalRecoveries = item.data.total_recoveries;
                         var itemTotalTests = item.data.total_tests;
+                        var itemTotalVaccinations = item.data.total_vaccinations;
+
                         if (itemTotalCases === null || itemTotalCases === undefined) itemTotalCases = "N/A";
                         else if (item.data.change_cases) itemTotalCases += "<i> " + displayNewCases(item.data.change_cases);
                         if (itemTotalFatalities === null || itemTotalFatalities === undefined) itemTotalFatalities = "N/A";
@@ -293,9 +310,11 @@ $(document).ready(() => {
                         else if (item.data.change_recoveries) itemTotalRecoveries += "<i> " + displayNewCases(item.data.change_recoveries);
                         if (itemTotalTests === null || itemTotalTests === undefined) itemTotalTests = "N/A";
                         else if (item.data.change_tests) itemTotalTests += "<i> " + displayNewCases(item.data.change_tests);
+                        if (itemTotalVaccinations === null || itemTotalVaccinations === undefined) itemTotalVaccinations = "N/A";
+                        else if (item.data.change_vaccinations) itemTotalVaccinations += "<i> " + displayNewCases(item.data.change_vaccinations);
                         if (item.data) {
                             regionsTable.append('<tr><td>' + item.engname + '</td><td>' + itemTotalCases + '</td><td>' + itemTotalFatalities + '</td><td>' + itemTotalHospitalizations + '</td>' +
-                                '<td>' + itemTotalCriticals + '</td><td>' + itemTotalRecoveries + '</td><td>' + itemTotalTests + '</td><td>&nbsp;</td><td>&nbsp;</td>');
+                                '<td>' + itemTotalCriticals + '</td><td>' + itemTotalRecoveries + '</td><td>' + itemTotalTests + '</td><td>' + itemTotalVaccinations + '</td><td>&nbsp;</td><td>&nbsp;</td>');
                         }
                     });
             var firstCells = container.find("td");
@@ -337,6 +356,8 @@ function buildProvinceTable(data, provinceData) {
         var criticalsPer100000 = Math.floor(((100000 * item.total_criticals) / provinceProperties(item.province).population) * 100) / 100;
         var recoveriesPer100000 = Math.floor(((100000 * item.total_recoveries) / provinceProperties(item.province).population) * 100) / 100;
         var testsPer100000 = Math.floor(((100000 * item.total_tests) / provinceProperties(item.province).population) * 100) / 100;
+        var vaccinationsPer100000 = Math.floor(((100000 * item.total_vaccinations) / provinceProperties(item.province).population) * 100) / 100;
+
 
         var thisProvinceData = provinceData.filter(province => province.code === item.province);
         thisProvinceData = thisProvinceData.length ? thisProvinceData[0] : {};
@@ -362,6 +383,7 @@ function buildProvinceTable(data, provinceData) {
             "<td data-per-capita='" + criticalsPer100000 + "'><b><i>" + item.total_criticals + (item.change_criticals ? (" " + displayNewCases(item.change_criticals)) : "") + "</i></b></td>" +
             "<td data-per-capita='" + recoveriesPer100000 + "'><b><i>" + item.total_recoveries + (item.change_recoveries ? (" " + displayNewCases(item.change_recoveries)) : "") + "</i></b></td>" +
             "<td data-per-capita='" + testsPer100000 + "'><b><i>" + item.total_tests + (item.change_tests ? (" " + displayNewCases(item.change_tests)) : "") + "</i></b></td>" +
+            "<td data-per-capita='" + vaccinationsPer100000 + "'><b><i>" + item.total_vaccinations + (item.change_vaccinations ? (" " + displayNewCases(item.change_vaccinations)) : "") + "</i></b></td>" +
             "<td>" + casesPer100000 + "</td>" +
             "<td><a href='" + item.source + "'>Source</a></td>" +
             "</tr>"

@@ -166,7 +166,7 @@ function compareProvinces() {
 function getLast5Days(data, prefix) {
     var last5days = {};
 
-    var fields = ["cases", "fatalities", "hospitalizations", "recoveries", "tests"];
+    var fields = ["cases", "fatalities", "hospitalizations", "recoveries", "tests", "vaccinations"];
     fields.forEach(field => {
         last5days[field] = [];
         for (var i = 2; i <= 6; i++) {

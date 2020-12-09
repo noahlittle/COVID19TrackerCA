@@ -38,6 +38,8 @@ function buildGraphs(data1, data2, province1, province2, field) {
     if (field === "hospitalizations") graphLabel = "Hospitalizations";
     if (field === "criticals") graphLabel = "Criticals";
     if (field === "tests") graphLabel = "Tests";
+    if (field === "vaccinations") graphLabel = "Vaccinated";
+
 
     $('#provinceNewCases')[0].innerHTML = province1 + " vs. " + province2 + " New " + graphLabel + " by Day";
     $('#provinceCumulativeCases')[0].innerHTML = province1 + " vs. " + province2 + " Cumulative " + graphLabel;
