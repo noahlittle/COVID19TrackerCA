@@ -409,6 +409,41 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
             }
         ];
     }
+
+
+
+    if (field === "vaccinations") {
+        graphConfig.chartdata.datasets = [
+            {
+                label: label1 + " Vaccinated",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(2,117,216,1)",
+                pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                backgroundColor: "rgba(2,117,216,0.2)",
+                borderColor: "rgba(2,117,216,1)",
+                data: allData["vaccinations1"]
+            },
+            {
+                label: label2 + " Vaccinated",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointBackgroundColor: "rgba(220,53,69,0.8)",
+                pointHoverBackgroundColor: "#dc3545",
+                backgroundColor: "rgba(220,53,69,0.2)",
+                borderColor: "#dc3545",
+                data: allData["vaccinations2"]
+            }
+        ];
+    }
     
     // renders the graph
     draw(graphConfig);
