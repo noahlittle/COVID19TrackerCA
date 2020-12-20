@@ -22,7 +22,7 @@ function drawMap(data) {
 }
 
 function drawProvinces(data) {
-    fetch('https://covid19tracker.ca/assets/data/provinces.json').then(resp => resp.json()).then(response => {
+     fetch('https://covid19tracker.ca/assets/data/provinces.json').then(resp => resp.json()).then(response => {
 
         var centroidGeoJSON = {
             type: "FeatureCollection",
@@ -33,14 +33,14 @@ function drawProvinces(data) {
         response.features.forEach((feature) => {
             feature.id = feature.properties.cartodb_id;
             var provinceData = data.filter(item => item.province === feature.properties.abbreviation)[0];
-            feature.properties.province_cases_total = provinceData.total_cases;
+            feature.properties.province_vaccinations_total = provinceData.total_vaccinations;
            // feature.properties.province_cases_per_population = provinceData.total_cases / (feature.properties.population / 100000);
-            feature.properties.province_cases_per_population = (provinceData.total_cases - provinceData.total_fatalities - provinceData.total_recoveries) / (feature.properties.population / 100000);
-            feature.properties.province_cases_active = provinceData.total_cases - provinceData.total_fatalities - provinceData.total_recoveries;
-            feature.properties.province_deaths_total = provinceData.total_fatalities;
-            feature.properties.province_hospitalizations_total = provinceData.total_hospitalizations;
-            feature.properties.province_recoveries_total = provinceData.total_recoveries;
-            feature.properties.province_tests_total = provinceData.total_tests;
+            feature.properties.province_vaccinations_per_population = ( Math.floor(((provinceData.total_vaccinations) / (feature.properties.population / 100000)) * 10) / 10 );
+           // feature.properties.province_cases_active = provinceData.total_cases - provinceData.total_fatalities - provinceData.total_recoveries;
+           // feature.properties.province_deaths_total = provinceData.total_fatalities;
+           // feature.properties.province_hospitalizations_total = provinceData.total_hospitalizations;
+            // feature.properties.province_recoveries_total = provinceData.total_recoveries;
+            // feature.properties.province_tests_total = provinceData.total_tests;
 
             // Making centroids
             var centroidFeature = JSON.parse(JSON.stringify(feature));
@@ -48,11 +48,11 @@ function drawProvinces(data) {
             centroidFeature.geometry.type = "Point";
             centroidGeoJSON.features.push(centroidFeature);
 
-            if (fillRange.length === 0 || fillRange[0] > feature.properties.province_cases_per_population) {
-                fillRange[0] = parseFloat(feature.properties.province_cases_per_population);
+            if (fillRange.length === 0 || fillRange[0] > feature.properties.province_vaccinations_per_population) {
+                fillRange[0] = parseFloat(feature.properties.province_vaccinations_per_population);
             }
-            if (fillRange.length === 1 || fillRange[1] < feature.properties.province_cases_per_population) {
-                fillRange[1] = parseFloat(feature.properties.province_cases_per_population);
+            if (fillRange.length === 1 || fillRange[1] < feature.properties.province_vaccinations_per_population) {
+                fillRange[1] = parseFloat(feature.properties.province_vaccinations_per_population);
             }
         })
 
@@ -68,23 +68,24 @@ function drawProvinces(data) {
         var fillColor = [
             'interpolate',
             ['linear'],
-            ["number", ['get', 'province_cases_per_population']],
-            fillRange[0], '#007000',
-            fillRange[1] * 0.2, '#FFFF00',
-            fillRange[1] * 0.4, '#FFA500',
-            fillRange[1] * 0.6, '#FF0000', 
-            fillRange[1] * 0.8, '#ff0800'
+            ["number", ['get', 'province_vaccinations_per_population']],
+            fillRange[0], '#FFFFFF',
+            fillRange[1] * 0.2, '#68991c',
+            fillRange[1] * 0.4, '#456613',
+            fillRange[1] * 0.6, '#233309', 
+            fillRange[1] * 0.8, '#111905'
         ];
 
         var mapHTML = `
-          <strong>Active Cases Per 100,000</strong>
-          <div class="gradient-swatch"></div>
+          <strong>Doses Administered</strong>
+          <p>per 100,000 popoulation</p>
+          <div class="vac-swatch"></div>
           <ul>
             <li style="text-align:left;">${fillRange[0].toFixed(1)}</li>
             <li style="text-align:center;">${(fillRange[1]*0.5).toFixed(1)}</li>
             <li style="text-align: right;">${fillRange[1].toFixed(1)}</li>
           </ul>
-          <p>Total cases to date in red.</p>
+          <p>Total vaccinations to date in red.</p>
         `;
 
         $('#map-overlay').html(mapHTML);
@@ -109,8 +110,8 @@ function drawProvinces(data) {
             type: 'symbol',
             source: 'provinces-centroids',
             layout: {
-                'text-field': ["get", "province_cases_total"],
-                'text-size': 12,
+                'text-field': ["get", "province_vaccinations_total"],
+                'text-size': 14,
                 'text-offset': [0, 0.6],
             },
             paint: {
@@ -175,11 +176,8 @@ function drawProvinces(data) {
             var properties = e.features[0].properties;
             popup.setLngLat([e.lngLat.lng, e.lngLat.lat]).setHTML(`
               <center><strong>${properties.name}</strong><br />
-              Active Cases: ${properties.province_cases_active} <br />
-              Total Cases: ${properties.province_cases_total} <br />
-              Deaths: ${properties.province_deaths_total} <br />
-              Tests: ${properties.province_tests_total} <br />
-              Hospitalizations: ${properties.province_hospitalizations_total}  
+              Doses Administered: ${properties.province_vaccinations_total} <br />
+              Doses Administered per 100,000: ${properties.province_vaccinations_per_population} <br />
               </center>
             `).addTo(map);
         });

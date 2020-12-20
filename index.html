@@ -24,10 +24,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5.1.6/turf.min.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
 
-    <script type="text/javascript" src="js/config.js?v=2.3.4"></script>
-    <script type="text/javascript" src="js/map.js?v=2.3.4"></script>
-    <script type="text/javascript" src="js/charts.js?v=2.3.4"></script>
-    <script type="text/javascript" src="js/main.js?v=3.5.4"></script>
+    <script type="text/javascript" src="js/config.js?v=4.3.4"></script>
+    <script type="text/javascript" src="js/map.js?v=4.3.4"></script>
+    <script type="text/javascript" src="js/charts.js?v=4.3.4"></script>
+    <script type="text/javascript" src="js/main.js?v=4.5.4"></script>
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -43,7 +43,6 @@
         gtag('config', 'UA-160029240-1');
     </script>
 
-<!-- 
 <script>
     $(document).ready(function () {
     // Check if user saw the modal
@@ -51,18 +50,17 @@
         hadModal = localStorage.getItem(key);
 
     // Show the modal only if new user
-    if (!hadModal) {
-        $('#myModal').modal('show');
-    }
+       if (!hadModal) {
+       $('#myModal').modal('show');
+  }
 
     // If modal is displayed, store that in localStorage
     $('#myModal').on('shown.bs.modal', function () {
-        localStorage.setItem(key, true);
+    localStorage.setItem(key, true);
     })
 });
 
 </script>
--->
 
 
 </head>
@@ -159,8 +157,11 @@
 
                 </div>
                 <br>
-                <button type="button" class="btn btn-secondary mr-2" onClick="seeProvince()" provinceSelection="Saskatchewan">Select Province</button>
-                <button type="button" class="btn btn-secondary" onClick="compareProvinces()">Compare Provinces</button>
+                <div class='col-xs-0'>
+                <button type="button" class="btn btn-secondary mr-2 mt-2" onClick="seeProvince()">Select Province</button>
+                <button type="button" class="btn btn-secondary mr-2 mt-2" onClick="compareProvinces()">Compare Provinces</button>
+                <button type="button" class="btn btn-secondary mr-2 mt-2" onClick="goVax()"><span class="badge badge-light">New</span> Vaccination Tracker</button>
+            </div>
                 <br>
                 <br>
 
@@ -340,7 +341,7 @@
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; COVID19Tracker.ca 2020 // Reporting presumptive and confirmed cases in near real-time // <a href="mailto:noah.little@usask.ca">noah.little@usask.ca</a></div>
+                    <div class="text-muted">Copyright &copy; COVID19Tracker.ca 2020 // Near real-time COVID-19 data updates for every region in Canada, tracking cases, deaths, vaccinations, hospitalizations, ICU, recoveries and testing. // <a href="mailto:noah.little@usask.ca">noah.little@usask.ca</a></div>
                     <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support The Project', '#29abe0', 'G2G11J6WQ');kofiwidget2.draw();</script> 
 
                 </div>
@@ -348,7 +349,7 @@
         </footer>
     </div>
 
-<!--
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -360,18 +361,21 @@
       </div>
       <div class="modal-body">
 
-        <h5>Today, Health Canada authorized the first COVID-19 vaccine for use in Canada.</h5>
+        <h5>We've launched a new page dedicated to tracking COVID-19 vaccinations in Canada</h5>
+<br>
+        <img class="mx-auto d-block" style="max-width:60%;" src="vax.png" />
+        <br>
 
-<p>We've started tracking COVID-19 vaccinations<p></p>
+<p>As provinces across Canada begin their COVID-19 vaccination programs, we're tracking every dose administered. Stay up-to-date on the rollout with our new <a href="https://covid19tracker.ca/vaccinationtracker.html">Vaccination Tracker</a>.</p>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='https://covid19tracker.ca/province.html'">Try It</button>
+        <button type="button" class="btn btn-primary" onclick="location.href='https://covid19tracker.ca/vaccinationtracker.html'">Try It</button>
       </div>
     </div>
   </div>
 </div>
 
--->
+
 
 </body>
 
