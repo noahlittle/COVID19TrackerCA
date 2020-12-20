@@ -159,6 +159,10 @@ function goBack() {
     window.location.href = url + "index.html";
 }
 
+function goVax() {
+    window.location.href = url + "vaccinationtracker.html";
+}
+
 function compareProvinces() {
     window.location.href = url + "compareprovinces.html";
 }

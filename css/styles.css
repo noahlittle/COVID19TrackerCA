@@ -10264,6 +10264,13 @@ body {
   margin-right: 5px;
   margin-top: 2px;
 }
+#map-overlay .vac-swatch {
+  width: 100%;
+  height: 15px;
+  background: linear-gradient(90deg, rgba(255,255,255) 0%, rgba(69,102,19) 35%, rgba(17,25,5) 100%);
+  margin-right: 5px;
+  margin-top: 2px;
+}
 #map-overlay p {
   font-size: 10px;
   margin-bottom: 0px;
@@ -10518,3 +10525,4 @@ body {
 div[class*="summary-header"] h1 {
   font-size: 1.65rem !important;
 }
+
