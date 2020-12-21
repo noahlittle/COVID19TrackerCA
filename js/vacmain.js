@@ -35,7 +35,7 @@ $(document).ready(() => {
         
         vaccinations = data.total_vaccinations;
         peopleVaccinated = data.total_vaccinations / 2;
-        percentVaccinated = Math.floor((data.total_vaccinations * 2) / canadaPopulation * 100) / 100;
+        percentVaccinated = Math.floor((data.total_vaccinations / 2) / canadaPopulation * 100) / 100;
         vaccinationsChange = data.change_vaccinations;
 
         // update timestamp
