@@ -59,7 +59,7 @@ $(document).ready(() => {
         $(".summary-header-hospitalized > b").text(displayNewCases(data.change_hospitalizations));
         $(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
         $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
-        $(".summary-header-percentVaccinated > h1").text(((data.total_vaccinations * 2) / 37590000).toFixed(5) + " %");
+        $(".summary-header-percentVaccinated > h1").text(((data.total_vaccinations / 2) / 37590000).toFixed(5) + " %");
         $(".summary-header-percentVaccinated > b").text("of the Canadian population has been vaccinated");
         $(".summary-header-vaccinations > h1").text(data.total_vaccinations + " doses administered");
         $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
