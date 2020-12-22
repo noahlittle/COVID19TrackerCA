@@ -34,8 +34,8 @@ $(document).ready(() => {
         // hospitalizationsChange = data.change_hospitalizations;
         
         vaccinations = data.total_vaccinations;
-        peopleVaccinated = data.total_vaccinations / 2;
-        percentVaccinated = Math.floor((data.total_vaccinations / 2) / canadaPopulation * 100) / 100;
+        peopleVaccinated = data.total_vaccinations;
+        percentVaccinated = Math.floor((data.total_vaccinations) / canadaPopulation * 100) / 100;
         vaccinationsChange = data.change_vaccinations;
 
         // update timestamp
@@ -45,7 +45,7 @@ $(document).ready(() => {
         $("#updateTime").text("As of " + moment(res.last_updated).format("dddd [at] h:mm a [CST, ]"));
         $("#updateVax").text(data.total_vaccinations);
         $("#updateChangeVax").text(data.change_vaccinations);
-        $("#updateVaxPpl").text(data.total_vaccinations / 2);
+        $("#updateVaxPpl").text(data.total_vaccinations);
 
 
 
@@ -59,12 +59,12 @@ $(document).ready(() => {
         $(".summary-header-hospitalized > b").text(displayNewCases(data.change_hospitalizations));
         $(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
         $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
-        $(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations / 2) / 37590000)*100).toFixed(3) + " %");
-        $(".summary-header-percentVaccinated > b").text("of the Canadian population has been vaccinated");
+        $(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations) / 37590000)*100).toFixed(3) + " %");
+        $(".summary-header-percentVaccinated > b").text("of the Canadian population has recieved at least one dose");
         $(".summary-header-vaccinations > h1").text(data.total_vaccinations + " doses administered");
         $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
-        $(".summary-header-pplVac > h1").text(data.total_vaccinations / 2);
-        $(".summary-header-pplVac > b").text("equivalent people vaccinated");
+        $(".summary-header-pplVac > h1").text(data.total_vaccinations);
+        $(".summary-header-pplVac > b").text("people have recieved at least one dose");
 
         // update province table footer
         var canadaPopulation = 37679286;
