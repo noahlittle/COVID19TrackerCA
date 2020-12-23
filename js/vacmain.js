@@ -82,6 +82,7 @@ $(document).ready(() => {
         $('#totalRecoveriesCanada').attr("data-per-capita", recoveriesPer100000);
         $('#totalTestsCanada').attr("data-per-capita", testsPer100000);
         $('#totalVaccinationsCanada').attr("data-per-capita", vaccinationsPer100000);
+        $('#totalVaccinationsChangeCanada').attr("data-per-capita", vaccinationsPer100000);
 
         $('#totalCasesCanada').text(data.total_cases + (data.change_cases ? (" " + displayNewCases(data.change_cases)) : ""));
         $('#totalFatalitiesCanada').text(data.total_fatalities + (data.change_fatalities ? (" " + displayNewCases(data.change_fatalities)) : ""));
@@ -90,6 +91,8 @@ $(document).ready(() => {
         $('#totalRecoveriesCanada').text(data.total_recoveries + (data.change_recoveries ? (" " + displayNewCases(data.change_recoveries)) : ""));
         $('#totalTestsCanada').text(data.total_tests + (data.change_tests ? (" " + displayNewCases(data.change_tests)) : ""));
         $('#totalVaccinationsCanada').text(data.total_vaccinations + (data.change_vaccinations ? (" " + displayNewCases(data.change_vaccinations)) : ""));
+        $('#totalVaccinationsChangeCanada').text(data.change_vaccinations);
+        $('#totalVaccinationsCanada').text(data.vaccinationsper100000);
         $('#infectedPerCanada').text(casesPer100000);
     });
 
@@ -403,6 +406,28 @@ function buildProvinceTable(data, provinceData) {
             "<td><a href='" + item.source + "'>Source</a></td>" +
             "</tr>"
         )
+
+
+                // append data to row
+        $('#vaccinationsProvinceTable').append(
+            "<tr class='provinceRow'>" +
+            "<td>" +
+            "<span class='province-update-status status-" + provinceStatus.toLowerCase().replace(/\s/gi, '-') + "' " +
+            " data-toggle='tooltip' data-placement='bottom' data-html='true' title='" +
+            "Status: <b>" + provinceStatus + "</b><br>" +
+            "Last updated: <b>" + updatedAt + "</b><br>" +
+            "Update expected by: <b>" + expectedTime(item.province) + "</b>" +
+            "'></span>" +
+            "<span>" + provinceProperties(item.province).name + "</span>" +
+            "</td>" +
+            "<td data-per-capita='" + vaccinationsPer100000 + "'><i>" + item.total_vaccinations + (item.change_vaccinations ? ("<b>" + " " + displayNewCases(item.change_vaccinations)) : "" + "</b>") + "</i></td>" +
+            "<td>" + vaccinationsPer100000 + "</td>" +
+            "</tr>"
+        )
+
+
+
+
         $('[data-toggle="tooltip"]').tooltip({
             template: '<div class="tooltip province-status-tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
         });
