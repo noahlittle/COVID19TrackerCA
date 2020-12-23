@@ -27,7 +27,7 @@
     <script type="text/javascript" src="js/config.js?v=4.3.4"></script>
     <script type="text/javascript" src="js/vacmap.js?v=4.3.4"></script>
     <script type="text/javascript" src="js/vaccharts.js?v=4.3.4"></script>
-    <script type="text/javascript" src="js/vacmain.js?v=5.8.4"></script>
+    <script type="text/javascript" src="js/vacmain.js?v=5.9.4"></script>
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -223,6 +223,39 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                <div class="card mb-4">
+                    <div class="card-header"><i class="fas fa-table mr-1"></i>Doses Administered By Province</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" id="dataTable2" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Province</th>
+                                        <th>Total Doses Administered</th>
+                                        <th>Doses Administered / 100k Population</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <td><i><b>Canada</b></i></td>
+                                        
+                                        <td><i><b id="totalVaccinationsCanada" data-per-capita=""></b></i></td>
+
+                                        <td><i><b id="totalHospitalizationsCanada" data-per-capita=""></b></i></td>
+                                    </tr>
+                                </tfoot>
+                                <tbody id="vaccinationsProvinceTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
 
         </main>
 
