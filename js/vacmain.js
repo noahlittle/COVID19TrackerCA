@@ -60,11 +60,11 @@ $(document).ready(() => {
         $(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
         $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
         $(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations) / 37590000)*100).toFixed(3) + "%");
-        $(".summary-header-percentVaccinated > b").text("of the Canadian population has recieved at least one dose");
+        $(".summary-header-percentVaccinated > b").text("of the Canadian population has received at least one dose");
         $(".summary-header-vaccinations > h1").text(data.total_vaccinations + " doses administered");
         $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
         $(".summary-header-pplVac > h1").text(data.total_vaccinations);
-        $(".summary-header-pplVac > b").text("people have recieved at least one dose");
+        $(".summary-header-pplVac > b").text("people have received at least one dose");
 
         // update province table footer
         var canadaPopulation = 37679286;
@@ -92,7 +92,7 @@ $(document).ready(() => {
         $('#totalTestsCanada').text(data.total_tests + (data.change_tests ? (" " + displayNewCases(data.change_tests)) : ""));
         $('#totalVaccinationsCanada').text(data.total_vaccinations + (data.change_vaccinations ? (" " + displayNewCases(data.change_vaccinations)) : ""));
         $('#totalVaccinationsChangeCanada').text(data.change_vaccinations);
-        $('#totalVaccinationsCanada').text(data.vaccinationsper100000);
+        $('#vaccinatedPerCanada').text(vaccinationsPer100000);
         $('#infectedPerCanada').text(casesPer100000);
     });
 
@@ -271,82 +271,6 @@ $(document).ready(() => {
         }
     });
 
-    // update regions list
-    $.ajax({
-        url: devapi_url + "regions",
-        type: "GET"
-    }).then(res => {
-        parseRegions(res.data, regions);
-        // update regions list
-        $.ajax({
-            url: devapi_url + "summary/split/hr",
-            type: "GET"
-        }).then(regionData => {
-            if (regionData && regionData.data && regionData.data.length) {
-                for (var province in regions) {
-                    regions[province].forEach(region => {
-                        let currentRegionData = regionData.data.filter(item => item.hr_uid === region.hr_uid);
-                        if (currentRegionData && currentRegionData.length) region.data = currentRegionData[0];
-                    });
-                }
-            }
-        });
-    });
-
-    $(document).on("click", ".arrow-down", function() {
-        var container = $(this).closest("tr");
-
-        var toggled = $(this).attr("data-toggle") === "1";
-        var province = $(this).attr("data-province");
-        if (toggled) {
-            $(this).closest("tr").next().remove();
-            $(this).attr("data-toggle", "0");
-        }
-                        else {
-                    $(this).attr("data-toggle", "1");
-                    container.after("<tr class='regionTable'><td colspan='10'><table></table></td>");
-                    var regionsTable = container.next().find("table");
-                    var theseRegions = regions[province];
-                    theseRegions.forEach(item => {
-                        var itemTotalCases = item.data.total_cases;
-                        var itemTotalFatalities = item.data.total_fatalities;
-                        var itemTotalHospitalizations = item.data.total_hospitalizations;
-                        var itemTotalCriticals = item.data.total_criticals;
-                        var itemTotalRecoveries = item.data.total_recoveries;
-                        var itemTotalTests = item.data.total_tests;
-                        var itemTotalVaccinations = item.data.total_vaccinations;
-
-                        if (itemTotalCases === null || itemTotalCases === undefined) itemTotalCases = "N/A";
-                        else if (item.data.change_cases) itemTotalCases += "<i> " + displayNewCases(item.data.change_cases);
-                        if (itemTotalFatalities === null || itemTotalFatalities === undefined) itemTotalFatalities = "N/A";
-                        else if (item.data.change_fatalities) itemTotalFatalities += "<i> " + displayNewCases(item.data.change_fatalities);
-                        if (itemTotalHospitalizations === null || itemTotalHospitalizations === undefined) itemTotalHospitalizations = "N/A";
-                        else if (item.data.change_hospitalizations) itemTotalHospitalizations += "<i> " + displayNewCases(item.data.change_hospitalizations);
-                        if (itemTotalCriticals === null || itemTotalCriticals === undefined) itemTotalCriticals = "N/A";
-                        else if (item.data.change_criticals) itemTotalCriticals += "<i> " + displayNewCases(item.data.change_criticals);
-                        if (itemTotalRecoveries === null || itemTotalRecoveries === undefined) itemTotalRecoveries = "N/A";
-                        else if (item.data.change_recoveries) itemTotalRecoveries += "<i> " + displayNewCases(item.data.change_recoveries);
-                        if (itemTotalTests === null || itemTotalTests === undefined) itemTotalTests = "N/A";
-                        else if (item.data.change_tests) itemTotalTests += "<i> " + displayNewCases(item.data.change_tests);
-                        if (itemTotalVaccinations === null || itemTotalVaccinations === undefined) itemTotalVaccinations = "N/A";
-                        else if (item.data.change_vaccinations) itemTotalVaccinations += "<i> " + displayNewCases(item.data.change_vaccinations);
-                        if (item.data) {
-                            regionsTable.append('<tr><td>' + item.engname + '</td><td>' + itemTotalCases + '</td><td>' + itemTotalFatalities + '</td><td>' + itemTotalHospitalizations + '</td>' +
-                                '<td>' + itemTotalCriticals + '</td><td>' + itemTotalRecoveries + '</td><td>' + itemTotalTests + '</td><td>' + itemTotalVaccinations + '</td><td>&nbsp;</td><td>&nbsp;</td>');
-                        }
-                    });
-            var firstCells = container.find("td");
-            var regionsRows = regionsTable.find("tr");
-            regionsRows.each((index, row) => {
-                var secondCells = $(row).find("td");
-                firstCells.each((index2, cell) => {
-                    var newWidth = $(cell).width();
-                    if (index2 === 0) newWidth += 2;
-                    $(secondCells[index2]).width(newWidth);
-                });
-            });
-        }
-    });
 
     $(window).on("resize", function() {
         $('#totalCasesProvinceTable .regionTable').each((index, regionsRow) => {
@@ -420,7 +344,7 @@ function buildProvinceTable(data, provinceData) {
             "'></span>" +
             "<span>" + provinceProperties(item.province).name + "</span>" +
             "</td>" +
-            "<td data-per-capita='" + vaccinationsPer100000 + "'><i>" + item.total_vaccinations + (item.change_vaccinations ? ("<b>" + " " + displayNewCases(item.change_vaccinations)) : "" + "</b>") + "</i></td>" +
+            "<td data-per-capita='" + vaccinationsPer100000 + "'><i>" + item.total_vaccinations + (item.change_vaccinations ? ("<i>" + " " + displayNewCases(item.change_vaccinations)) : "" + "</i>") + "</i></td>" +
             "<td>" + vaccinationsPer100000 + "</td>" +
             "</tr>"
         )
