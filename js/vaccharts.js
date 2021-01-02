@@ -11,7 +11,8 @@ function lineGraph(data, id, flag, type) {
     var name = [];
     var prefix = flag ? "total" : "change";
     var allData = {
-        "vaccinations": []
+        "vaccinations": [],
+        "vaccines_distributed": []
     };
 
 
@@ -72,7 +73,8 @@ function lineGraph(data, id, flag, type) {
 function barGraph(data, id) {
     var name = [];
     var allData = {
-        "vaccinations": []
+        "vaccinations": [],
+        "vaccines_distributed": []
     };
 
     data.sort(function(a, b) {
@@ -95,7 +97,15 @@ function barGraph(data, id) {
         chartdata: {
             labels: name,
             datasets: [
+
                 {
+                    label: "Doses Distributed",
+                    backgroundColor: "#D3D3D3",
+                    borderColor: "#D3D3D3",
+                    data: allData["vaccines_distributed"],
+                    hidden: false
+                },
+                                {
                     label: "Doses Administered",
                     backgroundColor: "#353A3F",
                     borderColor: "#353A3F",
