@@ -215,7 +215,7 @@ $(document).ready(() => {
 
     // draw new and cumulative cases graphs
     $.ajax({
-        url: api_url + "reports?fill_dates=true",
+        url: api_url + "reports?after=2020-12-10?fill_dates=true",
         type: "GET",
     }).then(res => {
         fillNulls(res.data);
