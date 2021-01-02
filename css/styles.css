@@ -10429,13 +10429,13 @@ body {
 
 .material-switch input[type="checkbox"]:checked + label::before {
   background: inherit;
-  background-color: #5cb85c;
+  background-color: #D3D3D3;
 }
 
 .material-switch input[type="checkbox"]:checked + label::after {
   background: inherit;
   left: 20px;
-  background-color: #5cb85c;
+  background-color: #D3D3D3;
 }
 
 .switch-label {
