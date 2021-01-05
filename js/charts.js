@@ -460,7 +460,8 @@ function barGraph(data, id) {
         "recoveries": [],
         "hospitalizations": [],
         "criticals": [],
-        "tests": []
+        "tests": [],
+        "vaccinations": []
     };
 
     data.sort(function(a, b) {
