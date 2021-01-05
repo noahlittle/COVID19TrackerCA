@@ -34,7 +34,7 @@ $(document).ready(() => {
         // hospitalizationsChange = data.change_hospitalizations;
         
         vaccinations = data.total_vaccinations;
-        peopleVaccinated = data.total_vaccinations;
+        peopleVaccinated = data.total_vaccinations - 127;
         percentVaccinated = Math.floor((data.total_vaccinations) / canadaPopulation * 100) / 100;
         vaccinationsChange = data.change_vaccinations;
         vaccinesDistributed = data.total_vaccines_distributed;
@@ -173,7 +173,7 @@ $(document).ready(() => {
         var checked = $("#criticalCases").prop("checked");
         if (checked) {
 
-            $(".summary-header-vaccinations > h1").text(vaccinations + " people");
+            $(".summary-header-vaccinations > h1").text(peopleVaccinated + " people");
             $(".summary-header-vaccinations > b").text("have received at least one dose");
             
         }
