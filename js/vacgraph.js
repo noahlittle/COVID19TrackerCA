@@ -176,6 +176,9 @@ function draw(graphConfig) {
             },
             legend: {
                 display: true
+            },
+            tooltips: {
+                mode: 'index'
             }
         }
     });
