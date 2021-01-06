@@ -609,7 +609,7 @@ function updateGraph(container) {
     if (recentOnly) {
         var originalCount = data.labels.length;
         var labels = $.extend(true, [], data.labels);
-        labels = labels.filter(item => moment().diff(item + ' 2020', 'week') < 3);
+        labels = labels.slice(-21);
         data.labels = labels;
         var itemsRemoved = originalCount - labels.length;
         data.datasets.forEach(dataset => {
