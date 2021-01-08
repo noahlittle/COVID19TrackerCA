@@ -34,8 +34,8 @@ $(document).ready(() => {
         // hospitalizationsChange = data.change_hospitalizations;
         
         vaccinations = data.total_vaccinations;
-        peopleVaccinated = data.total_vaccinations - 2173;
-        percentVaccinated = Math.floor((data.total_vaccinations - 2173) / canadaPopulation * 100) / 100;
+        peopleVaccinated = data.total_vaccinations - 4588;
+        percentVaccinated = Math.floor((data.total_vaccinations - 4588) / canadaPopulation * 100) / 100;
         vaccinationsChange = data.change_vaccinations;
         vaccinesDistributed = data.total_vaccines_distributed;
 
