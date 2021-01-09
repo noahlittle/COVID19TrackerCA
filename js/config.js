@@ -44,55 +44,55 @@ function provinceProperties(code, name) {
     var hashmap = {
         "QC": {
             name: "Quebec",
-            population : 8485000
+            population : 8575779
         },
         "NL": {
             name: "Newfoundland and Labrador",
-            population : 521000
+            population : 520998
         },
         "BC": {
             name: "British Columbia",
-            population : 5071000
+            population : 5145851
         },
         "NU": {
             name: "Nunavut",
-            population : 38780
+            population : 39285
         },
         "NT": {
             name: "Northwest Territories",
-            population : 44826,
+            population : 45074,
         },
         "NB": {
             name: "New Brunswick",
-            population : 776827
+            population : 781315
         },
         "NS": {
             name: "Nova Scotia",
-            population : 971395
+            population : 979115
         },
         "SK": {
             name: "Saskatchewan",
-            population : 1174000
+            population : 1177884
         },
         "AB": {
             name: "Alberta",
-            population : 4371000
+            population : 4428112
         },
         "PE": {
             name: "Prince Edward Island",
-            population : 156947
+            population : 159713
         },
         "YT": {
             name: "Yukon",
-            population : 35874
+            population : 42176
         },
         "MB": {
             name: "Manitoba",
-            population : 1369000
+            population : 1379584
         },
         "ON": {
             name: "Ontario",
-            population : 14570000
+            population : 14733119
         }
     };
 
