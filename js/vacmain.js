@@ -46,7 +46,7 @@ $(document).ready(() => {
         $("#updateTime").text("As of " + moment(res.last_updated).format("dddd [at] h:mm a [CST, ]"));
         $("#updateVax").text(data.total_vaccinations);
         $("#updateChangeVax").text(data.change_vaccinations);
-        $("#updateVaxPpl").text(data.total_vaccinations);
+        $("#updateVaxPpl").text(data.total_vaccinations - 7291);
         $("#updateTotalDel").text(data.total_vaccines_distributed);
         $("#updatePerAdm").text((((data.total_vaccinations) / (data.total_vaccines_distributed))*100).toFixed(1) + "%")
 
