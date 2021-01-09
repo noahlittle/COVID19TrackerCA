@@ -69,7 +69,7 @@ function drawProvinces(data) {
             'interpolate',
             ['linear'],
             ["number", ['get', 'province_vaccinations_per_population']],
-            fillRange[0], '#FFFFFF',
+            fillRange[0], '#F1FFEE',
             fillRange[1] * 0.2, '#68991c',
             fillRange[1] * 0.4, '#456613',
             fillRange[1] * 0.6, '#233309', 

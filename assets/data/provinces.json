@@ -6063,7 +6063,7 @@
       "properties": {
         "name": "Quebec",
         "abbreviation" : "QC",
-        "population" : 8485000,
+        "population" : 8575779,
         "label_coords" : [
           -72.24609375,
           52.16045455774706
@@ -13355,7 +13355,7 @@
       "properties": {
         "name": "Newfoundland and Labrador",
         "abbreviation" : "NL",
-        "population" : 521000,
+        "population" : 520998,
         "label_coords" : [
           -51.7236328125,
           51.781435604431195
@@ -19295,7 +19295,7 @@
       "properties": {
         "name": "British Columbia",
         "abbreviation" : "BC",
-        "population" : 5071000,
+        "population" : 5145851,
         "label_coords" : [
           -124.76074218749999,
           55.229023057406344
@@ -57943,7 +57943,7 @@
       "properties": {
         "name": "Nunavut",
         "abbreviation" : "NU",
-        "population" : 38780,
+        "population" : 39285,
         "label_coords" : [
           -98.349609375,
           64.20637724320852
@@ -64759,7 +64759,7 @@
       "properties": {
         "name": "Northwest Territories",
         "abbreviation" : "NT",
-        "population" : 44826,
+        "population" : 45074,
         "label_coords" : [
           -114.521484375,
           62.895217544882044
@@ -65535,7 +65535,7 @@
       "properties": {
         "name": "New Brunswick",
         "abbreviation" : "NB",
-        "population" : 776827,
+        "population" : 781315,
         "label_coords" : [
           -66.09375,
           46.6795944656402
@@ -67191,7 +67191,7 @@
       "properties": {
         "name": "Nova Scotia",
         "abbreviation" : "NS",
-        "population" : 971395,
+        "population" : 979115,
         "label_coords" : [
           -63.19335937499999,
           44.213709909702054
@@ -67507,7 +67507,7 @@
       "properties": {
         "name": "Saskatchewan",
         "abbreviation" : "SK",
-        "population" : 1174000,
+        "population" : 1177884,
         "label_coords" : [
           -106.435546875,
           54.77534585936447
@@ -68031,7 +68031,7 @@
       "properties": {
         "name": "Alberta",
         "abbreviation" : "AB",
-        "population" : 4371000,
+        "population" : 4428112,
         "label_coords" : [
           -114.60937499999999,
           54.7246201949245
@@ -68463,7 +68463,7 @@
       "properties": {
         "name": "Prince Edward Island",
         "abbreviation" : "PE",
-        "population" : 156947,
+        "population" : 159713,
         "label_coords" : [
           -62.84179687499999,
           46.619261036171515
@@ -69460,7 +69460,7 @@
         "name": "Yukon",
         "abbreviation" : "YT",
         "cartodb_id": 9,
-        "population" : 35874,
+        "population" : 42176,
         "label_coords" : [
           -133.9453125,
           62.65396335371416
@@ -70023,7 +70023,7 @@
       "properties": {
         "name": "Manitoba",
         "abbreviation" : "MB",
-        "population" : 1369000,
+        "population" : 1379584,
         "label_coords" : [
           -96.6796875,
           54.87660665410869
@@ -72023,7 +72023,7 @@
       "properties": {
         "name": "Ontario",
         "abbreviation" : "ON",
-        "population" : 14570000,
+        "population" : 14733119,
         "cartodb_id": 11,
         "label_coords" : [
           -87.01171875,
