@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Real-time COVID-19 vaccination updates for every region in Canada, tracking doses of Moderna and Pfizer-BioNTech COVID-19 vaccine administered to Canadians." />
+    <meta name="author" content="" />
+    <meta name="robots" content="noindex" />
+    <title>COVID-19 Tracker Canada - Fullscreen Map</title>
+
+    <link href="css/styles.css?v=4.9" rel="stylesheet" />
+
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5.1.6/turf.min.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="js/config.js?v=5.3.4"></script>
+    <script type="text/javascript" src="js/vacmap.js?v=4.4.4"></script>
+    <script type="text/javascript" src="js/vaccharts.js?v=5.6.4"></script>
+    <script type="text/javascript" src="js/vacmain.js?v=7.9.3"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160029240-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-160029240-1');
+    </script>
+
+<!-- 
+<script>
+    $(document).ready(function () {
+    // Check if user saw the modal
+    var key = 'hadModal',
+        hadModal = localStorage.getItem(key);
+
+    // Show the modal only if new user
+    if (!hadModal) {
+        $('#myModal').modal('show');
+    }
+
+    // If modal is displayed, store that in localStorage
+    $('#myModal').on('shown.bs.modal', function () {
+        localStorage.setItem(key, true);
+    })
+});
+
+</script>
+-->
+
+
+</head>
+
+<body>
+    
+                    <div id="displayMap">
+                        <div>
+                            <div class="card-body" style="padding:0px;">
+                                <div id="map"></div>
+                                <div id="map-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+
+</body>
+
+</html>
