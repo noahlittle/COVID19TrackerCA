@@ -4358,7 +4358,7 @@ input[type=button].btn-block {
 
 .card-map-body {
   flex: 1 1 auto;
-  min-height: 100%;
+  min-height: 70%;
   padding: 1.25rem;
 }
 
