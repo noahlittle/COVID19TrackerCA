@@ -4356,6 +4356,11 @@ input[type=button].btn-block {
   padding: 1.25rem;
 }
 
+.card-map-body {
+  flex: auto;
+  min-height: 100%;
+}
+
 .card-title {
   margin-bottom: 0.75rem;
 }
