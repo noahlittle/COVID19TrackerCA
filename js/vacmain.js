@@ -34,8 +34,9 @@ $(document).ready(() => {
         // hospitalizationsChange = data.change_hospitalizations;
         
         vaccinations = data.total_vaccinations;
-        peopleVaccinated = data.total_vaccinations - 7291;
-        percentVaccinated = Math.floor((data.total_vaccinations - 7291) / canadaPopulation * 100) / 100;
+        peopleVaccinated = data.total_vaccinations - data.total_vaccinated;
+        twoDoses = data.total_vaccinated;
+        percentVaccinated = Math.floor((data.total_vaccinations - data.total_vaccinated) / canadaPopulation * 100) / 100;
         vaccinationsChange = data.change_vaccinations;
         vaccinesDistributed = data.total_vaccines_distributed;
 
@@ -46,7 +47,8 @@ $(document).ready(() => {
         $("#updateTime").text("As of " + moment(res.last_updated).format("dddd [at] h:mm a [CST, ]"));
         $("#updateVax").text(data.total_vaccinations);
         $("#updateChangeVax").text(data.change_vaccinations);
-        $("#updateVaxPpl").text(data.total_vaccinations - 7291);
+        $("#updateTwoDoses").text(data.total_vaccinated);
+        $("#updateVaxPpl").text(data.total_vaccinations - data.total_vaccinated);
         $("#updateTotalDel").text(data.total_vaccines_distributed);
         $("#updatePerAdm").text((((data.total_vaccinations) / (data.total_vaccines_distributed))*100).toFixed(1) + "%")
 
@@ -64,7 +66,7 @@ $(document).ready(() => {
         $(".summary-header-hospitalized > b").text(displayNewCases(data.change_hospitalizations));
         $(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
         $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
-        $(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - 7291) / 38008005)*100).toFixed(3) + "%");
+        $(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - data.total_vaccinated) / 38008005)*100).toFixed(3) + "%");
         $(".summary-header-percentVaccinated > b").text("of the Canadian population has received at least one dose");
         $(".summary-header-vaccinations > h1").text(data.total_vaccinations + " doses administered");
         $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
@@ -102,6 +104,7 @@ $(document).ready(() => {
         $('#totalVaccinationsDistCanada').text(data.total_vaccines_distributed);
         $('#totalVaccinationsPercentCanada').text((((data.total_vaccinations) / (data.total_vaccines_distributed))*100).toFixed(1) + "%")
         $('#totalVaccinationsChangeCanada').text(data.change_vaccinations);
+        $('#totalVaccinatedCanada').text(data.total_vaccinated);
         $('#vaccinatedPerCanada').text(vaccinationsPer100000);
         $('#infectedPerCanada').text(casesPer100000);
     });
@@ -345,6 +348,11 @@ function buildProvinceTable(data, provinceData) {
         )
 
 
+        var itemTotalVaccinated = item.total_vaccinated;
+
+        if (itemTotalVaccinated === null || itemTotalVaccinated === undefined) itemTotalVaccinated = "N/A";
+                        else itemTotalVaccinated = item.total_vaccinated;
+
                 // append data to row
         $('#vaccinationsProvinceTable').append(
             "<tr class='provinceRow'>" +
@@ -361,6 +369,7 @@ function buildProvinceTable(data, provinceData) {
             "<td><i>" + item.total_vaccines_distributed + "</i></td>" +
             "<td><i>" + vaccinationsPercent + "%" + "</i></td>" +
             "<td>" + vaccinationsPer100000 + "</td>" +
+            "<td><i>" + itemTotalVaccinated + "</i></td>" +
             "</tr>"
         )
 

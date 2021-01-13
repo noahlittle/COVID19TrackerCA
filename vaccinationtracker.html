@@ -27,7 +27,7 @@
     <script type="text/javascript" src="js/config.js?v=5.3.4"></script>
     <script type="text/javascript" src="js/vacmap.js?v=4.4.4"></script>
     <script type="text/javascript" src="js/vaccharts.js?v=5.6.4"></script>
-    <script type="text/javascript" src="js/vacmain.js?v=7.9.3"></script>
+    <script type="text/javascript" src="js/vacmain.js?v=8.0.5"></script>
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -156,7 +156,7 @@
                                 <p>In total, <b><i><span id="updateTotalDel"></span></i></b> doses of COVID-19 vaccines (including both Moderna and Pfizer-BioNTech) have been delivered to the provinces for administration. As of today, <b><i><span id="updatePerAdm"></span></i></b> of doses delivered to the provinces have been administered.
 
 
-                                <p>The Pfizer-BioNTech and Moderna vaccines require two doses, a number of weeks apart, for full efficacy. Consequently, the values we report indicate the total number of doses administered to Canadians. Until early January, this value will also be equivalent to the total number of people who have received at least one dose. As of today, more than <b><span id="updateVaxPpl"></span></b> Canadians have received at least one dose of an approved COVID-19 vaccine.</p>
+                                <p>The Pfizer-BioNTech and Moderna vaccines require two doses, a number of weeks apart, for full efficacy. Consequently, the values we report indicate the total number of doses administered to Canadians. Until early January, this value will also be equivalent to the total number of people who have received at least one dose. As of today, more than <b><span id="updateVaxPpl"></span></b> Canadians have received at least one dose of an approved COVID-19 vaccine. At least <b><span id="updateTwoDoses"></span></b> Canadians are fully vaccinated, having received both required doses.</p>
 
                                  <hr/>
 
@@ -258,6 +258,7 @@
                                         <th>Total Doses Delivered</th>
                                         <th>% of Doses Administered <span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'><i class="far fa-question-circle"></i></span></th>
                                         <th>Doses Administered / 100k Population</th>
+                                        <th>People Fully Vaccinated <span data-toggle='tooltip' title='The number of people reported as having received both required doses'><i class="far fa-question-circle"></i></span></th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -267,8 +268,8 @@
                                         <td><i><b id="totalVaccinationsCanada"> </b></i></td>
                                         <td><i><b id="totalVaccinationsDistCanada" data-per-capita=""></b></i></td>
                                         <td><i><b id="totalVaccinationsPercentCanada" data-per-capita=""></b></i></td>
-
                                         <td><i><b id="vaccinatedPerCanada"></b></i></td>
+                                        <td><i><b id="totalVaccinatedCanada"> </b></i></td>
                                     </tr>
                                 </tfoot>
                                 <tbody id="vaccinationsProvinceTable"></tbody>
