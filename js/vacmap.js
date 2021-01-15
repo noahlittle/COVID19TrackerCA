@@ -96,12 +96,6 @@ function drawProvinces(data) {
             source: 'provinces',
             paint: {
                 'fill-color': fillColor,
-                'fill-opacity': [
-                    'case',
-                    ['boolean', ['feature-state', 'hover'], false],
-                    0.5,
-                    0.3
-                ]
             }
         }, map.getSource('covid-cases') ? 'covid-cases' : null)
 
