@@ -70,10 +70,10 @@ function drawProvinces(data) {
             ['linear'],
             ["number", ['get', 'province_vaccinations_per_population']],
             fillRange[0], '#F1FFEE',
-            fillRange[1] * 0.2, '#68991c',
-            fillRange[1] * 0.4, '#456613',
-            fillRange[1] * 0.6, '#233309', 
-            fillRange[1] * 0.8, '#111905'
+            fillRange[1] * 0.2, '#66FF66',
+            fillRange[1] * 0.4, '#00FF00',
+            fillRange[1] * 0.6, '#009900', 
+            fillRange[1] * 0.8, '#003300'
         ];
 
         var mapHTML = `
