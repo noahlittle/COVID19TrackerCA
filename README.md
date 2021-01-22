@@ -4,7 +4,7 @@ This website was developed to provide a responsive overview of COVID-19 cases in
 It is currently in use on https://covid19tracker.ca
 
 ## Getting Started
-Setup is quite simple; modification of the following files is requried.
+Setup is quite simple; modification of the following files is required.
 
 `js/config.js`
 
