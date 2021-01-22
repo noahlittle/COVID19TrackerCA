@@ -16,7 +16,7 @@ const formatter = new Intl.NumberFormat('en-CA');
 function format(value) {
   const formattedValue = formatter.format(value);
   // this safely returns any values that aren't numbers, such a 'N/A'
-  if (typeof value !== 'number' || formattedValue === 'NaN') return value;
+  if (formattedValue === 'NaN') return value;
   // otherwise return the number as a string with commas in it
   return formattedValue;
 }
@@ -54,7 +54,7 @@ $(document).ready(() => {
 
 
         $("#updateTime").text("As of " + moment(res.last_updated).format("dddd [at] h:mm a [CST, ]"));
-        $("#updateVax").text(data.total_vaccinations);
+        $("#updateVax").text(format(data.total_vaccinations));
         $("#updateChangeVax").text(format(data.change_vaccinations));
         $("#updateTwoDoses").text(format(data.total_vaccinated));
         $("#updateVaxPpl").text(format(data.total_vaccinations - data.total_vaccinated));
@@ -185,12 +185,12 @@ $(document).ready(() => {
         var checked = $("#criticalCases").prop("checked");
         if (checked) {
 
-            $(".summary-header-vaccinations > h1").text(peopleVaccinated + " people");
+            $(".summary-header-vaccinations > h1").text(format(peopleVaccinated) + " people");
             $(".summary-header-vaccinations > b").text("have received at least one dose");
             
         }
         else {
-            $(".summary-header-vaccinations > h1").text(vaccinations + " doses administered");
+            $(".summary-header-vaccinations > h1").text(format(vaccinations) + " doses administered");
             $(".summary-header-vaccinations > b").text(displayNewCases(vaccinationsChange));
         }
     });
