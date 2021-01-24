@@ -11,16 +11,6 @@ var totalVaccinationsChange = 0;
 var last5days = {};
 var regions = [];
 
-// Helper function to format numbers with commas
-const formatter = new Intl.NumberFormat('en-CA');
-function format(value) {
-  const formattedValue = formatter.format(value);
-  // this safely returns any values that aren't numbers, such a 'N/A'
-  if (formattedValue === 'NaN') return value;
-  // otherwise return the number as a string with commas in it
-  return formattedValue;
-}
-
 // Controls the state of the application, sets up correct data information
 $(document).ready(() => {
 
@@ -204,7 +194,7 @@ $(document).ready(() => {
             data.forEach(item => {
                 container.append("<div>" +
                 "<span>" + item.label + "</span>" +
-                "<span>" + item.total + " " +  (item.change !== null && item.change !== undefined ? displayNewCasesOlder(item.change) : "") + "</span>" +
+                "<span>" + format(item.total) + " " +  (item.change !== null && item.change !== undefined ? displayNewCasesOlder(item.change) : "") + "</span>" +
                 "</div>");
             });
         }

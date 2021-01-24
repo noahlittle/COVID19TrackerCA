@@ -141,14 +141,24 @@ function seeAllCases(province) {
     window.location.href = url + "allcases.html" + (province ? ('?province=' + province) : '');
 }
 
+// Helper function to format numbers with commas (Initiate helper function on config.js to make it accessible everywhere)
+const formatter = new Intl.NumberFormat('en-CA');
+function format(value) {
+  const formattedValue = formatter.format(value);
+  // this safely returns any values that aren't numbers, such a 'N/A'
+  if (formattedValue === 'NaN') return value;
+  // otherwise return the number as a string with commas in it
+  return formattedValue;
+}
+
 function displayNewCases(cases) {
     if (cases >= 0) cases = "+" + cases;
-    return "(" + cases + " today)";
+    return "(" + format(cases) + " today)";
 }
 
 function displayNewCasesOlder(cases) {
     if (cases >= 0) cases = "+" + cases;
-    return "(" + cases + ")";
+    return "(" + format(cases) + ")";
 }
 
 function goCases() {
