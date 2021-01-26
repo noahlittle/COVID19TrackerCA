@@ -283,7 +283,7 @@ $(document).ready(() => {
 
     // get notice
     $.ajax({
-        url: devapi_url + "notes",
+        url: "https://devapi.covid19tracker.ca/" + "notes/tag/vac",
         type: "GET",
     }).then(res => {
         var data = res;
