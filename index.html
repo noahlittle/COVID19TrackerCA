@@ -45,7 +45,7 @@
 
 
 
-<!-- 
+
 <script>
     $(document).ready(function () {
     // Check if user saw the modal
@@ -53,8 +53,10 @@
         hadModal = localStorage.getItem(key);
 
     // Show the modal only if new user
-       if (!hadModal) {
-       $('#myModal').modal('show');
+     //  if (!hadModal) 
+
+       {
+      $('#myModal').modal('show');
   }
 
     // If modal is displayed, store that in localStorage
@@ -64,7 +66,7 @@
 });
 
 </script>
--->
+
 
 </head>
 
@@ -351,33 +353,31 @@
         </footer>
     </div>
 
-<!--
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"><span class="badge badge-success">New</span>  <b>Tracking COVID-19 Vaccinations in Canada</b></h5>
+        <h5 class="modal-title" id="exampleModalLongTitle"><b>Tracker Temporarily Unavailable</b></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
 
-        <h5>We've launched a new page dedicated to tracking COVID-19 vaccinations in Canada</h5>
+        <h5>Due to unscheduled maintenance, COVID19Tracker.ca is temporarily unavailable.</h5>
 <br>
-        <img class="mx-auto d-block" style="max-width:60%;" src="vax.png" />
-        <br>
 
-<p>As provinces across Canada begin their COVID-19 vaccination programs, we're tracking every dose administered. Stay up-to-date on the rollout with our new <a href="https://covid19tracker.ca/vaccinationtracker.html">Vaccination Tracker</a>.</p>
+<p>The server used for our systems is currently undergoing emergency maintenance. This impacts all services powered by our API. We are working to restore services as soon as possible, and apologize for any inconvenience this downtime may cause.</p>
+
+<p>Please wait, and load the page again later. Data will appear again once services are restored.</p>
+
+<p>Up-to-date information regarding the situation will be available via <a href="https://twitter.com/covid_canada">Twitter</a>.</p>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='https://covid19tracker.ca/vaccinationtracker.html'">Try It</button>
       </div>
     </div>
   </div>
 </div>
-
--->
 
 
 

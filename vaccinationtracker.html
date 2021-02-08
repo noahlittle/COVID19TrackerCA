@@ -51,7 +51,8 @@
         hadModal = localStorage.getItem(key);
 
     // Show the modal only if new user
-    if (!hadModal) {
+   // if (!hadModal) 
+   {
         $('#myModal').modal('show');
     }
 
@@ -318,10 +319,14 @@
       </div>
       <div class="modal-body">
 
-        <h5>Due to unscheduled server maintenance, the Vaccination Tracker is temporarily unavailable.</h5>
+       <h5>Due to unscheduled maintenance, the Vaccination Tracker is temporarily unavailable.</h5>
 <br>
 
-<p>We are working to restore services as soon as possible, and apologize for any inconvenience this downtime may cause. Please try loading the page again later.</p>
+<p>The server used for our systems is currently undergoing emergency maintenance. This impacts all services powered by our API. We are working to restore services as soon as possible, and apologize for any inconvenience this downtime may cause.</p>
+
+<p>Please wait, and load the page again later. Data will appear again once services are restored.</p>
+
+<p>Up-to-date information regarding the situation will be available via <a href="https://twitter.com/covid_canada">Twitter</a>.</p>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
