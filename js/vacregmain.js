@@ -22,6 +22,8 @@ function format(value) {
     return formattedValue;
 }
 
+
+
 // Controls the state of the application, sets up correct data information
 $(document).ready(() => {
     //$(".display-select").hide();
@@ -119,6 +121,8 @@ $(document).ready(() => {
         container.toggle();
     });
 
+
+
     var provinces = [];
     $.ajax({
         url: api_url + "provinces"
@@ -146,6 +150,10 @@ $(document).ready(() => {
         //$(".display-select").hide();
         // get and update header, and cases by province table footer
         //draw map and cases by province graph and table
+        
+
+        document.querySelector('title').textContent = `COVID-19 Tracker Canada - ${pText} Vaccination Tracker`;
+
         $.ajax({
             url: api_url + "summary/split"
         }).then(res => {
@@ -273,6 +281,9 @@ $(document).ready(() => {
         });
     });
 });
+
+
+
 
 function buildRegionTable(data, regionData) {
     data.forEach(function (item) {
