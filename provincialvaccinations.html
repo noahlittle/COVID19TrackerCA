@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Near real-time vaccination data for each province in Canada." />
+    <meta name="author" content="" />
+    <title>COVID-19 Tracker Canada - Provincial Vaccination Data</title>
+
+    <link href="css/styles.css?v=4.9" rel="stylesheet" />
+
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5.1.6/turf.min.js"></script>
+
+    <script type="text/javascript" src="js/config.js?v=5.3.4"></script>
+    <script type="text/javascript" src="js/vaccharts.js?v=5.6.4"></script>
+    <script type="text/javascript" src="js/vacregmain.js?v=9.1.5"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160029240-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-160029240-1');
+    </script>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">COVID-19 Tracker Canada</a>
+        <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></div>
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Menu</b></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="about.html">About</a>
+                    <a class="dropdown-item" href="sources.html">Sources</a>
+                    <a class="dropdown-item" href="ontario.html">Ontario Data</a>
+                    <a class="dropdown-item" href="notes.html">Data Notes</a>
+                    <a class="dropdown-item" href="https://api.covid19tracker.ca">API Access</a>
+                    <a class="dropdown-item" href="acknowledgements.html">Acknowledgments</a>
+                    <a class="dropdown-item" href="licensing.html">Citation</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="mailto:noah.little@usask.ca">Contact</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="sb-sidenav-footer"></div>
+    <div id="layoutSidenav_content">
+        <main id="mainData">
+            <div class="container-fluid">
+                <br>
+                <br>
+                <br>
+                <h4><button type="button" class="btn btn-secondary mr-2 mt-2" onClick="goVax()">&#x2190; Back to <i class="fab fa-canadian-maple-leaf"></i> COVID-19 Vaccination Tracker</h4></button>
+                <br>
+               
+
+
+  	 <h1><span class="display-province"></span> Vaccination Data</h1>
+  	 <br>
+                <div class="card">
+  <div class="card-body">
+Regional data may be updated later than provincial data, and may be partially or completely unavailable for some provinces.
+
+  </div>
+</div>
+                <!--<div class="row">
+                    <div class="col-xl-8">
+                        <div class="form-group d-inline-block mr-4">
+                            <label for="provinceSelection">Select a Province</label>
+                            <select class="form-control" id="provinceSelection" style="width:300px;">
+                                <option value="">Select Province</option>
+                                <option value="AB">Alberta</option>
+                                <option value="BC">British Columbia</option>
+                                <option value="MB">Manitoba</option>
+                                <option value="NB">New Brunswick</option>
+                                <option value="NL">Newfoundland and Labrador</option>
+                                <option value="NT">Northwest Territories</option>
+                                <option value="NS">Nova Scotia</option>
+                                <option value="NU">Nunavut</option>
+                                <option value="ON">Ontario</option>
+                                <option value="PE">Prince Edward Island</option>summary-dropdown-container
+                                <option value="QC">Quebec</option>
+                                <option value="SK">Saskatchewan</option>
+                                <option value="YT">Yukon</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>-->
+                <br />
+                <div class="row display-select">
+                    <div class="col-md">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body summary-header-vaccinations">
+                                <h1></h1> <b></b><div class="material-switch pull-right">
+                                    <div class="switch-label d-inline-block">People <span data-toggle='tooltip' title='Two doses are required to vaccinate an individual; this value indicates the approximate number of people who have received at least one dose.'><i class="far fa-question-circle"></i></span></div>
+                                    <div class="d-inline-block">
+                                        <input id="criticalCases" name="criticalCases" type="checkbox" />
+                                        <label for="criticalCases" class="label-success"></label>
+                                    </div>
+                                </div>
+                                <div class="summary-arrow" data-field="vaccinations"><span class="arrow-down"><i class="fa fa-angle-down"></i></span></div>
+
+                                <div class="summary-dropdown-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body summary-header-vaccineDelivered"><h1></h1><b></b> <span data-toggle='tooltip' title='Percentage of doses distributed to the regions that have been reported as administered'><i class="far fa-question-circle"></i></span></div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body summary-header-percentVaccinated"><h1></h1> <b></b></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row display-select">
+                    <div class="col-xl-6" id="displayMap">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fab fa-canadian-maple-leaf"></i> COVID-19 Vaccinations in <span class="display-province"></span></div>
+                            <div class="card-body overflow-auto">
+                                <h3> <span id="updateTime"></span> <b><i id="updateVax"></i></b> doses of approved COVID-19 vaccines have been administered in <span class="display-province"></span>. </h3>
+                                <br>
+                                <p>As <span class="display-province"></span> begins their COVID-19 vaccination program, we're tracking doses administered in every region. <b><i><span id="updateChangeVax"></span></i></b> new doses have been reported administered in <span class="display-province"></span> today.</p>
+                                <p>In total, <b><i><span id="updateTotalDel"></span></i></b> doses of COVID-19 vaccines (including both Moderna and Pfizer-BioNTech) have been delivered to <span class="display-province"></span> for administration. As of today, <b><i><span id="updatePerAdm"></span></i></b> of doses delivered to <span class="display-province"></span> have been administered.
+                                <p>The Pfizer-BioNTech and Moderna vaccines require two doses, a number of weeks apart, for full efficacy. Consequently, we report both the total number of doses administered, and the total number of people who have been fully vaccinated. As of today, more than <b><span id="updateVaxPpl"></span></b> people from <span class="display-province"></span> have received at least one dose of an approved COVID-19 vaccine. <b><span id="updateTwoDoses"></span></b> people from <span class="display-province"></span> are fully vaccinated against COVID-19, having received both required doses.</p>
+                                <hr />
+                                <p>
+                                    Our data is aggregated by volunteers exclusively from official government sources, updated throughout the day in near real-time. All of our data is freely available for use via our <a href="https://api.covid19tracker.ca">API</a> or in <a href="https://docs.google.com/spreadsheets/d/1PjkemMdFSZgA-M8Esr6rbNjHiyfcXcBxPeMjselJIso/edit?usp=sharing">CSV format</a>. Find more information on the sources we use <a href="https://covid19tracker.ca/vacsources.html">here</a>.
+                                </p>
+                                <p>
+                                    Find all of the data we track (including cases, fatalities, hospitalizations, criticals, testing and recoveries) <a href="https://covid19tracker.ca">here</a>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-bar mr-1"></i><span id="newCasesByProvince">Doses By Region</span></div>
+                            <div class="card-body" id="provinceCasesChartDiv">
+                                <canvas id="provinceCasesChart" width="100%"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row display-select">
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="newCasesByDay"><span class="display-province"></span> New Doses</span></div>
+                            <div class="card-body" id="dailyCaseChartDiv">
+                                <canvas id="dailyCaseChart" width="100%" height="40"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="newCasesByDay"><span class="display-province"></span>'s Vaccine Administration / Distribution Gap</span></div>
+                            <div class="card-body" id="dailyCaseChartDiv">
+                                <canvas id="cumulativeCaseChart" width="100%" height="40"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card mb-4 display-select">
+                    <div class="card-header"><i class="fas fa-table mr-1"></i>Doses By Region</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" id="dataTable2" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Region</th>
+                                        <th>Total Doses Administered</th>
+                                        <!--<th>Total Doses Delivered</th>
+                                        <th>% of Doses Administered <span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'><i class="far fa-question-circle"></i></span></th>
+                                        <th>Doses Administered / 100k Population</th>-->
+                                        <th>People Fully Vaccinated <span data-toggle='tooltip' title='The number of people reported as having received both required doses'><i class="far fa-question-circle"></i></span></th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <td><i><b><span class="display-province"></span></b></i></td>
+                                        <td><i><b id="totalVaccinationsCanada"> </b></i></td>
+                                        <!--<td><i><b id="totalVaccinationsDistCanada" data-per-capita=""></b></i></td>
+                                        <td><i><b id="totalVaccinationsPercentCanada" data-per-capita=""></b></i></td>
+                                        <td><i><b id="vaccinatedPerCanada"></b></i></td>-->
+                                        <td><i><b id="totalVaccinatedCanada"> </b></i></td>
+                                    </tr>
+                                </tfoot>
+                                <tbody id="vaccinationsProvinceTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; COVID19Tracker.ca 2020 // Near real-time COVID-19 data updates for every region in Canada, tracking cases, deaths, vaccinations, hospitalizations, ICU, recoveries and testing // <a href="mailto:noah.little@usask.ca">noah.little@usask.ca</a></div>
+                    <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+                    <script type='text/javascript'>kofiwidget2.init('Support The Project', '#29abe0', 'G2G11J6WQ'); kofiwidget2.draw();</script>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
