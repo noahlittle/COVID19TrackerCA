@@ -372,7 +372,7 @@ function buildProvinceTable(data, provinceData) {
             "Last updated: <b>" + updatedAt + "</b><br>" +
             "Update expected by: <b>" + expectedTime(item.province) + "</b>" +
             "'></span>" +
-            "<span>" + "<a style='color:black;' href='provincevax.html?p=" + provinceProperties(item.province).code + "'><i>" +  provinceProperties(item.province).name + "</i></a> </span>" +
+            "<span>" + "<a style='color:black;' href='provincevac.html?p=" + provinceProperties(item.province).code + "'><i>" +  provinceProperties(item.province).name + "</i></a> </span>" +
             "</td>" +
             "<td data-per-capita='" + vaccinationsPer100000 + "'><i>" + format(item.total_vaccinations) + (item.change_vaccinations ? ("<i>" + " " + displayNewCases(item.change_vaccinations)) : "" + "</i>") + "</i></td>" +
             "<td><i>" + format(item.total_vaccines_distributed) + "</i></td>" +
