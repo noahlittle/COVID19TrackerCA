@@ -44,55 +44,68 @@ function provinceProperties(code, name) {
     var hashmap = {
         "QC": {
             name: "Quebec",
-            population : 8575779
+            population : 8575779,
+            code: "QC"
         },
         "NL": {
             name: "Newfoundland and Labrador",
-            population : 520998
+            population : 520998,
+            code: "NL"
         },
         "BC": {
             name: "British Columbia",
-            population : 5145851
+            population : 5145851,
+            code: "BC"
         },
         "NU": {
             name: "Nunavut",
-            population : 39285
+            population : 39285,
+            code: "QC"
         },
         "NT": {
             name: "Northwest Territories",
             population : 45074,
+            code: "NT"
         },
         "NB": {
             name: "New Brunswick",
-            population : 781315
+            population : 781315,
+            code: "NB"
         },
         "NS": {
             name: "Nova Scotia",
-            population : 979115
+            population : 979115,
+            code: "NS"
         },
         "SK": {
             name: "Saskatchewan",
-            population : 1177884
+            population : 1177884,
+            code: "SK"
         },
         "AB": {
             name: "Alberta",
-            population : 4428112
+            population : 4428112,
+            code: "AB"
         },
         "PE": {
             name: "Prince Edward Island",
-            population : 159713
+            population : 159713,
+            code: "PE"
         },
         "YT": {
             name: "Yukon",
-            population : 42176
+            population : 42176,
+            code: "YT"
         },
         "MB": {
             name: "Manitoba",
-            population : 1379584
+            population : 1379584,
+            code: "MB"
         },
         "ON": {
             name: "Ontario",
-            population : 14733119
+            population : 14733119,
+            code: "ON"
         }
     };
 
