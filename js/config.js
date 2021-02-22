@@ -60,7 +60,7 @@ function provinceProperties(code, name) {
         "NU": {
             name: "Nunavut",
             population : 39285,
-            code: "QC"
+            code: "NU"
         },
         "NT": {
             name: "Northwest Territories",
