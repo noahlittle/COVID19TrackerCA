@@ -10526,3 +10526,98 @@ div[class*="summary-header"] h1 {
   font-size: 1.65rem !important;
 }
 
+#vaccinationsProvinceTable tr td:nth-child(-n+4) {
+  white-space: nowrap;
+  font-style: italic;
+}
+
+#vaccinationsProvinceTableFooter tr td {
+  font-weight: bold;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+progress {
+  text-align: left;
+  height: 1.6rem;
+  width: 100%;
+  min-width: 6rem;
+  max-width: 200px;
+  -webkit-appearance: none;
+  position: relative;
+  color: white;
+  border: var(--dark);
+  border-width: thin;
+  border-style: solid;
+  border-radius: 2px;
+}
+progress:before {
+  content: attr(value) "%";
+  vertical-align: 0;
+  /*Position text over the progress bar */
+  position:absolute;
+  left:0.2rem;
+  font-weight: bold;
+}
+progress[value="N/A"]:before {
+  content: attr(value);
+  font-weight: lighter;
+}
+progress[data-value]:after {
+  content: attr(data-value);
+  vertical-align: 0;
+  position:absolute;
+  right: 0.2rem;
+  font-size: 0.7rem;
+  margin-top: -1.3rem;
+  font-weight: lighter;
+  /*
+  color: black;
+   */
+}
+
+progress[data-value="0"]:after, progress[data-value=""]:after {
+  content: "";
+}
+progress::-webkit-progress-bar {
+  /*background-color: var(--red);*/
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+progress::-webkit-progress-value {
+  background-color: var(--blue);
+}
+progress::-moz-progress-bar {
+  background-color: var(--blue);
+}
+
+progress.infection::-webkit-progress-value {
+  background-color: var(--orange);
+}
+progress.infection::-moz-progress-bar {
+  background-color: var(--orange);
+}
+progress.death::-webkit-progress-value {
+  background-color: var(--red);
+}
+progress.death::-moz-progress-bar {
+  background-color: var(--red);
+}
+
+td[data-rate]:after {
+  color: var(--blue);
+  content: " (▲" attr(data-rate) "%)"
+}
+td[data-rate ^= "-"]:after {
+  color: var(--red);
+  content: " (▼" attr(data-rate) "%)"
+}
+td[data-rate = "0"]:after {
+  content: ""
+}
+td[data-days-left]:after {
+  content: " (~" attr(data-days-left) " days)"
+}
+td[data-days-left = "0"]:after {
+  content: ""
+}
