@@ -105,7 +105,7 @@ $(document).ready(() => {
         var testsPer100000 = Math.floor(((100000 * data.total_tests) / canadaPopulation) * 100) / 100;
         var vaccinationsPer100000 = Math.floor(((100000 * data.total_vaccinations) / canadaPopulation) * 100) / 100;
 
-        const vaccinationsPerCapita = Math.round((data.total_vaccinations / canadaPopulation) * 1000) / 10;
+        const vaccinationsPerCapita = Math.round(((data.total_vaccinations - data.total_vaccinated || 0)/ canadaPopulation) * 1000) / 10;
         const casesPerCapita = Math.round((data.total_cases / canadaPopulation) * 1000) / 10;
         const deathsPerCase = Math.round((data.total_fatalities / data.total_cases) * 1000) / 10;
         const vaccinationsCompletePerCapita = Number.parseInt(data.total_vaccinated) > 0 ? Math.round((data.total_vaccinated / canadaPopulation) * 1000) / 10 : "N/A";
@@ -355,7 +355,7 @@ $(document).ready(() => {
 });
 
 function buildProvinceTable(data, provinceData) {
-    data.forEach(async function(item) {
+    data.sort((a,b) => b.total_vaccinations - a.total_vaccinations).forEach(async function(item) {
         item.source = provinceSources[item.province] || "https://covid19tracker.ca/sources.html";
         var casesPer100000 = Math.floor(((100000 * item.total_cases) / provinceProperties(item.province).population) * 100) / 100;
         var fatalitiesPer100000 = Math.floor(((100000 * item.total_fatalities) / provinceProperties(item.province).population) * 100) / 100;
@@ -364,7 +364,7 @@ function buildProvinceTable(data, provinceData) {
         var recoveriesPer100000 = Math.floor(((100000 * item.total_recoveries) / provinceProperties(item.province).population) * 100) / 100;
         var testsPer100000 = Math.floor(((100000 * item.total_tests) / provinceProperties(item.province).population) * 100) / 100;
         var vaccinationsPer100000 = Math.floor(((100000 * item.total_vaccinations) / provinceProperties(item.province).population) * 100) / 100;
-        const vaccinationsPerCapita = Math.round((item.total_vaccinations / provinceProperties(item.province).population) * 1000) / 10;
+        const vaccinationsPerCapita = Math.round(((item.total_vaccinations - item.total_vaccinated || 0)/ provinceProperties(item.province).population) * 1000) / 10;
         const casesPerCapita = Math.round((item.total_cases / provinceProperties(item.province).population) * 1000) / 10;
         const deathsPerCase = Math.round((item.total_fatalities / item.total_cases) * 1000) / 10;
         const vaccinationsCompletePerCapita = Number.parseInt(item.total_vaccinated) > 0 ? Math.round((item.total_vaccinated / provinceProperties(item.province).population) * 1000) / 10 : "N/A";
