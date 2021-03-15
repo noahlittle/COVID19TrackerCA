@@ -147,7 +147,7 @@ $(document).ready(() => {
             `<td data-rate="${changeInVaccinationRate}">${formatNumber(data.change_vaccinations)}</td>` +
             `<td data-per-capita="${vaccinationsPer100000}" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Total: ${format(data.total_vaccinations)}<br>Today: ${format(data.change_vaccinations)}<br>Yesterday: 24,346">${formatNumber(data.total_vaccinations)}</td>` +
             `<td data-days-left="${Math.max(Math.round(itemVaccinesAvailable / (data.change_vaccinations-0.001) + 0.5),0)}">${formatNumber(itemVaccinesAvailable)}</td>` +
-            `<td><progress max="100" value="${vaccinationsPerCapita}" data-value="${formatNumber(data.total_vaccinations)}"></progress></td>` +
+            `<td><progress max="100" value="${vaccinationsPerCapita}" data-value="${formatNumber(data.total_vaccinations - data.total_vaccinated)}"></progress></td>` +
             `<td><progress max="100" value="${vaccinationsCompletePerCapita}" data-value="${formatNumber(data.total_vaccinated)}"></progress></td>` +
             `<td><progress class="infection" max="10" value="${casesPerCapita}" data-value="${formatNumber(data.total_cases)}"></progress></td>` +
             `<td><progress class="death" max="4" value="${deathsPerCase}" data-value="${formatNumber(data.total_fatalities)}"></progress></td>` +
@@ -415,7 +415,7 @@ function buildProvinceTable(data, provinceData) {
         }
 
         const weekVaccinations = provinceHistory.data.map(v => v.change_vaccinations).slice(-7);
-        const weekVaccinationsAvg = weekVaccinations.reduce((c, v) => c + v) / weekVaccinations.length;
+        const weekVaccinationsAvg = Math.floor(weekVaccinations.reduce((c, v) => c + v) / weekVaccinations.length);
         const yesterdayVaccinations = provinceHistory.data[Math.max(0, provinceHistory.data?.length - 2)]?.change_vaccinations;
         const changeInVaccinationRate = item.change_vaccinations > 0 && yesterdayVaccinations > 0 ? Math.round((item.change_vaccinations - yesterdayVaccinations) / yesterdayVaccinations*100) : 0;
 
@@ -431,10 +431,10 @@ function buildProvinceTable(data, provinceData) {
             "'></span>" +
             "<span>" + "<a style='color:black;' href='provincevac.html?p=" + provinceProperties(item.province).code + "'><span>" +  provinceProperties(item.province).name + "</span></a> </span>" +
             "</td>" +
-            `<td data-rate="${changeInVaccinationRate}">${formatNumber(item.change_vaccinations) || 'N/A'}</td>` +
+            `<td data-rate="${changeInVaccinationRate}">${formatNumber(item.change_vaccinations || weekVaccinationsAvg) || 'N/A'}</td>` +
             `<td data-per-capita="${vaccinationsPer100000}" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Total: ${format(item.total_vaccinations)}<br>Today: ${format(item.change_vaccinations)}<br>Yesterday: 24,346">${formatNumber(item.total_vaccinations)}</td>` +
             `<td data-days-left="${Math.max(Math.round(itemVaccinesAvailable / (weekVaccinationsAvg-0.001) + 0.5),0)}">${formatNumber(itemVaccinesAvailable)}</td>` +
-            `<td><progress max="100" value="${vaccinationsPerCapita}" data-value="${formatNumber(item.total_vaccinations)}"></progress></td>` +
+            `<td><progress max="100" value="${vaccinationsPerCapita}" data-value="${formatNumber(item.total_vaccinations - (item.total_vaccinated || 0))}"></progress></td>` +
             `<td><progress max="100" value="${vaccinationsCompletePerCapita}" data-value="${formatNumber(item.total_vaccinated)}"></progress></td>` +
             `<td><progress class="infection" max="10" value="${casesPerCapita}" data-value="${formatNumber(item.total_cases)}"></progress></td>` +
             `<td><progress class="death" max="4" value="${deathsPerCase}" data-value="${formatNumber(item.total_fatalities)}"></progress></td>` +
