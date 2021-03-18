@@ -301,34 +301,36 @@
                             <table class="table table-bordered table-hover" id="dataTable2" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>Province</th>
-                                        <th>Total Doses Administered</th>
-                                        <th>Total Doses Delivered</th>
-                                        <th>% of Doses Administered <span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'><i class="far fa-question-circle"></i></span></th>
-                                        <th>Doses Administered / 100k Population</th>
-                                        <th>People Fully Vaccinated <span data-toggle='tooltip' title='The number of people reported as having received both required doses'><i class="far fa-question-circle"></i></span></th>
+                                        <th></th>
+                                <th colspan="2">Vaccines</th>
+                                <th colspan="4">Doses Administered</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th>On Hand</th>
+                                <th>Supply Efficiency</th>
+                                <th>Today<span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'>
+                                    <i class="far fa-question-circle"></i></span>
+                                </th>
+                                <th>Total</th>
+                                <th>% Population with 1 Dose</th>
+                                <th>% Pop. Fully Vaccinated</th>
+                                <th>Expected Completion</th>
+                                <th>% Population ever infected</th>
+                                <th>Death Rate (of Infected)</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <td><i><b>Canada</b></i></td>
-                                        
-                                        <td><i><b id="totalVaccinationsCanada"> </b></i></td>
-                                        <td><i><b id="totalVaccinationsDistCanada" data-per-capita=""></b></i></td>
-                                        <td><i><b id="totalVaccinationsPercentCanada" data-per-capita=""></b></i></td>
-                                        <td><i><b id="vaccinatedPerCanada"></b></i></td>
-                                        <td><i><b id="totalVaccinatedCanada"> </b></i></td>
-                                    </tr>
-                                </tfoot>
                                 <tbody id="vaccinationsProvinceTable"></tbody>
+                                <tfoot id="vaccinationsProvinceTableFooter"></tfoot>
                             </table>
                         </div>
                     </div>
                 </div>
 
-
-
-
+            </div>
         </main>
 
 

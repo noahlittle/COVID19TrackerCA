@@ -10526,3 +10526,148 @@ div[class*="summary-header"] h1 {
   font-size: 1.65rem !important;
 }
 
+#vaccinationsProvinceTable tr td:nth-child(-n+4) {
+  white-space: nowrap;
+  font-style: italic;
+}
+
+#vaccinationsProvinceTableFooter tr td {
+  font-weight: bold;
+  font-style: italic;
+  white-space: nowrap;
+}
+td[data-rate]::after {
+  color: var(--blue);
+  content: " (▲" attr(data-rate) "%)"
+}
+td[data-rate ^= "-"]::after {
+  color: var(--red);
+  content: " (▼" attr(data-rate) "%)"
+}
+td[data-rate = "0"]::after, td[data-rate = ""]::after {
+  content: "/day";
+  color: var(--dark);
+  font-weight: lighter;
+}
+td[data-rate = "0"]:not(:empty)::before, td[data-rate = ""]:not(:empty)::before {
+  content: "~"
+}
+td[data-rate]:empty::after {
+  content: "N/A"
+}
+
+
+.progressbar {
+  text-align: left;
+  height: 1.6rem;
+  width: 100%;
+  min-width: 7rem;
+  max-width: 7rem;
+  position: relative;
+  color: white;
+  border: var(--dark);
+  border-width: thin;
+  border-style: solid;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  background-color: gray;
+  vertical-align: middle;
+}
+
+.progressbar::before {
+  content: attr(aria-valuenow) "%";
+  position:absolute;
+  color: white;
+  left:0.2rem;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.progressbar[data-value]:after {
+  content: attr(data-value);
+  vertical-align: middle;
+  position:absolute;
+  right: 0.2rem;
+  margin-top: 0.2rem;
+  color: white;
+  font-size: 0.7rem;
+}
+.progressbar[data-value="0"]:after, .progress[data-value=""]:after {
+  content: "";
+}
+.progressbar[aria-valuenow="N/A"]::before {
+  content: attr(aria-valuenow);
+  font-weight: lighter;
+}
+.progressbar > .value {
+  position: absolute;
+  background-color: var(--blue);
+  height: 100%;
+}
+
+.progressbar.infection > .value {
+  background-color: var(--orange);
+}
+.progressbar.death > .value {
+  background-color: var(--red);
+}
+
+.dose.one, .dose.total {
+  border-right: hidden;
+}
+.dose.one::after {
+  content: "＋";
+  margin-top: -1.6rem;
+  float: right;
+  margin-right: -1.2rem;
+  font-weight: bold;
+}
+.dose.total::after {
+  content: "＝";
+  float: right;
+  margin-right: -1.2rem;
+  font-weight: bold;
+}
+
+/*.supply.complete {*/
+/*  min-width: 10rem;*/
+/*  max-width: 10rem;*/
+/*  width: 10rem;*/
+/*  !*content: "/days";*!*/
+/*  background-image: linear-gradient(*/
+/*          to right,*/
+/*          orange,*/
+/*          orangered 25%,*/
+/*          skyblue 25%,*/
+/*          deepskyblue 50%,*/
+/*          firebrick 50%,*/
+/*          firebrick 75%,*/
+/*          green 75%);*/
+/*  background-size: 100% 6px;*/
+/*  background-position: 50% 100%;*/
+/*  background-repeat: no-repeat;*/
+/*}*/
+.supply.zero:not(:empty)::after{
+  content: " days";
+  white-space: nowrap;
+}
+.supply.complete:not(:empty)::after{
+  content: " weeks";
+  white-space: nowrap;
+}
+
+.supply.zero:not(:empty)::before {
+  content: "~";
+}
+
+.supply.good {
+  color: var(--green);
+}
+
+.supply.ok {
+  color: var(--orange);
+}
+
+.supply.bad {
+  color: var(--red);
+}
