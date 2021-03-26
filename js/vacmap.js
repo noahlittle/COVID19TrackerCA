@@ -76,7 +76,7 @@ function drawProvinces(data) {
 
         var mapHTML = `
           <strong>Doses Administered</strong>
-          <p>per 100,000 popoulation</p>
+          <p>per 100,000 population</p>
           <div class="vac-swatch"></div>
           <ul>
             <li style="text-align:left;">${fillRange[0].toFixed(1)}</li>
