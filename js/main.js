@@ -48,7 +48,7 @@ $(document).ready(() => {
         $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
         $(".summary-header-tests > h1").text(data.total_tests + " tests");
         $(".summary-header-tests > b").text(displayNewCases(data.change_tests));
-        $(".summary-header-vaccinations > h1").text(data.total_vaccinations + " vaccinated");
+        $(".summary-header-vaccinations > h1").text(data.total_vaccinations + " doses administered");
         $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
 
         // update province table footer
