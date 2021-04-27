@@ -45,26 +45,26 @@ $(document).ready(() => {
         hospitalizations = data.total_hospitalizations;
         hospitalizationsChange = data.change_hospitalizations;
 
-        $(".summary-header-cases > h1").text(data.total_cases + " cases");
+        $(".summary-header-cases > h1").text(format(data.total_cases) + " cases");
         $(".summary-header-cases > b").text(displayNewCases(data.change_cases));
-        $(".summary-header-deaths > h1").text(data.total_fatalities + " deaths");
+        $(".summary-header-deaths > h1").text(format(data.total_fatalities) + " deaths");
         $(".summary-header-deaths > b").text(displayNewCases(data.change_fatalities));
-        $(".summary-header-hospitalized > h1").text(data.total_hospitalizations + " hospitalized");
+        $(".summary-header-hospitalized > h1").text(format(data.total_hospitalizations) + " hospitalized");
         $(".summary-header-hospitalized > b").text(displayNewCases(data.change_hospitalizations));
-        $(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
+        $(".summary-header-recoveries > h1").text(format(data.total_recoveries) + " recoveries");
         $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
-        $(".summary-header-tests > h1").text(data.total_tests + " tests");
+        $(".summary-header-tests > h1").text(format(data.total_tests) + " tests");
         $(".summary-header-tests > b").text(displayNewCases(data.change_tests));
     });
 
     $("#activeCases").on('change', function () {
         var checked = $("#activeCases").prop("checked");
         if (checked) {
-            $(".summary-header-cases > h1").text(activeCases + " active");
+            $(".summary-header-cases > h1").text(format(activeCases) + " active");
             $(".summary-header-cases > b").text(displayNewCases(activeCasesChange));
         }
         else {
-            $(".summary-header-cases > h1").text(totalCases + " cases");
+            $(".summary-header-cases > h1").text(format(totalCases) + " cases");
             $(".summary-header-cases > b").text(displayNewCases(totalCasesChange));
         }
     });
@@ -72,11 +72,11 @@ $(document).ready(() => {
     $("#criticalCases").on('change', function () {
         var checked = $("#criticalCases").prop("checked");
         if (checked) {
-            $(".summary-header-hospitalized > h1").text(critical + " critical");
+            $(".summary-header-hospitalized > h1").text(format(critical) + " critical");
             $(".summary-header-hospitalized > b").text(displayNewCases(criticalChange));
         }
         else {
-            $(".summary-header-hospitalized > h1").text(hospitalizations + " hospitalized");
+            $(".summary-header-hospitalized > h1").text(format(hospitalizations) + " hospitalized");
             $(".summary-header-hospitalized > b").text(displayNewCases(hospitalizationsChange));
         }
     });
@@ -90,7 +90,7 @@ $(document).ready(() => {
             data.forEach(item => {
                 container.append("<div>" +
                     "<span>" + item.label + "</span>" +
-                    "<span>" + item.total + " " +  (item.change !== null && item.change !== undefined ? displayNewCasesOlder(item.change) : "") + "</span>" +
+                    "<span>" + format(item.total) + " " +  (item.change !== null && item.change !== undefined ? displayNewCasesOlder(item.change) : "") + "</span>" +
                     "</div>");
             });
         }

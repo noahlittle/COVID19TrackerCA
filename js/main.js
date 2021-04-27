@@ -38,17 +38,17 @@ $(document).ready(() => {
         $("#updateTime").text("Updated " + moment(res.last_updated).format("dddd, MMMM Do [at] h:mm a") + " CST");
 
         // update header
-        $(".summary-header-cases > h1").text(data.total_cases + " cases");
+        $(".summary-header-cases > h1").text(format(data.total_cases) + " cases");
         $(".summary-header-cases > b").text(displayNewCases(data.change_cases));
-        $(".summary-header-deaths > h1").text(data.total_fatalities + " deaths");
+        $(".summary-header-deaths > h1").text(format(data.total_fatalities) + " deaths");
         $(".summary-header-deaths > b").text(displayNewCases(data.change_fatalities));
-        $(".summary-header-hospitalized > h1").text(data.total_hospitalizations + " hospitalized");
+        $(".summary-header-hospitalized > h1").text(format(data.total_hospitalizations) + " hospitalized");
         $(".summary-header-hospitalized > b").text(displayNewCases(data.change_hospitalizations));
-        $(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
+        $(".summary-header-recoveries > h1").text(format(data.total_recoveries) + " recoveries");
         $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
-        $(".summary-header-tests > h1").text(data.total_tests + " tests");
+        $(".summary-header-tests > h1").text(format(data.total_tests) + " tests");
         $(".summary-header-tests > b").text(displayNewCases(data.change_tests));
-        $(".summary-header-vaccinations > h1").text(data.total_vaccinations + " vaccinated");
+        $(".summary-header-vaccinations > h1").text(format(data.total_vaccinations) + " vaccinated");
         $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
 
         // update province table footer
@@ -132,11 +132,11 @@ $(document).ready(() => {
     $("#activeCases").on('change', function () {
         var checked = $("#activeCases").prop("checked");
         if (checked) {
-            $(".summary-header-cases > h1").text(activeCases + " active");
+            $(".summary-header-cases > h1").text(format(activeCases) + " active");
             $(".summary-header-cases > b").text(displayNewCases(activeCasesChange));
         }
         else {
-            $(".summary-header-cases > h1").text(totalCases + " cases");
+            $(".summary-header-cases > h1").text(format(totalCases) + " cases");
             $(".summary-header-cases > b").text(displayNewCases(totalCasesChange));
         }
     });
@@ -144,11 +144,11 @@ $(document).ready(() => {
     $("#criticalCases").on('change', function () {
         var checked = $("#criticalCases").prop("checked");
         if (checked) {
-            $(".summary-header-hospitalized > h1").text(critical + " critical");
+            $(".summary-header-hospitalized > h1").text(format(critical) + " critical");
             $(".summary-header-hospitalized > b").text(displayNewCases(criticalChange));
         }
         else {
-            $(".summary-header-hospitalized > h1").text(hospitalizations + " hospitalized");
+            $(".summary-header-hospitalized > h1").text(format(hospitalizations) + " hospitalized");
             $(".summary-header-hospitalized > b").text(displayNewCases(hospitalizationsChange));
         }
     });
@@ -162,7 +162,7 @@ $(document).ready(() => {
             data.forEach(item => {
                 container.append("<div>" +
                 "<span>" + item.label + "</span>" +
-                "<span>" + item.total + " " +  (item.change !== null && item.change !== undefined ? displayNewCasesOlder(item.change) : "") + "</span>" +
+                "<span>" + format(item.total) + " " +  (item.change !== null && item.change !== undefined ? displayNewCasesOlder(item.change) : "") + "</span>" +
                 "</div>");
             });
         }
@@ -377,13 +377,13 @@ function buildProvinceTable(data, provinceData) {
             "'></span>" +
             "<span>" + provinceProperties(item.province).name + "</span><span class='toggle-regions'><span class='arrow-down' data-toggle='0' data-province='" + item.province + "'><i class='fa fa-angle-down'></i></span></span>" +
             "</td>" +
-            "<td data-per-capita='" + casesPer100000 + "'><b><i>" + item.total_cases + (item.change_cases ? (" " + displayNewCases(item.change_cases)) : "") + "</i></b></td>" +
-            "<td data-per-capita='" + fatalitiesPer100000 + "'><b><i>" + item.total_fatalities + (item.change_fatalities ? (" " + displayNewCases(item.change_fatalities)) : "") + "</i></b></td>" +
-            "<td data-per-capita='" + hospitalizationsPer100000 + "'><b><i>" + item.total_hospitalizations + (item.change_hospitalizations ? (" " + displayNewCases(item.change_hospitalizations)) : "") + "</i></b></td>" +
-            "<td data-per-capita='" + criticalsPer100000 + "'><b><i>" + item.total_criticals + (item.change_criticals ? (" " + displayNewCases(item.change_criticals)) : "") + "</i></b></td>" +
-            "<td data-per-capita='" + recoveriesPer100000 + "'><b><i>" + item.total_recoveries + (item.change_recoveries ? (" " + displayNewCases(item.change_recoveries)) : "") + "</i></b></td>" +
-            "<td data-per-capita='" + testsPer100000 + "'><b><i>" + item.total_tests + (item.change_tests ? (" " + displayNewCases(item.change_tests)) : "") + "</i></b></td>" +
-            "<td data-per-capita='" + vaccinationsPer100000 + "'><b><i>" + item.total_vaccinations + (item.change_vaccinations ? (" " + displayNewCases(item.change_vaccinations)) : "") + "</i></b></td>" +
+            "<td data-per-capita='" + casesPer100000 + "'><b><i>" + format(item.total_cases) + (item.change_cases ? (" " + displayNewCases(item.change_cases)) : "") + "</i></b></td>" +
+            "<td data-per-capita='" + fatalitiesPer100000 + "'><b><i>" + format(item.total_fatalities) + (item.change_fatalities ? (" " + displayNewCases(item.change_fatalities)) : "") + "</i></b></td>" +
+            "<td data-per-capita='" + hospitalizationsPer100000 + "'><b><i>" + format(item.total_hospitalizations) + (item.change_hospitalizations ? (" " + displayNewCases(item.change_hospitalizations)) : "") + "</i></b></td>" +
+            "<td data-per-capita='" + criticalsPer100000 + "'><b><i>" + format(item.total_criticals) + (item.change_criticals ? (" " + displayNewCases(item.change_criticals)) : "") + "</i></b></td>" +
+            "<td data-per-capita='" + recoveriesPer100000 + "'><b><i>" + format(item.total_recoveries) + (item.change_recoveries ? (" " + displayNewCases(item.change_recoveries)) : "") + "</i></b></td>" +
+            "<td data-per-capita='" + testsPer100000 + "'><b><i>" + format(item.total_tests) + (item.change_tests ? (" " + displayNewCases(item.change_tests)) : "") + "</i></b></td>" +
+            "<td data-per-capita='" + vaccinationsPer100000 + "'><b><i>" + format(item.total_vaccinations) + (item.change_vaccinations ? (" " + displayNewCases(item.change_vaccinations)) : "") + "</i></b></td>" +
             "<td>" + casesPer100000 + "</td>" +
             "<td><a href='" + item.source + "'>Source</a></td>" +
             "</tr>"
