@@ -150,7 +150,6 @@ $(document).ready(() => {
         //$(".display-select").hide();
         // get and update header, and cases by province table footer
         //draw map and cases by province graph and table
-        
 
         document.querySelector('title').textContent = `COVID-19 Tracker Canada - ${pText} Vaccination Tracker`;
 
@@ -291,7 +290,6 @@ function buildRegionTable(data, regionData) {
         var regName = typeof regProvinceData !== "undefined" ? regProvinceData.engname : "Region " + item.hr_uid;
         var itemTotalVaccinations = (item.total_vaccinations === null || item.total_vaccinations === undefined) ? "No Data" : item.total_vaccinations;
         var itemTotalVaccinated = (item.total_vaccinated === null || item.total_vaccinated === undefined) ? "No Data" : item.total_vaccinated;
-        
         // append data to row
         $('#vaccinationsProvinceTable').append(
             "<tr class='provinceRow'>" +

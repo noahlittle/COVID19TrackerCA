@@ -115,7 +115,7 @@ $(document).ready(() => {
             if (lastItem.total_vaccinations === null || lastItem.total_vaccinations === undefined)
                 $(".summary-header-vaccinations").closest(".col-md").hide();
             else {
-                $(".summary-header-vaccinations > h1").text(lastItem.total_vaccinations + " vaccinated");
+                $(".summary-header-vaccinations > h1").text(lastItem.total_vaccinations + " doses administered");
                 if (lastItem.change_vaccinations !== null && lastItem.change_vaccinations !== undefined)
                     $(".summary-header-vaccinations > b").text(displayNewCases(lastItem.change_vaccinations));
             }
@@ -181,7 +181,7 @@ $(document).ready(() => {
             $(".summary-header-recoveries > b").text(displayNewCases(province.change_recoveries));
             $(".summary-header-tests > h1").text(province.total_tests + " tests");
             $(".summary-header-tests > b").text(displayNewCases(province.change_tests));
-            $(".summary-header-vaccinations > h1").text(province.total_vaccinations + " vaccinated");
+            $(".summary-header-vaccinations > h1").text(province.total_vaccinations + " doses administered");
             $(".summary-header-vaccinations > b").text(displayNewCases(province.change_vaccinations));
         });
 
