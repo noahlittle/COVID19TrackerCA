@@ -10526,3 +10526,12 @@ div[class*="summary-header"] h1 {
   font-size: 1.65rem !important;
 }
 
+#vaccineDistributionByProvinceDiv td {
+    white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+    .vac-dist {
+        height: calc(100% - 24px);
+    }
+}
