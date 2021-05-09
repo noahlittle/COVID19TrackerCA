@@ -76,46 +76,21 @@
                 <br>
                 <h4><button type="button" class="btn btn-secondary mr-2 mt-2" onClick="goVax()">&#x2190; Back to <i class="fab fa-canadian-maple-leaf"></i> COVID-19 Vaccination Tracker</h4></button>
                 <br>
-               
 
-
-  	 <h1><span class="display-province"></span> Vaccination Data</h1>
-  	 <br>
+                <h1><span class="display-province"></span> Vaccination Data</h1>
+                <br>
                 <div class="card">
-  <div class="card-body">
-Regional data may be updated later than provincial data, and may be partially or completely unavailable for some provinces.
-
-  </div>
-</div>
-                <!--<div class="row">
-                    <div class="col-xl-8">
-                        <div class="form-group d-inline-block mr-4">
-                            <label for="provinceSelection">Select a Province</label>
-                            <select class="form-control" id="provinceSelection" style="width:300px;">
-                                <option value="">Select Province</option>
-                                <option value="AB">Alberta</option>
-                                <option value="BC">British Columbia</option>
-                                <option value="MB">Manitoba</option>
-                                <option value="NB">New Brunswick</option>
-                                <option value="NL">Newfoundland and Labrador</option>
-                                <option value="NT">Northwest Territories</option>
-                                <option value="NS">Nova Scotia</option>
-                                <option value="NU">Nunavut</option>
-                                <option value="ON">Ontario</option>
-                                <option value="PE">Prince Edward Island</option>summary-dropdown-container
-                                <option value="QC">Quebec</option>
-                                <option value="SK">Saskatchewan</option>
-                                <option value="YT">Yukon</option>
-                            </select>
-                        </div>
+                    <div class="card-body">
+                        Regional data may be updated later than provincial data, and may be partially or completely unavailable for some provinces.
                     </div>
-                </div>-->
+                </div>
                 <br />
                 <div class="row display-select">
                     <div class="col-md">
                         <div class="card bg-dark text-white mb-4">
                             <div class="card-body summary-header-vaccinations">
-                                <h1></h1> <b></b><div class="material-switch pull-right">
+                                <h1></h1> <b></b>
+                                <div class="material-switch pull-right">
                                     <div class="switch-label d-inline-block">People <span data-toggle='tooltip' title='Two doses are required to vaccinate an individual; this value indicates the approximate number of people who have received at least one dose.'><i class="far fa-question-circle"></i></span></div>
                                     <div class="d-inline-block">
                                         <input id="criticalCases" name="criticalCases" type="checkbox" />
@@ -135,7 +110,16 @@ Regional data may be updated later than provincial data, and may be partially or
                     </div>
                     <div class="col-md">
                         <div class="card bg-secondary text-white mb-4">
-                            <div class="card-body summary-header-percentVaccinated"><h1></h1> <b></b></div>
+                            <div class="card-body summary-header-percentVaccinated">
+                                <h1></h1> <b></b>
+                                <div class="material-switch pull-right">
+                                    <div class="switch-label d-inline-block">Eligible <span data-toggle='tooltip' title='Two doses are required to vaccinate an individual; this value indicates the approximate number of people who have received at least one dose.'><i class="far fa-question-circle"></i></span></div>
+                                    <div class="d-inline-block">
+                                        <input id="popDoseToggle" name="criticalCases" type="checkbox" />
+                                        <label for="popDoseToggle" class="label-success"></label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -220,44 +204,33 @@ Regional data may be updated later than provincial data, and may be partially or
                     </div>
                 </div>
 
+                <br>
 
-<br>
-
-
-                
-
-
-
-
-<div class="card mb-12">
-  <div class="row no-gutters">
-    <div class="col-md-8">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Prov -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5158964525165314"
-     data-ad-slot="9821509304"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    </div>
-    <div class="col-md-4">
-      <div class="card-body">
-        <h5 class="card-title">Advertisement</h5>
-        <p class="card-text">The <a href="https://covid19tracker.ca/about.html">COVID-19 Tracker Canada project</a> is an independent volunteer-run project that receives no formal funding. To ensure that we're able to continue to provide updates indefinitely, we're temporarily testing ads on some pages. If made permanent, this will allow us to cover the costs of site infrastructure and continue to expand data collection and visualizations into the future.</p>
-        <a class="btn btn-dark" href="mailto:noah.little@usask.ca" role="button">Give Feedback</a>
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-
-
-
-
+                <div class="card mb-12">
+                    <div class="row no-gutters">
+                        <div class="col-md-8">
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- Prov -->
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-5158964525165314"
+                                 data-ad-slot="9821509304"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Advertisement</h5>
+                                <p class="card-text">The <a href="https://covid19tracker.ca/about.html">COVID-19 Tracker Canada project</a> is an independent volunteer-run project that receives no formal funding. To ensure that we're able to continue to provide updates indefinitely, we're temporarily testing ads on some pages. If made permanent, this will allow us to cover the costs of site infrastructure and continue to expand data collection and visualizations into the future.</p>
+                                <a class="btn btn-dark" href="mailto:noah.little@usask.ca" role="button">Give Feedback</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
                 <br>
                 <div class="card mb-4 display-select">
                     <div class="card-header"><i class="fas fa-table mr-1"></i>Doses By Region</div>
@@ -269,8 +242,8 @@ Regional data may be updated later than provincial data, and may be partially or
                                         <th>Region</th>
                                         <th>Total Doses Administered</th>
                                         <!--<th>Total Doses Delivered</th>
-                                        <th>% of Doses Administered <span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'><i class="far fa-question-circle"></i></span></th>
-                                        <th>Doses Administered / 100k Population</th>-->
+                            <th>% of Doses Administered <span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'><i class="far fa-question-circle"></i></span></th>
+                            <th>Doses Administered / 100k Population</th>-->
                                         <th>People Fully Vaccinated <span data-toggle='tooltip' title='The number of people reported as having received both required doses'><i class="far fa-question-circle"></i></span></th>
                                     </tr>
                                 </thead>
@@ -279,8 +252,8 @@ Regional data may be updated later than provincial data, and may be partially or
                                         <td><i><b><span class="display-province"></span></b></i></td>
                                         <td><i><b id="totalVaccinationsCanada"> </b></i></td>
                                         <!--<td><i><b id="totalVaccinationsDistCanada" data-per-capita=""></b></i></td>
-                                        <td><i><b id="totalVaccinationsPercentCanada" data-per-capita=""></b></i></td>
-                                        <td><i><b id="vaccinatedPerCanada"></b></i></td>-->
+                            <td><i><b id="totalVaccinationsPercentCanada" data-per-capita=""></b></i></td>
+                            <td><i><b id="vaccinatedPerCanada"></b></i></td>-->
                                         <td><i><b id="totalVaccinatedCanada"> </b></i></td>
                                     </tr>
                                 </tfoot>
@@ -290,26 +263,43 @@ Regional data may be updated later than provincial data, and may be partially or
                     </div>
                 </div>
 
-                <hr/>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card mb-4 vac-dist">
+                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="newCasesByDay"><span class="display-province"></span> Vaccine Distribution</span></div>
+                            <div class="card-body" id="vaccineDistributionDiv">
+                                <div class="col-xl-6 offset-xl-3">
+                                    <canvas id="vaccineDistribution" height="200"></canvas>
+                                    <br>
+                                    <br>
+                                    <div class="card">
+                    <div class="card-body">
+                                    <i>Administration data by vaccine type is updated each Friday with data up to and including the previous Saturday. Delivery data by <i>vaccine product</i> was last updated on <b id="vaccineDistributionLastUpdate"></b>.</i>
+                    </div>
+                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5158964525165314"
-     crossorigin="anonymous"></script>
-<!-- Midpage -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5158964525165314"
-     data-ad-slot="5106475882"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<br>
+                <hr />
 
-
-
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5158964525165314"
+                        crossorigin="anonymous"></script>
+                <!-- Midpage -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5158964525165314"
+                     data-ad-slot="5106475882"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <br>
             </div>
-
         </main>
 
         <footer class="py-4 bg-light mt-auto">

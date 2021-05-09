@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -43,27 +43,27 @@
         gtag('config', 'UA-160029240-1');
     </script>
 
-<!--
-<script>
-    $(document).ready(function () {
-    // Check if user saw the modal
-    var key = 'hadModal',
-        hadModal = localStorage.getItem(key);
+    <!--
+    <script>
+        $(document).ready(function () {
+        // Check if user saw the modal
+        var key = 'hadModal',
+            hadModal = localStorage.getItem(key);
 
-    // Show the modal only if new user
-   // if (!hadModal) 
-   {
-        $('#myModal').modal('show');
-    }
+        // Show the modal only if new user
+       // if (!hadModal)
+       {
+            $('#myModal').modal('show');
+        }
 
-    // If modal is displayed, store that in localStorage
-    $('#myModal').on('shown.bs.modal', function () {
-        localStorage.setItem(key, true);
-    })
-});
+        // If modal is displayed, store that in localStorage
+        $('#myModal').on('shown.bs.modal', function () {
+            localStorage.setItem(key, true);
+        })
+    });
 
-</script>
--->
+    </script>
+    -->
 
 
 </head>
@@ -74,27 +74,24 @@
 
         <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></div>
 
-    <ul class="navbar-nav ml-auto ml-md-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Menu</b></a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="about.html">About</a>
-                        <a class="dropdown-item" href="sources.html">Sources</a>
-                        <a class="dropdown-item" href="ontario.html">Ontario Data</a>
-                        <a class="dropdown-item" href="notes.html">Data Notes</a>
-                        <a class="dropdown-item" href="https://api.covid19tracker.ca">API Access</a>
-                        <a class="dropdown-item" href="acknowledgements.html">Acknowledgments</a>
-                        <a class="dropdown-item" href="licensing.html">Citation</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="mailto:noah.little@usask.ca">Contact</a>
-                    </div>
-                </li>
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Menu</b></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="about.html">About</a>
+                    <a class="dropdown-item" href="sources.html">Sources</a>
+                    <a class="dropdown-item" href="ontario.html">Ontario Data</a>
+                    <a class="dropdown-item" href="notes.html">Data Notes</a>
+                    <a class="dropdown-item" href="https://api.covid19tracker.ca">API Access</a>
+                    <a class="dropdown-item" href="acknowledgements.html">Acknowledgments</a>
+                    <a class="dropdown-item" href="licensing.html">Citation</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="mailto:noah.little@usask.ca">Contact</a>
+                </div>
+            </li>
         </ul>
     </nav>
-
-
     <div class="sb-sidenav-footer"></div>
-
     <div id="layoutSidenav_content">
         <main id="mainData">
             <div class="container-fluid">
@@ -103,42 +100,44 @@
                 <br>
                 <h1><i class="fab fa-canadian-maple-leaf"></i> COVID-19 Vaccination Tracker</h1>
                 <br>
-
-
                 <div class="row">
                     <div class="col-md">
                         <div class="card bg-dark text-white mb-4">
-                            <div class="card-body summary-header-vaccinations"><h1></h1> <b></b><div class="material-switch pull-right">
-                                <div class="switch-label d-inline-block">People <span data-toggle='tooltip' title='Two doses are required to vaccinate an individual; this value indicates the approximate number of people who have received at least one dose.'><i class="far fa-question-circle"></i></span></div>
-                                <div class="d-inline-block">
-                                    <input id="criticalCases" name="criticalCases" type="checkbox"/>
-                                    <label for="criticalCases" class="label-success"></label>
+                            <div class="card-body summary-header-vaccinations">
+                                <h1></h1> <b></b>
+                                <div class="material-switch pull-right">
+                                    <div class="switch-label d-inline-block">People <span data-toggle='tooltip' title='Two doses are required to vaccinate an individual; this value indicates the number of people who have received at least one dose.'><i class="far fa-question-circle"></i></span></div>
+                                    <div class="d-inline-block">
+                                        <input id="criticalCases" name="criticalCases" type="checkbox" />
+                                        <label for="criticalCases" class="label-success"></label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="summary-arrow" data-field="vaccinations"><span class="arrow-down"><i class="fa fa-angle-down"></i></span></div>
+                                <div class="summary-arrow" data-field="vaccinations"><span class="arrow-down"><i class="fa fa-angle-down"></i></span></div>
 
-                            <div class="summary-dropdown-container"></div>
+                                <div class="summary-dropdown-container"></div>
                             </div>
                         </div>
                     </div>
-
-
-
                     <div class="col-md">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body summary-header-vaccineDelivered"><h1></h1><b></b> <span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'><i class="far fa-question-circle"></i></span></div>
                         </div>
                     </div>
-
-
                     <div class="col-md">
                         <div class="card bg-secondary text-white mb-4">
-                            <div class="card-body summary-header-percentVaccinated"><h1></h1> <b></b></div>
+                            <div class="card-body summary-header-percentVaccinated">
+                                <h1></h1> <b></b>
+                                <!-- <div class="material-switch pull-right">
+                                    <div class="switch-label d-inline-block">Eligible <span data-toggle='tooltip' title='Two doses are required to vaccinate an individual; this value indicates the approximate number of people who have received at least one dose.'><i class="far fa-question-circle"></i></span></div>
+                                    <div class="d-inline-block">
+                                        <input id="popDoseToggle" name="popDoseToggle" type="checkbox" />
+                                        <label for="popDoseToggle" class="label-success"></label>
+                                    </div>
+                                </div>
+                            -->
+                            </div>
                         </div>
                     </div>
-
-                    
-
                 </div>
 
                 <div class="row">
@@ -158,21 +157,22 @@
 
                                 <p>The Pfizer-BioNTech, Moderna and AstraZeneca vaccines require two doses, a number of weeks apart, for full efficacy. Consequently, we report both the total number of doses administered, and the total number of Canadians who have been fully vaccinated. As of today, more than <b><span id="updateVaxPpl"></span></b> Canadians have received at least one dose of an approved COVID-19 vaccine. <b><span id="updateTwoDoses"></span></b> Canadians are fully vaccinated against COVID-19, having received both required doses.</p>
 
-                                 <hr/>
+                                <hr />
 
                                 <p>
-                               Our data is aggregated by volunteers exclusively from official government sources, updated throughout the day in near real-time. All of our data is freely available for use via our <a href="https://api.covid19tracker.ca">API</a> or in <a href="https://docs.google.com/spreadsheets/d/1PjkemMdFSZgA-M8Esr6rbNjHiyfcXcBxPeMjselJIso/edit?usp=sharing">CSV format</a>. Find more information on the sources we use <a href="https://covid19tracker.ca/vacsources.html">here</a>.</p>
+                                    Our data is aggregated by volunteers exclusively from official government sources, updated throughout the day in near real-time. All of our data is freely available for use via our <a href="https://api.covid19tracker.ca">API</a> or in <a href="https://docs.google.com/spreadsheets/d/1PjkemMdFSZgA-M8Esr6rbNjHiyfcXcBxPeMjselJIso/edit?usp=sharing">CSV format</a>. Find more information on the sources we use <a href="https://covid19tracker.ca/vacsources.html">here</a>.
+                                </p>
 
                                 <p>
-                                
-                                        Find all of the data we track (including cases, fatalities, hospitalizations, criticals, testing and recoveries) <a href="https://covid19tracker.ca">here</a>.
-               
+
+                                    Find all of the data we track (including cases, fatalities, hospitalizations, criticals, testing and recoveries) <a href="https://covid19tracker.ca">here</a>.
+
 
 
                                 </p>
 
-                
-    
+
+
                             </div>
                         </div>
                     </div>
@@ -188,7 +188,7 @@
                         </div>
                     </div>
 
-                                    
+
                 </div>
 
 
@@ -236,53 +236,53 @@
                     </div>
                 </div>
 
-<div class="row">
-    <div class="col-xl-6">
-        <div class="card">
-            <div class="card-body">
-            <h4>Data By Province</h4>
-            <p>Track all available vaccination data for every region in your province.</p>
-
-   
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             Select Province
-            </button>
-             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="./provincevac.html?p=AB">Alberta</a>
-                <a class="dropdown-item" href="./provincevac.html?p=BC">British Columbia</a>
-                <a class="dropdown-item" href="./provincevac.html?p=MB">Manitoba</a>
-                <a class="dropdown-item" href="./provincevac.html?p=NB">New Brunswick</a>
-                <a class="dropdown-item" href="./provincevac.html?p=NL">Newfoundland and Labrador</a>
-                <a class="dropdown-item" href="./provincevac.html?p=NT">Northwest Territories</a>
-                <a class="dropdown-item" href="./provincevac.html?p=NS">Nova Scotia</a>
-                <a class="dropdown-item" href="./provincevac.html?p=NU">Nunavut</a>
-                <a class="dropdown-item" href="./provincevac.html?p=ON">Ontario</a>
-                <a class="dropdown-item" href="./provincevac.html?p=PE">Prince Edward Island</a>
-                <a class="dropdown-item" href="./provincevac.html?p=QC">Quebec</a>
-                <a class="dropdown-item" href="./provincevac.html?p=SK">Saskatchewan</a>
-                <a class="dropdown-item" href="./provincevac.html?p=YT">Yukon</a>
-             </div>
-
-        </div>
-    </div>
-</div>
-
-    <div class="col-xl-6">
-        <div class="card">
-            <div class="card-body">
-            <h4>Canada's Vaccine Gap</h4>
-            <p>See how Canada's vaccine administration compares to doses delivered over time.</p>
-            <a class="btn btn-secondary" href="https://covid19tracker.ca/vaccinegap.html" role="button"><i class="fab fa-canadian-maple-leaf"></i> Gap Tracker</a>
-            </a>
-   
-
-        </div>
-    </div>
-</div>
-</div>
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Data By Province</h4>
+                                <p>Track all available vaccination data for every region in your province.</p>
 
 
-<br>
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Select Province
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="./provincevac.html?p=AB">Alberta</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=BC">British Columbia</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=MB">Manitoba</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=NB">New Brunswick</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=NL">Newfoundland and Labrador</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=NT">Northwest Territories</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=NS">Nova Scotia</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=NU">Nunavut</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=ON">Ontario</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=PE">Prince Edward Island</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=QC">Quebec</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=SK">Saskatchewan</a>
+                                    <a class="dropdown-item" href="./provincevac.html?p=YT">Yukon</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Canada's Vaccine Gap</h4>
+                                <p>See how Canada's vaccine administration compares to doses delivered over time.</p>
+                                <a class="btn btn-secondary" href="https://covid19tracker.ca/vaccinegap.html" role="button"><i class="fab fa-canadian-maple-leaf"></i> Gap Tracker</a>
+                                </a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <br>
 
 
                 <div class="col-xl-12 col-md-12" id="statisticsNotice">
@@ -312,7 +312,7 @@
                                 <tfoot>
                                     <tr>
                                         <td><i><b>Canada</b></i></td>
-                                        
+
                                         <td><i><b id="totalVaccinationsCanada"> </b></i></td>
                                         <td><i><b id="totalVaccinationsDistCanada" data-per-capita=""></b></i></td>
                                         <td><i><b id="totalVaccinationsPercentCanada" data-per-capita=""></b></i></td>
@@ -326,49 +326,103 @@
                     </div>
                 </div>
 
-                     
-
-<div class="card mb-12">
-  <div class="row no-gutters">
-    <div class="col-md-8">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Prov -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5158964525165314"
-     data-ad-slot="9821509304"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    </div>
-    <div class="col-md-4">
-      <div class="card-body">
-        <h5 class="card-title">Advertisement</h5>
-        <p class="card-text">The <a href="https://covid19tracker.ca/about.html">COVID-19 Tracker Canada project</a> is an independent volunteer-run project that receives no formal funding. To ensure that we're able to continue to provide updates indefinitely, we're temporarily testing ads on some pages. If made permanent, this will allow us to cover the costs of site infrastructure and continue to expand data collection and visualizations into the future.</p>
-        <a class="btn btn-dark" href="mailto:noah.little@usask.ca" role="button">Give Feedback</a>
-      </div>
-    </div>
-  </div>
-</div>
+                                <div class="card mb-12">
+                    <div class="row no-gutters">
+                        <div class="col-md-8">
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- Prov -->
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-5158964525165314"
+                                 data-ad-slot="9821509304"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Advertisement</h5>
+                                <p class="card-text">The <a href="https://covid19tracker.ca/about.html">COVID-19 Tracker Canada project</a> is an independent volunteer-run project that receives no formal funding. To ensure that we're able to continue to provide updates indefinitely, we're temporarily testing ads on some pages. If made permanent, this will allow us to cover the costs of site infrastructure and continue to expand data collection and visualizations into the future.</p>
+                                <a class="btn btn-dark" href="mailto:noah.little@usask.ca" role="button">Give Feedback</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <br>
 
 
 
 
+                <div class="row">
+
+
+                                        <div class="col-xl-6">
+                        <div class="card mb-4 vac-dist">
+                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="newCasesByDay">Canada Vaccine Distribution</span></div>
+                            <br>
+                            <div class="card-body" id="vaccineDistributionDiv">
+                                <canvas id="vaccineDistribution" height="250"></canvas>
+                    <br>
+                    <br>
+                <div class="card">
+                    <div class="card-body">
+                        Updated on <b id="vaccineDistributionLastUpdate"></b>
+                        
+                    </div>
+                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-bar mr-1"></i><span id="vaccineDistributionByProvince">Vaccine Distribution By Province</span></div>
+                            <div class="card-body" id="vaccineDistributionByProvinceDiv">
+               
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Province</th>
+                                                <th>Moderna</th>
+                                                <th>Pfizer-BioNTech</th>
+                                                <th>AstraZeneca</th>
+                                                <th>Johnson & Johnson</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="vaccineDistributionByProvinceTable"></tbody>
+                                    </table>
+                    <div class="card">
+                    <div class="card-body">
+                                    <i>Delivery and administration data by <i>vaccine product</i> are not updated as frequently as the values reported above, and totals may not match. Administration data by vaccine type is updated each Friday with data up to and including the previous Saturday. Delivery data by <i>vaccine product</i> was last updated on <b id="vaccineDistributionLastUpdate2"></b>.</i>
+                    </div>
+                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <br>
+
+
         </main>
-
-
-
-
-
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between small">
                     <div class="text-muted">Copyright &copy; COVID19Tracker.ca 2021 // Near real-time COVID-19 data updates for every region in Canada, tracking cases, deaths, vaccinations, hospitalizations, ICU, recoveries and testing // <a href="mailto:noah.little@usask.ca">noah.little@usask.ca</a></div>
-                    <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support The Project', '#29abe0', 'G2G11J6WQ');kofiwidget2.draw();</script> 
+                    <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+                    <script type='text/javascript'>kofiwidget2.init('Support The Project', '#29abe0', 'G2G11J6WQ'); kofiwidget2.draw();</script>
 
                 </div>
             </div>
@@ -376,34 +430,34 @@
     </div>
 
 
-<!--
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"><b>Tracker Temporarily Unavailable</b></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
+    <!--
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><b>Tracker Temporarily Unavailable</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-       <h5>Due to unscheduled maintenance, the Vaccination Tracker is temporarily unavailable.</h5>
-<br>
+           <h5>Due to unscheduled maintenance, the Vaccination Tracker is temporarily unavailable.</h5>
+    <br>
 
-<p>The server used for our systems is currently undergoing emergency maintenance. This impacts all services powered by our API. We are working to restore services as soon as possible, and apologize for any inconvenience this downtime may cause.</p>
+    <p>The server used for our systems is currently undergoing emergency maintenance. This impacts all services powered by our API. We are working to restore services as soon as possible, and apologize for any inconvenience this downtime may cause.</p>
 
-<p>Please wait, and load the page again later. Data will appear again once services are restored.</p>
+    <p>Please wait, and load the page again later. Data will appear again once services are restored.</p>
 
-<p>Up-to-date information regarding the situation will be available via <a href="https://twitter.com/covid_canada">Twitter</a>.</p>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <p>Up-to-date information regarding the situation will be available via <a href="https://twitter.com/covid_canada">Twitter</a>.</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
--->
+    -->
 
 
 
