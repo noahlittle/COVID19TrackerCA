@@ -113,14 +113,14 @@
                             <div class="card-body summary-header-percentVaccinated">
                                 <h1></h1> <b></b>
                                 <!--
-                                <div class="material-switch pull-right">
-                                    <div class="switch-label d-inline-block">Eligible <span data-toggle='tooltip' title='Two doses are required to vaccinate an individual; this value indicates the approximate number of people who have received at least one dose.'><i class="far fa-question-circle"></i></span></div>
-                                    <div class="d-inline-block">
-                                        <input id="popDoseToggle" name="criticalCases" type="checkbox" />
-                                        <label for="popDoseToggle" class="label-success"></label>
+                                    <div class="material-switch pull-right">
+                                        <div class="switch-label d-inline-block">Eligible <span data-toggle='tooltip' title='Two doses are required to vaccinate an individual; this value indicates the approximate number of people who have received at least one dose.'><i class="far fa-question-circle"></i></span></div>
+                                        <div class="d-inline-block">
+                                            <input id="popDoseToggle" name="criticalCases" type="checkbox" />
+                                            <label for="popDoseToggle" class="label-success"></label>
+                                        </div>
                                     </div>
-                                </div>
-                            -->
+                                -->
                             </div>
                         </div>
                     </div>
@@ -244,8 +244,8 @@
                                         <th>Region</th>
                                         <th>Total Doses Administered</th>
                                         <!--<th>Total Doses Delivered</th>
-                            <th>% of Doses Administered <span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'><i class="far fa-question-circle"></i></span></th>
-                            <th>Doses Administered / 100k Population</th>-->
+                                        <th>% of Doses Administered <span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'><i class="far fa-question-circle"></i></span></th>
+                                        <th>Doses Administered / 100k Population</th>-->
                                         <th>People Fully Vaccinated <span data-toggle='tooltip' title='The number of people reported as having received both required doses'><i class="far fa-question-circle"></i></span></th>
                                     </tr>
                                 </thead>
@@ -254,8 +254,8 @@
                                         <td><i><b><span class="display-province"></span></b></i></td>
                                         <td><i><b id="totalVaccinationsCanada"> </b></i></td>
                                         <!--<td><i><b id="totalVaccinationsDistCanada" data-per-capita=""></b></i></td>
-                            <td><i><b id="totalVaccinationsPercentCanada" data-per-capita=""></b></i></td>
-                            <td><i><b id="vaccinatedPerCanada"></b></i></td>-->
+                                        <td><i><b id="totalVaccinationsPercentCanada" data-per-capita=""></b></i></td>
+                                        <td><i><b id="vaccinatedPerCanada"></b></i></td>-->
                                         <td><i><b id="totalVaccinatedCanada"> </b></i></td>
                                     </tr>
                                 </tfoot>
@@ -266,21 +266,37 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xl-12">
+                    <div class="col-xl-6">
                         <div class="card mb-4 vac-dist">
                             <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="newCasesByDay"><span class="display-province"></span> Vaccines Distributed</span></div>
                             <div class="card-body" id="vaccineDistributionDiv">
-                                <div class="col-xl-6 offset-xl-3">
-                                    <canvas id="vaccineDistribution" height="200"></canvas>
-                                    <br>
-                                    <br>
-                                    <div class="card">
-                    <div class="card-body">
-                                    <i>Delivery data by <i>vaccine product</i> was last updated on <b id="vaccineDistributionLastUpdate"></b>.</i>
-                    </div>
-                    </div>
+                                <canvas class="vaccine-distribution" id="vaccineDistribution" height="200"></canvas>
+                                <br>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i>Delivery data by <i>vaccine product</i> was last updated on <b id="vaccineDistributionLastUpdate"></b>.</i>
+                                    </div>
                                 </div>
-                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-bar mr-1"></i><span id="newVaccinesBarGraph">Canada Vaccines Distributed</span></div>
+                            <div class="card-body" id="vaccineDistributionBar">
+                                <canvas id="vaccineDistributionBarCanvas" width="100%"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>

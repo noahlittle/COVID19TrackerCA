@@ -16,11 +16,11 @@ var regions = [];
 // Helper function to format numbers with commas
 const formatter = new Intl.NumberFormat('en-CA');
 function format(value) {
-  const formattedValue = formatter.format(value);
-  // this safely returns any values that aren't numbers, such a 'N/A'
-  if (formattedValue === 'NaN') return value;
-  // otherwise return the number as a string with commas in it
-  return formattedValue;
+    const formattedValue = formatter.format(value);
+    // this safely returns any values that aren't numbers, such a 'N/A'
+    if (formattedValue === 'NaN') return value;
+    // otherwise return the number as a string with commas in it
+    return formattedValue;
 }
 
 // Controls the state of the application, sets up correct data information
@@ -64,7 +64,7 @@ $(document).ready(() => {
         $("#updateTwoDoses").text(format(data.total_vaccinated));
         $("#updateVaxPpl").text(format(data.total_vaccinations - data.total_vaccinated));
         $("#updateTotalDel").text(format(data.total_vaccines_distributed));
-        $("#updatePerAdm").text((((data.total_vaccinations) / (data.total_vaccines_distributed))*100).toFixed(1) + "%")
+        $("#updatePerAdm").text((((data.total_vaccinations) / (data.total_vaccines_distributed)) * 100).toFixed(1) + "%")
 
 
 
@@ -80,14 +80,14 @@ $(document).ready(() => {
         $(".summary-header-hospitalized > b").text(displayNewCases(data.change_hospitalizations));
         $(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
         $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
-        $(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - data.total_vaccinated) / 38008005)*100).toFixed(3) + "%");
+        $(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - data.total_vaccinated) / 38008005) * 100).toFixed(3) + "%");
         $(".summary-header-percentVaccinated > b").text("of the Canadian population has received at least one dose");
         $(".summary-header-vaccinations > h1").text(format(data.total_vaccinations) + " doses administered");
         $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
         $(".summary-header-pplVac > h1").text(data.total_vaccinations);
         $(".summary-header-pplVac > b").text("people have received at least one dose");
         $(".summary-header-vaccineDelivered > h1").text(format(data.total_vaccines_distributed) + " doses delivered");
-        $(".summary-header-vaccineDelivered > b").text((((data.total_vaccinations) / (data.total_vaccines_distributed))*100).toFixed(1) + "%" + " of doses delivered have been administered");
+        $(".summary-header-vaccineDelivered > b").text((((data.total_vaccinations) / (data.total_vaccines_distributed)) * 100).toFixed(1) + "%" + " of doses delivered have been administered");
 
         // update province table footer
         var canadaPopulation = 38008005;
@@ -116,7 +116,7 @@ $(document).ready(() => {
         $('#totalTestsCanada').text(data.total_tests + (data.change_tests ? (" " + displayNewCases(data.change_tests)) : ""));
         $('#totalVaccinationsCanada').text(data.total_vaccinations + (data.change_vaccinations ? (" " + displayNewCases(data.change_vaccinations)) : ""));
         $('#totalVaccinationsDistCanada').text(data.total_vaccines_distributed);
-        $('#totalVaccinationsPercentCanada').text((((data.total_vaccinations) / (data.total_vaccines_distributed))*100).toFixed(1) + "%")
+        $('#totalVaccinationsPercentCanada').text((((data.total_vaccinations) / (data.total_vaccines_distributed)) * 100).toFixed(1) + "%")
         $('#totalVaccinationsChangeCanada').text(data.change_vaccinations);
         $('#totalVaccinatedCanada').text(data.total_vaccinated);
         $('#vaccinatedPerCanada').text(vaccinationsPer100000);
@@ -126,7 +126,7 @@ $(document).ready(() => {
     $("#perCapita").on('change', function () {
         var field = $(this).val();
 
-        switch(field) {
+        switch (field) {
             case "cases":
                 $('#infectedPerCanada').text($('#totalCasesCanada').attr("data-per-capita"));
                 $('#totalCasesProvinceTable tr.provinceRow').each((index, item) => {
@@ -192,7 +192,7 @@ $(document).ready(() => {
 
             $(".summary-header-vaccinations > h1").text(format(peopleVaccinated) + " people");
             $(".summary-header-vaccinations > b").text("have received at least one dose");
-            
+
         }
         else {
             $(".summary-header-vaccinations > h1").text(format(vaccinations) + " doses administered");
@@ -213,7 +213,7 @@ $(document).ready(() => {
         }
     });
 
-    $(".summary-arrow").click(function() {
+    $(".summary-arrow").click(function () {
         var container = $(this).next();
         container.empty();
         var field = $(this).attr("data-field");
@@ -221,9 +221,9 @@ $(document).ready(() => {
         if (data !== undefined) {
             data.forEach(item => {
                 container.append("<div>" +
-                "<span>" + item.label + "</span>" +
-                "<span>" + item.total + " " +  (item.change !== null && item.change !== undefined ? displayNewCasesOlder(item.change) : "") + "</span>" +
-                "</div>");
+                    "<span>" + item.label + "</span>" +
+                    "<span>" + item.total + " " + (item.change !== null && item.change !== undefined ? displayNewCasesOlder(item.change) : "") + "</span>" +
+                    "</div>");
             });
         }
         container.toggle();
@@ -320,9 +320,10 @@ $(document).ready(() => {
     }).then(res => {
         var data = res.data;
         pieChart(data[0], "#vaccineDistribution");
+        barGraph3(data[0], "#vaccineDistributionBarCanvas");
+        $("#vaccineDistributionBarCanvas").css("max-height", $("#vaccineDistributionDiv").height() + "px");
         $.ajax({
             url: api_url + "vaccines/distribution/split",
-
             type: "GET",
         }).then(res2 => {
             data[0].country = "Canada";
@@ -331,7 +332,7 @@ $(document).ready(() => {
         });
     });
 
-    $(window).on("resize", function() {
+    $(window).on("resize", function () {
         $('#totalCasesProvinceTable .regionTable').each((index, regionsRow) => {
             var container = $(regionsRow).prev();
             var firstCells = container.find("td");
@@ -349,7 +350,7 @@ $(document).ready(() => {
 });
 
 function buildProvinceTable(data, provinceData) {
-    data.forEach(function(item) {
+    data.forEach(function (item) {
         item.source = provinceSources[item.province] || "https://covid19tracker.ca/sources.html";
         var casesPer100000 = Math.floor(((100000 * item.total_cases) / provinceProperties(item.province).population) * 100) / 100;
         var fatalitiesPer100000 = Math.floor(((100000 * item.total_fatalities) / provinceProperties(item.province).population) * 100) / 100;
@@ -364,7 +365,7 @@ function buildProvinceTable(data, provinceData) {
         var thisProvinceData = provinceData.filter(province => province.code === item.province);
         thisProvinceData = thisProvinceData.length ? thisProvinceData[0] : {};
 
-        var updatedAt = thisProvinceData.updated_at ? moment(thisProvinceData.updated_at).format("dddd, MMMM Do YYYY, HH:mm") + " CST": "N/A";
+        var updatedAt = thisProvinceData.updated_at ? moment(thisProvinceData.updated_at).format("dddd, MMMM Do YYYY, HH:mm") + " CST" : "N/A";
         var provinceStatus = thisProvinceData.data_status || "Unknown";
 
         // append data to row
@@ -395,9 +396,9 @@ function buildProvinceTable(data, provinceData) {
         var itemTotalVaccinated = item.total_vaccinated;
 
         if (itemTotalVaccinated === null || itemTotalVaccinated === undefined) itemTotalVaccinated = "N/A";
-                        else itemTotalVaccinated = item.total_vaccinated;
+        else itemTotalVaccinated = item.total_vaccinated;
 
-                // append data to row
+        // append data to row
         $('#vaccinationsProvinceTable').append(
             "<tr class='provinceRow'>" +
             "<td>" +
@@ -407,7 +408,7 @@ function buildProvinceTable(data, provinceData) {
             "Last updated: <b>" + updatedAt + "</b><br>" +
             "Update expected by: <b>" + expectedTime(item.province) + "</b>" +
             "'></span>" +
-            "<span>" + "<a style='color:black;' href='provincevac.html?p=" + provinceProperties(item.province).code + "'><i>" +  provinceProperties(item.province).name + "</i></a> </span>" +
+            "<span>" + "<a style='color:black;' href='provincevac.html?p=" + provinceProperties(item.province).code + "'><i>" + provinceProperties(item.province).name + "</i></a> </span>" +
             "</td>" +
             "<td data-per-capita='" + vaccinationsPer100000 + "'><i>" + format(item.total_vaccinations) + (item.change_vaccinations ? ("<div>" + " " + displayNewCases(item.change_vaccinations)) : "" + "</i>") + "</i></td>" +
             "<td><i>" + format(item.total_vaccines_distributed) + "</i></td>" +
@@ -430,7 +431,7 @@ function buildVaccineDistributionTable(data) {
     data.forEach(function (item) {
         $('#vaccineDistributionByProvinceTable').append(
             "<tr class='provinceRow'>" +
-                "<td>" + (item.country ? "<b>" + item.country + "</b>" : provinceProperties(item.province).name) + "</td>" +
+            "<td>" + (item.country ? "<b>" + item.country + "</b>" : provinceProperties(item.province).name) + "</td>" +
             "<td><span data-toggle='tooltip' title='" + (item.moderna_administered ? "" + format(item.moderna_administered) + " administered" : "") + "'>" + (item.moderna ? format(item.moderna) : 0) + "</span></td>" +
             "<td><span data-toggle='tooltip' title='" + (item.pfizer_biontech_administered ? "" + format(item.pfizer_biontech_administered) + " administered" : "") + "'>" + (item.pfizer_biontech ? format(item.pfizer_biontech) : 0) + "</span></td>" +
             "<td><span data-toggle='tooltip' title='" + (item.astrazeneca_administered ? "" + format(item.astrazeneca_administered) + " administered" : "") + "'>" + (item.astrazeneca ? format(item.astrazeneca) : 0) + "</span></td>" +
@@ -440,7 +441,7 @@ function buildVaccineDistributionTable(data) {
     });
 
 
-$.ajax({
+    $.ajax({
         url: api_url + "vaccines/distribution/"
     }).then(res => {
         var data = res.data[0];
@@ -451,7 +452,7 @@ $.ajax({
 
 
     $('[data-toggle="tooltip"]').tooltip({
-    trigger : 'hover'
-})  
+        trigger: 'hover'
+    })
 
-    }
+}
