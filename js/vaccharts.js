@@ -216,6 +216,49 @@ function barGraph2(data, id) {
     draw(graphConfig);
 }
 
+function barGraph3(data, id) {
+    var keys = ["pfizer_biontech", "moderna", "astrazeneca", "johnson"];
+    var name = ["Pfizer-BioNTech", "Moderna", "AstraZeneca", "Johnson & Johnson"];
+    var allData = {
+        "vaccines_delivered": [],
+        "vaccines_administered": []
+    };
+
+    keys.forEach(function (k) {
+        allData["vaccines_delivered"].push(data[k] ? parseInt(data[k]) : 0);
+        allData["vaccines_administered"].push(data[k + "_administered"] ? parseInt(data[k + "_administered"]) : 0);
+    });
+
+    var graphConfig = {
+        graphTarget: $(id),
+        type: 'bar',
+        unit: 'month',
+        chartdata: {
+            labels: name,
+            datasets: [
+
+                {
+                    label: "Doses Delivered",
+                    backgroundColor: "#D3D3D3",
+                    borderColor: "#D3D3D3",
+                    data: allData["vaccines_delivered"],
+                    hidden: false
+                },
+                {
+                    label: "Doses Administered",
+                    backgroundColor: "#353A3F",
+                    borderColor: "#353A3F",
+                    data: allData["vaccines_administered"],
+                    hidden: false
+                }
+            ]
+        },
+        ticks: 15
+    }
+
+    // renders the graph
+    draw(graphConfig);
+}
 
 // draw: renders the graph to HTML
 // @param graphConfig: {} config for graph
