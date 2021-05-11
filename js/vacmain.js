@@ -414,7 +414,7 @@ function buildProvinceTable(data, provinceData) {
             "<td><i>" + format(item.total_vaccines_distributed) + "</i></td>" +
             "<td><i>" + vaccinationsPercent + "%" + "</i></td>" +
             "<td>" + format(vaccinationsPer100000) + "</td>" +
-            "<td><i>" + format(itemTotalVaccinated) + "</i></td>" +
+            "<td><i>" + format(itemTotalVaccinated) + (item.change_vaccinated ? ("<div>" + " " + displayNewCases(item.change_vaccinated)) : "" + "</i>") + "</i></td>" +
             "</tr>"
         )
 
