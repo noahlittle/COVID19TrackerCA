@@ -118,7 +118,7 @@ $(document).ready(() => {
         $('#totalVaccinationsDistCanada').text(data.total_vaccines_distributed);
         $('#totalVaccinationsPercentCanada').text((((data.total_vaccinations) / (data.total_vaccines_distributed)) * 100).toFixed(1) + "%")
         $('#totalVaccinationsChangeCanada').text(data.change_vaccinations);
-        $('#totalVaccinatedCanada').text(data.total_vaccinated);
+        $('#totalVaccinatedCanada').text(data.total_vaccinated + (data.change_vaccinated ? (" " + displayNewCases(data.change_vaccinated)) : ""));
         $('#vaccinatedPerCanada').text(vaccinationsPer100000);
         $('#infectedPerCanada').text(casesPer100000);
     });
