@@ -338,6 +338,10 @@ $(document).ready(() => {
             $("#vaccineDistributionLastUpdate").text(data.date);
             $("#vaccineDistributionLastUpdate2").text(data.date);
         });
+
+            $('[data-toggle="tooltip"]').tooltip({
+        trigger: 'hover'
+    })
     }
 
     $(window).on("resize", function () {
