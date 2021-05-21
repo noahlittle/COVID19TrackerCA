@@ -79,9 +79,9 @@ function drawProvinces(data) {
           <p>per 100,000 population</p>
           <div class="vac-swatch"></div>
           <ul>
-            <li style="text-align:left;">${fillRange[0].toFixed(1)}</li>
-            <li style="text-align:center;">${(fillRange[1]*0.5).toFixed(1)}</li>
-            <li style="text-align: right;">${fillRange[1].toFixed(1)}</li>
+            <li style="text-align:left;">${fillRange[0].toFixed(0)}</li>
+            <li style="text-align:center;">${(fillRange[1]*0.5).toFixed(0)}</li>
+            <li style="text-align: right;">${fillRange[1].toFixed(0)}</li>
           </ul>
           <p>Total vaccinations to date in red.</p>
         `;
