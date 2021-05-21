@@ -15,43 +15,43 @@ var totalPopulationVaccinated = 0;
 var totalPopulationVaccinated16 = 0;
 var populationObj = [{
     "province": "AB",
-    "population": 3547485
+    "population": 3761130
 }, {
     "province": "BC",
-    "population": 4378888
+    "population": 4577078
 }, {
     "province": "MB",
-    "population": 1101731
+    "population": 1168942
 }, {
     "province": "NB",
-    "population": 661556
+    "population": 693386
 }, {
     "province": "NL",
-    "population": 446985
+    "population": 467776
 }, {
     "province": "NT",
-    "population": 35535
+    "population": 37917
 }, {
     "province": "NS",
-    "population": 833085
+    "population": 871111
 }, {
     "province": "NU",
-    "population": 26207
+    "population": 29183
 }, {
     "province": "ON",
-    "population": 12296737
+    "population": 12932471
 }, {
     "province": "PE",
-    "population": 133390
+    "population": 140601
 }, {
     "province": "QC",
-    "population": 7138076
+    "population": 7489220
 }, {
     "province": "SK",
-    "population": 933947
+    "population": 993244
 }, {
     "province": "YT",
-    "population": 34480
+    "population": 36209
 }];
 
 // Helper function to format numbers with commas
@@ -121,6 +121,36 @@ $(document).ready(() => {
         return true;
     });
 
+
+    var provinces = [];
+    $.ajax({
+        url: api_url + "provinces"
+    }).then(res => {
+        provinces = res;
+        var pCode = getParameterByName("p");
+        if (!pCode || pCode === "") {
+            window.location = "vaccinationtracker.html";
+        } else
+            pCode = pCode.toUpperCase();
+        showAll(pCode);
+    });
+
+    //$("#provinceSelection").on("change", function (e) {
+    function showAll(pCode) {
+        //var pCode = $(this).val();
+        //var pText = $("#provinceSelection option:selected").text();
+        if (pCode === "")
+            return "";
+        province = provinces.find(function (_p) { return pCode === _p.code; });
+        var population = province.population;
+        var population16 = populationObj.find(function (_p) { return pCode === _p.province; }).population;
+        var pText = province.name;
+        noDataText = pText + " does not release regional vaccination data";
+        $(".display-province").text(pText);
+        //$(".display-select").hide();
+        // get and update header, and cases by province table footer
+        //draw map and cases by province graph and table
+
     $("#activeCases").on('change', function () {
         var checked = $("#activeCases").prop("checked");
         if (checked) {
@@ -151,12 +181,12 @@ $(document).ready(() => {
         var checked = $("#popDoseToggle").prop("checked");
         if (checked) {
             $(".summary-header-percentVaccinated > h1").text((totalPopulationVaccinated16).toFixed(3) + "%");
-            $(".summary-header-percentVaccinated > b").text("of Canadians 16+ have received at least one dose");
+            $(".summary-header-percentVaccinated > b").text("of people 12+ in " + pText + " have received at least one dose");
 
         }
         else {
             $(".summary-header-percentVaccinated > h1").text((totalPopulationVaccinated).toFixed(3) + "%");
-            $(".summary-header-percentVaccinated > b").text("of the Canadian population has received at least one dose");
+            $(".summary-header-percentVaccinated > b").text("of all people in " + pText + " have received at least one dose");
         }
     });
 
@@ -178,34 +208,7 @@ $(document).ready(() => {
 
 
 
-    var provinces = [];
-    $.ajax({
-        url: api_url + "provinces"
-    }).then(res => {
-        provinces = res;
-        var pCode = getParameterByName("p");
-        if (!pCode || pCode === "") {
-            window.location = "vaccinationtracker.html";
-        } else
-            pCode = pCode.toUpperCase();
-        showAll(pCode);
-    });
-
-    //$("#provinceSelection").on("change", function (e) {
-    function showAll(pCode) {
-        //var pCode = $(this).val();
-        //var pText = $("#provinceSelection option:selected").text();
-        if (pCode === "")
-            return "";
-        province = provinces.find(function (_p) { return pCode === _p.code; });
-        var population = province.population;
-        var population16 = populationObj.find(function (_p) { return pCode === _p.province; }).population;
-        var pText = province.name;
-        noDataText = pText + " does not release regional vaccination data";
-        $(".display-province").text(pText);
-        //$(".display-select").hide();
-        // get and update header, and cases by province table footer
-        //draw map and cases by province graph and table
+    
 
 
         document.querySelector('title').textContent = `COVID-19 Tracker Canada - ${pText} Vaccination Tracker`;
@@ -246,7 +249,7 @@ $(document).ready(() => {
             $(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
             $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
             $(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - data.total_vaccinated) / population) * 100).toFixed(3) + "%");
-            $(".summary-header-percentVaccinated > b").text("of people in " + pText + " have received at least one dose");
+            $(".summary-header-percentVaccinated > b").text("of all people in " + pText + " have received at least one dose");
             $(".summary-header-vaccinations > h1").text(format(data.total_vaccinations) + " doses administered");
             $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
             $(".summary-header-pplVac > h1").text(data.total_vaccinations);
