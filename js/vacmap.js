@@ -70,7 +70,7 @@ function drawProvinces(data) {
             ['linear'],
             ["number", ['get', 'province_vaccinations_per_population']],
             fillRange[0], '#F1FFEE',
-            fillRange[1] * 0.4, '#233309', 
+          //  fillRange[1] * 0.4, '#233309', 
             fillRange[1] * 0.8, '#111905'
         ];
 
@@ -80,7 +80,10 @@ function drawProvinces(data) {
           <div class="vac-swatch"></div>
           <ul>
             <li style="text-align:left;">${fillRange[0].toFixed(1)}</li>
-            <li style="text-align:center;">${(fillRange[1]*0.5).toFixed(1)}</li>
+            
+
+
+            
             <li style="text-align: right;">${fillRange[1].toFixed(1)}</li>
           </ul>
           <p>Total vaccinations to date in red.</p>
