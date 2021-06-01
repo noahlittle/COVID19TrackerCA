@@ -48,6 +48,7 @@ $(document).ready(() => {
         peopleVaccinated = data.total_vaccinations - data.total_vaccinated;
         twoDoses = data.total_vaccinated;
         percentVaccinated = Math.floor((data.total_vaccinations - data.total_vaccinated) / canadaPopulation * 100) / 100;
+        percentFullyVaccinated = Math.floor(data.total_vaccinated / canadaPopulation * 100) / 100;
         vaccinationsChange = data.change_vaccinations;
         vaccinesDistributed = data.total_vaccines_distributed;
 
@@ -82,6 +83,8 @@ $(document).ready(() => {
         $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
         $(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - data.total_vaccinated) / 38008005) * 100).toFixed(3) + "%");
         $(".summary-header-percentVaccinated > b").text("of the Canadian population has received at least one dose");
+        $(".summary-header-percentFullyVaccinated > h1").text(((data.total_vaccinated / 38008005) * 100).toFixed(3) + "%");
+        $(".summary-header-percentFullyVaccinated > b").text("of the Canadian population is fully vaccinated");
         $(".summary-header-vaccinations > h1").text(format(data.total_vaccinations) + " doses administered");
         $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
         $(".summary-header-pplVac > h1").text(data.total_vaccinations);
