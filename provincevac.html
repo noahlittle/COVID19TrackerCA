@@ -124,6 +124,22 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body summary-header-percentVaccinated2">
+                                <h1></h1> <b></b>
+                                
+                                    <div class="material-switch pull-right">
+                                        <div class="switch-label d-inline-block">Eligible <span data-toggle='tooltip' title='When toggled, this value gives the percentage of those 12+ who are fully vaccinated.'><i class="far fa-question-circle"></i></span></div>
+                                        <div class="d-inline-block">
+                                            <input id="popDose2Toggle" name="criticalCases" type="checkbox" />
+                                            <label for="popDose2Toggle" class="label-success"></label>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="row display-select">
                     <div class="col-xl-6" id="displayMap">
@@ -206,6 +222,31 @@
                     </div>
                 </div>
 
+<div class="card mb-4 display-select">
+                    <div class="card-body">
+                        <h3><span class="display-province"></span> Reopening Metrics</h3>
+                        Some provinces use adult (18+) vaccination rates in their plans to lift public health measures. The values below only considers doses administered to those over the age of 18, and StatsCan population statistics for ages 18+.
+                        <br>
+                        <br>
+                <div class="row">
+                    <div class="col-md">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body summary-header-percentVaccinated-ageGroup">
+                                <h1></h1> <b></b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body summary-header-percentFullyVaccinated-ageGroup">
+                                <h1></h1> <b></b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
                 <br>
 
                 <div class="card mb-12">
@@ -235,8 +276,11 @@
                 <br>
                 <br>
                 <div class="card mb-4 display-select">
-                    <div class="card-header"><i class="fas fa-table mr-1"></i>Doses By Region</div>
                     <div class="card-body">
+                        <h3>Data by Region</h3>
+                        Available vaccination data for each region is displayed below.
+                        <br>
+                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover" id="dataTable2" width="100%" cellspacing="0">
                                 <thead>
@@ -267,10 +311,11 @@
 
                 <div class="card">
                     <div class="card-body">
+                        <h3>Data by Vaccine Product</h3>
                         Delivery and administration data by vaccine product are not updated as frequently as the values reported above, and totals may not match. Administration data by vaccine type is updated each Friday with data up to and including the previous Saturday. Delivery data by vaccine product was last updated on <b id="vaccineDistributionLastUpdate2"></b>.
-                    </div>
-                </div>
 
+
+                <br>
                 <br>
 
                 <div class="row">
@@ -310,6 +355,91 @@
                     </div>
                 </div>
 
+				
+				<br />
+
+                                    </div>
+                </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Data by Age Group</h3>
+                        Vaccine data by age is sourced from PHAC, and may not align with provincial reporting. PHAC data is updated each Friday, with data current as of the previous Saturday.
+  
+                <br>
+				
+                <br />
+				
+				<div class="row">
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="dosesAgeGroup"><span class="display-province"></span> Fully Vaccinated By Age Group</span></div>
+                            <div class="card-body" id="dosesAgeGroupDiv">
+                                <canvas id="ageGroupChart" width="100%" height="40" style="max-height: 400px"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					
+					<div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="dosesAgeGroupAtleast1"><span class="display-province"></span> At Least 1 Dose By Age Group</span></div>
+                            <div class="card-body" id="dosesAgeGroupAtleast1Div">
+                                <canvas id="ageGroupAtleast1Chart" width="100%" height="40" style="max-height: 400px"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<br />
+				
+				<div class="row">
+                    <div class="col-xl-12">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-bar mr-1"></i><span id="ageGroupBarGraph"><span class="display-province"></span> Vaccines Administered By Age Group</span></div>
+                            <div class="card-body" id="ageGroupBar">
+                                <canvas id="ageGroupBarCanvas" width="100%" style="max-height: 430px;"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                  </div>
+                </div>
+				
+				<br />
 
                 <hr />
 
