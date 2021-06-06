@@ -97,6 +97,219 @@ function lineGraph(data, id, flag, type) {
     draw(graphConfig);
 }
 
+// used for age group
+function lineGraph2(data, id, type, info) {
+    var name = [];
+    var allData = {
+        "0-17": [],
+        "18-29": [],
+        "30-39": [],
+        "40-49": [],
+		"50-59": [],
+		"60-69": [],
+		"70-79": [],
+        "80+": []
+    };
+
+    for (var i in data) {
+        var date = new Date(data[i].date);
+        date.setDate(date.getDate() + 1);
+
+        name.push(new Intl.DateTimeFormat('en-us', {
+            month: 'short',
+            day: 'numeric'
+        }).format(date));
+
+		var aData = JSON.parse(data[i].data);
+
+		if (typeof aData["0-17"] !== "undefined") {
+			allData["0-17"].push(aData["0-17"][info]);
+		} else {
+			allData["0-17"].push(0);
+		}
+		
+		if (typeof aData["18-29"] !== "undefined") {
+			allData["18-29"].push(aData["18-29"][info]);
+		} else {
+			allData["18-29"].push(0);
+		}
+		
+		if (typeof aData["30-39"] !== "undefined") {
+			allData["30-39"].push(aData["30-39"][info]);
+		} else {
+			allData["30-39"].push(0);
+		}
+		
+		if (typeof aData["40-49"] !== "undefined") {
+			allData["40-49"].push(aData["40-49"][info]);
+		} else {
+			allData["40-49"].push(0);
+		}
+		
+		if (typeof aData["50-59"] !== "undefined") {
+			allData["50-59"].push(aData["50-59"][info]);
+		} else {
+			allData["50-59"].push(0);
+		}
+		
+		if (typeof aData["60-69"] !== "undefined") {
+			allData["60-69"].push(aData["60-69"][info]);
+		} else {
+			allData["60-69"].push(0);
+		}
+		
+		if (typeof aData["70-79"] !== "undefined") {
+			allData["70-79"].push(aData["70-79"][info]);
+		} else {
+			allData["70-79"].push(0);
+		}
+		
+		if (typeof aData["80+"] !== "undefined") {
+			allData["80+"].push(aData["80+"][info]);
+		} else {
+			allData["80+"].push(0);
+		}
+    }
+
+    // used to setup graph that needs to be drawn
+    var graphConfig = {
+        graphTarget: $(id),
+        type: 'line',
+        unit: 'date',
+        chartdata: {
+            labels: name,
+            datasets: [
+                {
+                    label: "0-17",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "#6e757c",
+                    pointBackgroundColor: "#6e757c",
+                    pointHoverBackgroundColor: "#6e757c",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#6e757c",
+                    data: allData["0-17"],
+                    hidden: false
+                },
+                {
+                    label: "18-29",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "#757d98",
+                    pointBackgroundColor: "#757d98",
+                    pointHoverBackgroundColor: "#757d98",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#757d98",
+                    data: allData["18-29"],
+                    hidden: false
+                },
+                {
+                    label: "30-39",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "#927fad",
+                    pointBackgroundColor: "#927fad",
+                    pointHoverBackgroundColor: "#927fad",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#927fad",
+                    data: allData["30-39"],
+                    hidden: false
+                },
+				{
+                    label: "40-49",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "#bd7bb1",
+                    pointBackgroundColor: "#bd7bb1",
+                    pointHoverBackgroundColor: "#bd7bb1",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#bd7bb1",
+                    data: allData["40-49"],
+                    hidden: false
+                },
+				{
+                    label: "50-59",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "#e975a0",
+                    pointBackgroundColor: "#e975a0",
+                    pointHoverBackgroundColor: "#e975a0",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#e975a0",
+                    data: allData["50-59"],
+                    hidden: false
+                },
+				{
+                    label: "60-69",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "#ff767d",
+                    pointBackgroundColor: "#ff767d",
+                    pointHoverBackgroundColor: "#ff767d",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#ff767d",
+                    data: allData["60-69"],
+                    hidden: false
+                },
+                {
+                    label: "70-79",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "#ff884f",
+                    pointBackgroundColor: "#ff884f",
+                    pointHoverBackgroundColor: "#ff884f",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#ff884f",
+                    data: allData["70-79"],
+                    hidden: false
+                },
+                {
+                    label: "80+",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "#ffa600",
+                    pointBackgroundColor: "#ffa600",
+                    pointHoverBackgroundColor: "#ffa600",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#ffa600",
+                    data: allData["80+"],
+                    hidden: false
+                }
+            ]
+        },
+        ticks: 7
+    }
+
+    if (type === "region") graphConfig.chartdata.datasets = [graphConfig.chartdata.datasets[0], graphConfig.chartdata.datasets[1]];
+
+    // renders the graph
+    draw(graphConfig);
+}
+
 
 // barGraph: configures data for bar graphs
 // @param data: [] case data
@@ -249,6 +462,53 @@ function barGraph3(data, id) {
                     backgroundColor: "#353A3F",
                     borderColor: "#353A3F",
                     data: allData["vaccines_administered"],
+                    hidden: false
+                }
+            ]
+        },
+        ticks: 15
+    }
+
+    // renders the graph
+    draw(graphConfig);
+}
+
+// bar graph for age groups
+function barGraph4(data, id) {
+    var keys = ["0-17", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"];
+    var name = ["0-17", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"];
+    var allData = {
+        "partial": [],
+        "full": []
+    };
+
+    keys.forEach(function (k) {
+		var aData = JSON.parse(data);
+		
+        allData["partial"].push(aData[k]["partial"]);
+        allData["full"].push(aData[k]["full"]);
+    });
+
+    var graphConfig = {
+        graphTarget: $(id),
+        type: 'bar',
+        unit: 'month',
+        chartdata: {
+            labels: name,
+            datasets: [
+
+                {
+                    label: "Partial",
+                    backgroundColor: "#D3D3D3",
+                    borderColor: "#D3D3D3",
+                    data: allData["partial"],
+                    hidden: false
+                },
+                {
+                    label: "Full",
+                    backgroundColor: "#353A3F",
+                    borderColor: "#353A3F",
+                    data: allData["full"],
                     hidden: false
                 }
             ]
