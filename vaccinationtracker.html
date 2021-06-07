@@ -9,7 +9,7 @@
     <meta name="author" content="" />
     <title>COVID-19 Tracker Canada - Vaccination Tracker</title>
 
-    <link href="css/styles.css?v=4.9" rel="stylesheet" />
+
 
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,12 +22,15 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5.1.6/turf.min.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />-->
 
-    <script type="text/javascript" src="js/config.js?v=6.9.0"></script>
-    <script type="text/javascript" src="js/vacmap.js?v=6.8.0"></script>
-    <script type="text/javascript" src="js/vaccharts.js?v=6.8.0"></script>
-    <script type="text/javascript" src="js/vacmain.js?v=9.7.2"></script>
+    <script type="text/javascript" src="js/config.js?v=6.9.1"></script>
+    <script type="text/javascript" src="js/vacmap.js?v=6.8.1"></script>
+    <script type="text/javascript" src="js/vaccharts.js?v=6.8.1"></script>
+    <script type="text/javascript" src="js/vacmain.js?v=9.7.3"></script>
+
+    <link rel="stylesheet" href="css/styles.css?v=5" />
+
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -64,6 +67,8 @@
 
     </script>
     -->
+
+
 
 
 </head>
@@ -128,7 +133,7 @@
                             <div class="card-body summary-header-percentVaccinated">
                                 <h1></h1> <b></b>
                                 <div class="material-switch pull-right">
-                                        <div class="switch-label d-inline-block">Eligible <span data-toggle='tooltip' title='When toggled, this value indicates the percentage of people older than 12 who have received at least on dose.'><i class="far fa-question-circle"></i></span></div>
+                                        <div class="switch-label d-inline-block">Eligible <span data-toggle='tooltip' title='When toggled, this value indicates the percentage of people older than 12 who have received at least one dose.'><i class="far fa-question-circle"></i></span></div>
                                         <div class="d-inline-block">
                                             <input id="popDoseToggle" name="popDoseToggle" type="checkbox" />
                                             <label for="popDoseToggle" class="label-success"></label>
@@ -280,7 +285,7 @@
                 <div class="card mb-4 display-select">
                     <div class="card-body">
                         <h3>Data by Province</h3>
-                        Explore vaccine data by province with the table below, or click on any province to view more detailed statistics.
+                        Explore vaccine data by province with the table below, or click on the name of any province to view more detailed statistics. Data is updated throughout the day in near real-time as provinces report their data.
                         <br>
                         <br>
                         <div class="table-responsive">
@@ -414,7 +419,7 @@
                 <div class="card mb-4 display-select">
                     <div class="card-body">
                         <h3>Data by Age Group</h3>
-                        This section is updated each Friday with PHAC data current as of the previous Saturday. Due to differences in reporting, some provinces may not appear in this section.
+                        This section is updated each Friday with PHAC data current as of the previous Saturday.
                         <br>
                 
                 <br>

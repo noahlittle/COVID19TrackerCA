@@ -26,7 +26,7 @@ var provinceAgeGroup = {
 	},
 	"ON": {
 		population: 11971129,
-		boxEnabled: false
+		boxEnabled: true
 	},
 	"MB": {
 		population: 1068553,

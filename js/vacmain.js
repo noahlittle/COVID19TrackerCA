@@ -527,7 +527,7 @@ function buildVaccineDistributionTable(data) {
         $("#vaccineDistributionLastUpdate2").text(data.latest_date);
     });
 
-    $('[data-toggle="tooltip1"]').tooltip({
+    $('[data-toggle="tooltip"]').tooltip({
         trigger: 'hover'
     })
 
