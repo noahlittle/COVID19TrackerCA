@@ -386,7 +386,7 @@ $(document).ready(() => {
 		var maxDate = res.data[res.data.length - 1].date;
 		var provinces = provinceCodes.filter(onlyUnique);
 		var _data = res.data.filter(function(v){
-			return v.date == maxDate && provinces.indexOf(v.province)
+			return v.date == maxDate && provinces.indexOf(v.province) >= 0;
 		});
 		
 		_data.sort(function(a, b){ 
