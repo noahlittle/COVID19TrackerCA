@@ -133,7 +133,7 @@ $(document).ready(() => {
         provinces = res;
         var pCode = getParameterByName("p");
         if (!pCode || pCode === "") {
-         //   window.location = "vaccinationtracker.html";
+            window.location = "vaccinationtracker.html";
         } else
             pCode = pCode.toUpperCase();
         showAll(pCode);
