@@ -24,8 +24,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5.1.6/turf.min.js"></script>
 
     <script type="text/javascript" src="js/config.js?v=6.5.4.1"></script>
-    <script type="text/javascript" src="js/vaccharts.js?v=6.8.4.1"></script>
-    <script type="text/javascript" src="js/vacregmain.js?v=9.6.5.2"></script>
+    <script type="text/javascript" src="js/vaccharts.js?v=6.8.4.2"></script>
+    <script type="text/javascript" src="js/vacregmain.js?v=9.6.5.3"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160029240-1"></script>
@@ -375,7 +375,16 @@
 				<div class="row">
                     <div class="col-xl-6">
                         <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="dosesAgeGroup"><span class="display-province"></span> Fully Vaccinated By Age Group</span></div>
+                            <div class="card-header">
+								<i class="fas fa-chart-area mr-1"></i><span id="dosesAgeGroup"><span class="display-province"></span> Fully Vaccinated By Age Group</span>
+								<div class="material-switch pull-right">
+                                    <div class="switch-label d-inline-block">Raw <span data-toggle='tooltip' title='When toggled, the graph displays the raw values for each age group instead of a percentage value.'><i class="far fa-question-circle"></i></span></div>
+                                    <div class="d-inline-block">
+                                        <input id="ageGroupFullToggle" data-target="ageGroupChart" name="criticalCases" type="checkbox" />
+                                        <label for="ageGroupFullToggle" class="label-success"></label>
+                                    </div>
+                                </div>
+							</div>
                             <div class="card-body" id="dosesAgeGroupDiv">
                                 <canvas id="ageGroupChart" width="100%" height="40" style="max-height: 400px"></canvas>
                                 <div class="chart-options text-center">
@@ -395,7 +404,16 @@
 					
 					<div class="col-xl-6">
                         <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="dosesAgeGroupAtleast1"><span class="display-province"></span> At Least 1 Dose By Age Group</span></div>
+                            <div class="card-header">
+								<i class="fas fa-chart-area mr-1"></i><span id="dosesAgeGroupAtleast1"><span class="display-province"></span> At Least 1 Dose By Age Group</span>
+								<div class="material-switch pull-right">
+                                    <div class="switch-label d-inline-block">Raw <span data-toggle='tooltip' title='When toggled, the graph displays the raw values for each age group instead of a percentage value.'><i class="far fa-question-circle"></i></span></div>
+                                    <div class="d-inline-block">
+                                        <input id="ageGroupAtleast1Toggle" data-target="ageGroupAtleast1Chart" name="criticalCases" type="checkbox" />
+                                        <label for="ageGroupAtleast1Toggle" class="label-success"></label>
+                                    </div>
+                                </div>
+							</div>
                             <div class="card-body" id="dosesAgeGroupAtleast1Div">
                                 <canvas id="ageGroupAtleast1Chart" width="100%" height="40" style="max-height: 400px"></canvas>
                                 <div class="chart-options text-center">
@@ -418,7 +436,16 @@
 				<div class="row">
                     <div class="col-xl-12">
                         <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-chart-bar mr-1"></i><span id="ageGroupBarGraph"><span class="display-province"></span> Vaccines Administered By Age Group</span></div>
+                            <div class="card-header">
+								<i class="fas fa-chart-bar mr-1"></i><span id="ageGroupBarGraph"><span class="display-province"></span> Vaccinations By Age Group</span>
+								<div class="material-switch pull-right">
+                                    <div class="switch-label d-inline-block">Raw <span data-toggle='tooltip' title='When toggled, the graph displays the raw values for each age group instead of a percentage value.'><i class="far fa-question-circle"></i></span></div>
+                                    <div class="d-inline-block">
+                                        <input id="ageGroupBarToggle" data-target="ageGroupBarCanvas" name="criticalCases" type="checkbox" />
+                                        <label for="ageGroupBarToggle" class="label-success"></label>
+                                    </div>
+                                </div>
+							</div>
                             <div class="card-body" id="ageGroupBar">
                                 <canvas id="ageGroupBarCanvas" width="100%" style="max-height: 430px;"></canvas>
                                 <div class="chart-options text-center">

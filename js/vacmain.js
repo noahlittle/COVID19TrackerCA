@@ -355,10 +355,21 @@ $(document).ready(() => {
         type: "GET",
 
     }).then(res => {
-		lineGraph2(res.data, "#ageGroupChart", false, "full");
-		//lineGraph2(res.data, "#ageGroupPartialChart", false, "partial");
-		lineGraph2(res.data, "#ageGroupAtleast1Chart", false, "atleast1");
-		barGraph4(res.data[res.data.length - 1].data, "#ageGroupBarCanvas");
+		lineGraph2(res.data, "#ageGroupChart", false, "full", "CA");
+		lineGraph2(res.data, "#ageGroupAtleast1Chart", false, "atleast1", "CA");
+		barGraph4(res.data[res.data.length - 1].data, "#ageGroupBarCanvas", "CA");
+		
+		$("#ageGroupFullToggle").on("change", function(){
+			updateAgeGroupChart($("#" + $(this).data("target")), $(this).is(":checked"), res.data, "full");
+		});
+		
+		$("#ageGroupAtleast1Toggle").on("change", function(){
+			updateAgeGroupChart($("#" + $(this).data("target")), $(this).is(":checked"), res.data, "atleast1");
+		});
+		
+		$("#ageGroupBarToggle").on("change", function(){
+			updateAgeGroupBar($("#" + $(this).data("target")), $(this).is(":checked"), res.data[res.data.length - 1].data);
+		});
 		
 		var keys = ["18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"];
 		var atleast1Sum = 0, fullSum = 0;
