@@ -135,7 +135,7 @@ function lineGraph(data, id, flag, type) {
                     hidden: true
                 },
                 {
-                    label: "Vaccinations",
+                    label: "Doses Admin.",
                     lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 4,
@@ -415,7 +415,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
     if (field === "vaccinations") {
         graphConfig.chartdata.datasets = [
             {
-                label: label1 + " Vaccinated",
+                label: label1 + " Doses Administered",
                     lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 4,
@@ -429,7 +429,7 @@ function lineGraphCompare(data1, data2, label1, label2, field, id, flag) {
                 data: allData["vaccinations1"]
             },
             {
-                label: label2 + " Vaccinated",
+                label: label2 + " Doses Administered",
                     lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 4,
@@ -526,7 +526,7 @@ function barGraph(data, id) {
                     hidden: true
                 },
                 {
-                    label: "Vaccinations",
+                    label: "Doses Admin.",
                     backgroundColor: "#353A3F",
                     borderColor: "#353A3F",
                     data: allData["vaccinations"],
