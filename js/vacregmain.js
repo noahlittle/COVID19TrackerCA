@@ -19,7 +19,7 @@ var adults = 0;
 var adultsFull = 0;
 var populationObj = [{
     "province": "AB",
-    "population": 3761130
+    "population": 3806860
 }, {
     "province": "BC",
     "population": 4577078
@@ -137,6 +137,10 @@ $(document).ready(() => {
         } else
             pCode = pCode.toUpperCase();
         showAll(pCode);
+		
+		if (provinceProperties(pCode).displayNotes) {
+			$(".province-data-notes").removeClass("d-none");
+		}
     });
 
     //$("#provinceSelection").on("change", function (e) {

@@ -242,67 +242,80 @@ function provinceProperties(code, name) {
         "QC": {
             name: "Quebec",
             population : 8575779,
-            code: "QC"
+            code: "QC",
+			displayNotes: false
         },
         "NL": {
             name: "Newfoundland and Labrador",
             population : 520998,
-            code: "NL"
+            code: "NL",
+			displayNotes: false
         },
         "BC": {
             name: "British Columbia",
             population : 5145851,
-            code: "BC"
+            code: "BC",
+			displayNotes: false
         },
         "NU": {
             name: "Nunavut",
             population : 39285,
-            code: "NU"
+            code: "NU",
+			displayNotes: false
         },
         "NT": {
             name: "Northwest Territories",
             population : 45074,
-            code: "NT"
+            code: "NT",
+			displayNotes: false
         },
         "NB": {
             name: "New Brunswick",
             population : 781315,
-            code: "NB"
+            code: "NB",
+			displayNotes: false
         },
         "NS": {
             name: "Nova Scotia",
             population : 979115,
-            code: "NS"
+            code: "NS",
+			displayNotes: false
         },
         "SK": {
             name: "Saskatchewan",
             population : 1177884,
-            code: "SK"
+            code: "SK",
+			displayNotes: false
         },
         "AB": {
             name: "Alberta",
             population : 4428112,
-            code: "AB"
+            code: "AB",
+			displayNotes: true
         },
         "PE": {
             name: "Prince Edward Island",
             population : 159713,
-            code: "PE"
+            code: "PE",
+			displayNotes: false
         },
         "YT": {
             name: "Yukon",
             population : 42176,
-            code: "YT"
+            code: "YT",
+			displayNotes: false
         },
         "MB": {
             name: "Manitoba",
             population : 1379584,
-            code: "MB"
+            code: "MB",
+			displayNotes: false
         },
         "ON": {
             name: "Ontario",
             population : 14733119,
-            code: "ON"
+            code: "ON",
+			displayNotes: false
         }
     };
 
