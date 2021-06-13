@@ -25,7 +25,7 @@
 
     <script type="text/javascript" src="js/config.js?v=7.0.0.0"></script>
     <script type="text/javascript" src="js/vaccharts.js?v=7.0.0.0"></script>
-    <script type="text/javascript" src="js/vacregmain.js?v=10.0.0.0"></script>
+    <script type="text/javascript" src="js/vacregmain.js?v=10.1.0.0"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160029240-1"></script>
@@ -140,6 +140,38 @@
                             </div>
                         </div>
                     </div>
+
+                    <br class="province-data-notes d-none">
+        <div class="col-xl-12 col-md-12 province-data-notes d-none">
+            <div class="card bg-dark text-white mb-12">
+                <div class="card-body">
+                    <h3>An Important Change to Alberta's Population Data</h3>
+                    <p></p>
+                    <p>
+                       Across the COVID19Tracker.ca website, we have always used official population estimates from Statistics Canada for calculations. This consistent approach allows for accurate, up-to-date data that can be compared between provinces. However, the province of Alberta does not use Statistics Canada population data in their vaccine calculations and instead relies on internal estimates and projections.
+
+                   </p>
+                   <p>
+
+                        Alberta's internal estimates are larger than the most recent population estimates available from Statistics Canada. This means that some of our metrics, such as "% of people 12+ in Alberta", have been higher than what was shared by the Alberta government.
+
+                    </p>
+                      
+                    <p>
+                        Starting June 13th, we've changed population values used to calculate Alberta's eligible (12+) population percentage to match the percentage published by the province of Alberta. While this means that values will now match those posted by Alberta, it also means that any comparisons made between provinces using eligible (12+) population values must be performed with caution. Provincial population estimates used for Alberta are from a different source and from a different date than other provinces. Data for all other provinces will continue to be from Statistics Canada's latest population estimates.
+                    </p>
+                    <p>
+                        If you have any questions regarding this change, please feel free to <i><a href="mailto:noah.little@usask.ca" style="color:white">reach out</a></i>.
+                    </p>
+                    <p>
+
+                    <p></p>
+                </div>
+            </div>
+            <br>
+        </div>
+
+
                 </div>
                 <div class="row display-select">
                     <div class="col-xl-6" id="displayMap">
@@ -222,7 +254,7 @@
                     </div>
                 </div>
 
-<div class="card mb-4 display-select">
+				<div class="card mb-4 display-select">
                     <div class="card-body">
                         <h3><span class="display-province"></span> Reopening Metrics</h3>
                         Some provinces use adult (18+) vaccination rates in their plans to lift public health measures. These values reflect vaccinations in people over 18, and uses Statistics Canada's population values for those over 18.
@@ -246,6 +278,7 @@
                 </div>
             </div>
         </div>
+
 
                 <br>
 
