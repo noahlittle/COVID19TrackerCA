@@ -312,6 +312,75 @@ function lineGraph2(data, id, type, info, r) {
 }
 
 
+// Used for doses by day
+function lineGraph3(data, id) {
+    var name = [];
+    var allData = {
+        "first_doses": [],
+        "second_doses": []
+    };
+	
+    for (var i in data) {
+        var date = new Date(data[i].date);
+        date.setDate(date.getDate() + 1);
+
+        name.push(new Intl.DateTimeFormat('en-us', {
+            month: 'short',
+            day: 'numeric'
+        }).format(date));
+
+		allData["first_doses"].push(data[i].change_vaccinations - data[i].change_vaccinated);
+		allData["second_doses"].push(data[i].change_vaccinated);
+    }
+
+    // used to setup graph that needs to be drawn
+    var graphConfig = {
+        graphTarget: $(id),
+        type: 'line',
+        unit: 'date',
+        chartdata: {
+            labels: name,
+            datasets: [
+                {
+                    label: "First Doses",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "rgba(110,117,124,0.8)",
+                    pointBackgroundColor: "#6E757C",
+                    pointHoverBackgroundColor: "#6E757C",
+                    backgroundColor: "rgba(110,117,124,0.3)",
+                    borderColor: "#6E757C",
+                    data: allData["first_doses"],
+                    hidden: false
+                },
+                {
+                    label: "Second Doses",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "rgba(255,255,255,0.8)",
+                    pointBackgroundColor: "#353A3F",
+                    pointHoverBackgroundColor: "#353A3F",
+                    backgroundColor: "rgba(92,59,141,0.2)",
+                    borderColor: "#353A3F",
+                    data: allData["second_doses"],
+                    hidden: false
+                }
+            ]
+        },
+        ticks: 7
+    }
+
+    // renders the graph
+    draw(graphConfig);
+}
+
+
 // barGraph: configures data for bar graphs
 // @param data: [] case data
 // @param id: string graph container

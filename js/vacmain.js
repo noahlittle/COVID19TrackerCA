@@ -270,6 +270,7 @@ $(document).ready(() => {
         last5days = getLast5Days(res.data, "total_");
         lineGraph(res.data, "#dailyCaseChart", false);
         lineGraph(res.data, "#cumulativeCaseChart", true);
+		lineGraph3(res.data, "#dosesPerDayChart");
     });
 
     // draw latest cases table
