@@ -52,7 +52,7 @@ var populationObj = [{
     "population": 7489220
 }, {
     "province": "SK",
-    "population": 993244
+    "population": 1033096
 }, {
     "province": "YT",
     "population": 36209
