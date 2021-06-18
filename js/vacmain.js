@@ -52,9 +52,9 @@ $(document).ready(() => {
         vaccinationsChange = data.change_vaccinations;
         vaccinesDistributed = data.total_vaccines_distributed;
 
-        totalPopulationVaccinated = ((data.total_vaccinations - data.total_vaccinated) / 38008005) * 100;
+        totalPopulationVaccinated = ((data.total_vaccinations - data.total_vaccinated) / 38131104) * 100;
         totalPopulationVaccinated16 = ((data.total_vaccinations - data.total_vaccinated) / 33198268) * 100;
-        totalPopulationFullVaccinated = ((data.total_vaccinated) / 38008005) * 100;
+        totalPopulationFullVaccinated = ((data.total_vaccinated) / 38131104) * 100;
         totalPopulationFullVaccinated16 = ((data.total_vaccinated) / 33198268) * 100;
 
         // update timestamp
@@ -83,9 +83,9 @@ $(document).ready(() => {
         $(".summary-header-hospitalized > b").text(displayNewCases(data.change_hospitalizations));
         $(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
         $(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
-        $(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - data.total_vaccinated) / 38008005) * 100).toFixed(3) + "%");
+        $(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - data.total_vaccinated) / 38131104) * 100).toFixed(3) + "%");
         $(".summary-header-percentVaccinated > b").text("of the Canadian population has received at least one dose");
-        $(".summary-header-percentFullyVaccinated > h1").text(((data.total_vaccinated / 38008005) * 100).toFixed(3) + "%");
+        $(".summary-header-percentFullyVaccinated > h1").text(((data.total_vaccinated / 38131104) * 100).toFixed(3) + "%");
         $(".summary-header-percentFullyVaccinated > b").text("of the Canadian population is fully vaccinated");
         $(".summary-header-vaccinations > h1").text(format(data.total_vaccinations) + " doses administered");
         $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
@@ -95,7 +95,7 @@ $(document).ready(() => {
         $(".summary-header-vaccineDelivered > b").text((((data.total_vaccinations) / (data.total_vaccines_distributed)) * 100).toFixed(1) + "%" + " of doses delivered have been administered");
 
         // update province table footer
-        var canadaPopulation = 38008005;
+        var canadaPopulation = 38131104;
         var casesPer100000 = Math.floor(((100000 * data.total_cases) / canadaPopulation) * 100) / 100;
         var fatalitiesPer100000 = Math.floor(((100000 * data.total_fatalities) / canadaPopulation) * 100) / 100;
         var hospitalizationsPer100000 = Math.floor(((100000 * data.total_hospitalizations) / canadaPopulation) * 100) / 100;
