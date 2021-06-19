@@ -33,8 +33,8 @@ var provinceAgeGroup = {
 		boxEnabled: false
 	},
 	"SK": {
-		population: 905623,
-		boxEnabled: false
+		population: 942109,
+		boxEnabled: true
 	},
 	"AB": {
 		population: 3445146,
