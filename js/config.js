@@ -291,7 +291,7 @@ function provinceProperties(code, name) {
             name: "Alberta",
             population : 4444277,
             code: "AB",
-			displayNotes: true
+			displayNotes: false
         },
         "PE": {
             name: "Prince Edward Island",
