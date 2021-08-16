@@ -22,7 +22,7 @@ function drawMap(data) {
 }
 
 function drawProvinces(data) {
-     fetch('./assets/data/provinces.json').then(resp => resp.json()).then(response => {
+     fetch('https://covid19tracker.ca/assets/data/provinces.json').then(resp => resp.json()).then(response => {
 
         var centroidGeoJSON = {
             type: "FeatureCollection",
@@ -71,7 +71,7 @@ function drawProvinces(data) {
             ["number", ['get', 'province_vaccinations_per_population']],
             fillRange[0], '#F1FFEE',
           //  fillRange[1] * 0.4, '#233309', 
-            fillRange[1] * 0.8, '#111905'
+            fillRange[1]*0.9, '#111905'
         ];
 
         var mapHTML = `
@@ -80,7 +80,7 @@ function drawProvinces(data) {
           <div class="vac-swatch"></div>
           <ul>
             <li style="text-align:left;">${fillRange[0].toFixed(0)}</li>
-            <li style="text-align:center;">${(fillRange[1]*0.5).toFixed(0)}</li>
+            <li style="text-align:center;">${(fillRange[1]*0.9).toFixed(0)}</li>
             <li style="text-align: right;">${fillRange[1].toFixed(0)}</li>
           </ul>
           <p>Total vaccinations to date in red.</p>
