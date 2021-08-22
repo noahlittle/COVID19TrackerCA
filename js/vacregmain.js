@@ -18,44 +18,167 @@ var totalPopulationVaccinated216 = 0;
 var adults = 0;
 var adultsFull = 0;
 var populationObj = [{
-    "province": "AB",
-    "population": 3761130
+	"province": "AB",
+	"population": 3761130,
+	"regionsPopulation": {
+		"4831": 309575, // "South Zone"
+		"4832": 1728648, // "Calgary Zone"
+		"4833": 480620, // "Central Zone"
+		"4834": 1480081, // "Edmonton Zone"
+		"4835": 459426 // "North Zone"
+	}
 }, {
-    "province": "BC",
-    "population": 4577078
+	"province": "BC",
+	"population": 4577078,
+	"regionsPopulation": {
+		"591": 1961951, // "Fraser Health"
+		"592": 823346, // "Interior Health"
+		"593": 864079, // "Vancouver Island Health"
+		"594": 301050, // "Northern Health"
+		"595": 1249689 // "Vancouver  Coastal Health"
+	}
 }, {
-    "province": "MB",
-    "population": 1168942
+	"province": "MB",
+	"population": 1168942,
+	"regionsPopulation": {
+		"4601": 788084, // "Winnipeg Regional Health Authority"
+		"4602": 172995, // "Prairie Mountain Health"
+		"4603": 134867, // "Interlake-Eastern Regional Health Authority"
+		"4604": 75732, // "Northern Regional Health Authority"
+		"4605": 212268 // "Southern Health—Santé Sud"
+	}
 }, {
-    "province": "NB",
-    "population": 693386
+	"province": "NB",
+	"population": 693386,
+	"regionsPopulation": {
+		"1301": 229755, // "Zone 1 (Moncton area)"
+		"1302": 177667, // "Zone 2 (Saint John area)"
+		"1303": 185290, // "Zone 3 (Fredericton area)"
+		"1304": 47698, // "Zone 4 (Edmundston area)"
+		"1305": 24957, // "Zone 5 (Campbellton area)"
+		"1306": 76348, // "Zone 6 (Bathurst area)"
+		"1307": 43741 // "Zone 7 (Miramichi area)"
+	}
 }, {
-    "province": "NL",
-    "population": 467776
+
+	"province": "NL",
+	"population": 467776,
+	"regionsPopulation": {
+		"1011": 318005, // "Eastern Regional Health Authority"
+		"1012": 90299, // "Central Regional Health Authority"
+		"1013": 76207, // "Western Regional Health Authority"
+		"1014": 35957 // "Labrador-Grenfell Regional Health Authority"
+	}
 }, {
-    "province": "NT",
-    "population": 37917
+
+	"province": "NT",
+	"population": 37917,
+	"regionsPopulation": {
+		"6101": 45242 // "Northwest Territories"
+	}
 }, {
-    "province": "NS",
-    "population": 871111
+
+	"province": "NS",
+	"population": 871111,
+	"regionsPopulation": {
+		"1201": 199520, // "Zone 1 - Western"
+		"1202": 148718, // "Zone 2 - Northern"
+		"1203": 161838, // "Zone 3 - Eastern"
+		"1204": 475049 // "Zone 4 - Central"
+	}
 }, {
-    "province": "NU",
-    "population": 29183
+	"province": "NU",
+	"population": 29183,
+	"regionsPopulation": {
+		"6201": 39631 // "Nunavut"
+	}
 }, {
-    "province": "ON",
-    "population": 12932471
+	"province": "ON",
+	"population": 12932471,
+	"regionsPopulation": {
+		"3526": 117433, //"The District of Algoma Health Unit"
+		"3527": 154616, //"Brant County Health Unit"
+		"3530": 717732, //"Durham Regional Health Unit"
+		"3533": 176731, //"Grey Bruce Health Unit"
+		"3534": 120255, //"Haldimand-Norfolk Health Unit"
+		"3535": 191499, //"Haliburton, Kawartha, Pine Ridge District Health Unit"
+		"3536": 616852, //"Halton Regional Health Unit"
+		"3537": 586092, //"City of Hamilton Health Unit"
+		"3538": 173299, //"Hastings and Prince Edward Counties Health Unit"
+		"3539": 147099, //"Huron Perth Public Health Unit"
+		"3540": 106779, //"Chatham-Kent Health Unit"
+		"3541": 209864, //"Kingston, Frontenac and Lennox and Addington Health Unit"
+		"3542": 133271, //"Lambton Health Unit"
+		"3543": 180362, //"Leeds, Grenville and Lanark District Health Unit"
+		"3544": 516035, //"Middlesex-London Health Unit"
+		"3546": 484809, //"Niagara Regional Area Health Unit"
+		"3547": 129470, //"North Bay Parry Sound District Health Unit"
+		"3549": 80986, //"Northwestern Health Unit"
+		"3551": 1052217, //"City of Ottawa Health Unit"
+		"3553": 1584273, //"Peel Regional Health Unit"
+		"3555": 148400, //"Peterborough County–City Health Unit"
+		"3556": 84775, //"Porcupine Health Unit"
+		"3557": 108524, //"Renfrew County and District Health Unit"
+		"3558": 216569, //"The Eastern Ontario Health Unit"
+		"3560": 608746, //"Simcoe Muskoka District Health Unit"
+		"3561": 205175, //"Sudbury and District Health Unit"
+		"3562": 156986, //"Thunder Bay District Health Unit"
+		"3563": 33742, //"Timiskaming Health Unit"
+		"3565": 612513, //"Waterloo Health Unit"
+		"3566": 313848, //"Wellington-Dufferin-Guelph Health Unit"
+		"3568": 432621, //"Windsor-Essex County Health Unit"
+		"3570": 1211576, //"York Regional Health Unit"
+		"3575": 220116, //"Southwestern Public Health Unit"
+		"3595": 3012445 //"City of Toronto Health Unit"
+	}
 }, {
-    "province": "PE",
-    "population": 140601
+
+	"province": "PE",
+	"population": 140601,
+	"regionsPopulation": {
+		"1100": 160756 // "Prince Edward Island"
+	}
 }, {
-    "province": "QC",
-    "population": 7489220
+	"province": "QC",
+	"population": 7489220,
+	"regionsPopulation": {
+		"2401": 197856, // "Région du Bas-Saint-Laurent"
+		"2402": 278851, // "Région du Saguenay—Lac-Saint-Jean"
+		"2403": 759583, // "Région de la Capitale-Nationale"
+		"2404": 526375, // "Région de la Mauricie et du Centre-du-Québec"
+		"2405": 499945, // "Région de l'Estrie"
+		"2406": 2075553, // "Région de Montréal"
+		"2407": 402944, // "Région de l'Outaouais"
+		"2408": 147445, // "Région de l'Abitibi-Témiscamingue"
+		"2409": 89937, // "Région de la Côte-Nord"
+		"2410": 14276, // "Région du Nord-du-Québec"
+		"2411": 90515, // "Région de la Gaspésie—Îles-de-la-Madeleine"
+		"2412": 434401, // "Région de la Chaudière-Appalaches"
+		"2413": 444562, // "Région de Laval"
+		"2414": 526621, // "Région de Lanaudière"
+		"2415": 635138, // "Région des Laurentides"
+		"2416": 1445829, // "Région de la Montérégie"
+		"2417": 13488, // "Région du Nunavik"
+		"2418": 17946 // "Région des Terres-Cries-de-la-Baie-James"
+	}
+},
+{
+	"province": "SK",
+	"population": 1033096,
+	"regionsPopulation": {
+		"471": 51710, // "Far North"
+		"472": 202809, // "North"
+		"473": 131941, // "Central"
+		"474": 342056, // "Saskatoon"
+		"475": 269284, // "Regina"
+		"476": 184251 // "South"
+	}
 }, {
-    "province": "SK",
-    "population": 1033096
-}, {
-    "province": "YT",
-    "population": 36209
+	"province": "YT",
+	"population": 36209,
+	"regionsPopulation": {
+		"6001": 42444 // "Yukon"
+	}
 }];
 
 // Helper function to format numbers with commas
@@ -230,11 +353,6 @@ $(document).ready(() => {
         container.toggle();
     });
 
-
-
-    
-
-
         document.querySelector('title').textContent = `COVID-19 Tracker Canada - ${pText} Vaccination Tracker`;
 
         $.ajax({
@@ -317,6 +435,8 @@ $(document).ready(() => {
             $('#totalVaccinatedCanada').text(data.total_vaccinated);
             $('#vaccinatedPerCanada').text(vaccinationsPer100000);
             $('#infectedPerCanada').text(casesPer100000);
+			$('#totalOneDoseProvince').text((((data.total_vaccinations - data.total_vaccinated) / population) * 100).toFixed(2) + '%');
+			$('#totalFullDoseProvince').text(((data.total_vaccinated / population) * 100).toFixed(2) + '%');
 
             //$(".display-select").show();
         });
@@ -330,12 +450,13 @@ $(document).ready(() => {
                 var hrData = [];
                 var hrDataTable = [];
                 $.each(res3.data, function (i, v) {
-                    _hrData = res2.find(function (t) { return t.hr_uid === v.hr_uid; })
+                    _hrData = res2.find(function (t) { return t.hr_uid === v.hr_uid; });
                     if (typeof _hrData !== "undefined" && v.total_vaccinations !== null) {
                         v.name = typeof _hrData.engname !== "undefined" ? _hrData.engname : "Region" + v.hr_uid;
                         hrData.push(v);
                     }
                     if (typeof _hrData !== "undefined") {
+						v.regPopulation = populationObj.find(function (_p) { return pCode === _p.province; }).regionsPopulation[v.hr_uid];
                         hrDataTable.push(v);
                     }
                 });
@@ -439,6 +560,8 @@ function buildRegionTable(data, regionData) {
         var regName = typeof regProvinceData !== "undefined" ? regProvinceData.engname : "Region " + item.hr_uid;
         var itemTotalVaccinations = (item.total_vaccinations === null || item.total_vaccinations === undefined) ? "No Data" : item.total_vaccinations;
         var itemTotalVaccinated = (item.total_vaccinated === null || item.total_vaccinated === undefined) ? "No Data" : item.total_vaccinated;
+		var oneDosePercentage = (((itemTotalVaccinations - itemTotalVaccinated) / item.regPopulation) * 100).toFixed(2) + "%";
+		var fullDosePercentage = ((itemTotalVaccinated / item.regPopulation) * 100).toFixed(2) + "%";
 
         // append data to row
         $('#vaccinationsProvinceTable').append(
@@ -448,6 +571,8 @@ function buildRegionTable(data, regionData) {
             "</td>" +
             "<td><i>" + format(itemTotalVaccinations) + (item.change_vaccinations ? ("<i>" + " " + displayNewCases(item.change_vaccinations)) : "" + "</i>") + "</i></td>" +
             "<td><i>" + format(itemTotalVaccinated) + "</i></td>" +
+			"<td><i>" + format(oneDosePercentage) + "</i></td>" +
+			"<td><i>" + format(fullDosePercentage) + "</i></td>" +
             "</tr>"
         );
     });
