@@ -35,6 +35,7 @@ $(document).ready(() => {
 				totalBoosters += v.total_boosters_1;
 			}
 		});
+
 		
 		// get and update header, and cases by province table footer
 		$.ajax({
@@ -62,8 +63,8 @@ $(document).ready(() => {
 			vaccinationsChange = data.change_vaccinations;
 			vaccinesDistributed = data.total_vaccines_distributed;
 
-			totalPopulationVaccinated = ((data.total_vaccinations - data.total_vaccinated) / 38131104) * 100;
-			totalPopulationVaccinated16 = ((data.total_vaccinations - data.total_vaccinated) / 33198268) * 100;
+			totalPopulationVaccinated = ((data.total_vaccinations - (parseInt(data.total_vaccinated) + totalBoosters)) / 38131104) * 100;
+			totalPopulationVaccinated16 = ((data.total_vaccinations - (parseInt(data.total_vaccinated) + totalBoosters)) / 33198268) * 100;
 			totalPopulationFullVaccinated = ((data.total_vaccinated) / 38131104) * 100;
 			totalPopulationFullVaccinated16 = ((data.total_vaccinated) / 33198268) * 100;
 
@@ -75,7 +76,7 @@ $(document).ready(() => {
 			$("#updateVax").text(format(data.total_vaccinations));
 			$("#updateChangeVax").text(format(data.change_vaccinations));
 			$("#updateTwoDoses").text(format(data.total_vaccinated));
-			$("#updateVaxPpl").text(format(data.total_vaccinations - data.total_vaccinated));
+			$("#updateVaxPpl").text(format(data.total_vaccinations - (parseInt(data.total_vaccinated) + totalBoosters)));
 			$("#updateTotalDel").text(format(data.total_vaccines_distributed));
 			$("#updatePerAdm").text((((data.total_vaccinations) / (data.total_vaccines_distributed)) * 100).toFixed(1) + "%")
 
