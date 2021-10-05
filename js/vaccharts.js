@@ -317,7 +317,8 @@ function lineGraph3(data, id) {
     var name = [];
     var allData = {
         "first_doses": [],
-        "second_doses": []
+        "second_doses": [],
+		"third_doses": []
     };
 	
     for (var i in data) {
@@ -329,8 +330,10 @@ function lineGraph3(data, id) {
             day: 'numeric'
         }).format(date));
 
-		allData["first_doses"].push(data[i].change_vaccinations - data[i].change_vaccinated);
+		var booster = data[i].change_boosters_1 ? data[i].change_boosters_1 : 0;
+		allData["first_doses"].push(data[i].change_vaccinations - (data[i].change_vaccinated + booster));
 		allData["second_doses"].push(data[i].change_vaccinated);
+		allData["third_doses"].push(booster);
     }
 
     // used to setup graph that needs to be drawn
@@ -369,6 +372,21 @@ function lineGraph3(data, id) {
                     backgroundColor: "rgba(92,59,141,0.2)",
                     borderColor: "#353A3F",
                     data: allData["second_doses"],
+                    hidden: false
+                },
+                {
+                    label: "Third Doses",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 3,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "rgba(255,255,255,0.8)",
+                    pointBackgroundColor: "#353A3F",
+                    pointHoverBackgroundColor: "#353A3F",
+                    backgroundColor: "rgba(53,58,63,0.2)",
+                    borderColor: "#353A3F",
+                    data: allData["boosters"],
                     hidden: false
                 }
             ]
