@@ -293,6 +293,13 @@
                     <div class="card-body">
                         <h3>Data by Region</h3>
                         Available vaccination data for each region is displayed below.
+						<div class="material-switch pull-right">
+							<div class="switch-label d-inline-block">Eligible <span data-toggle='tooltip' title='When toggled, this value gives the percentage of those 12+ who are fully vaccinated.'><i class="far fa-question-circle"></i></span></div>
+							<div class="d-inline-block">
+								<input id="tablePopulationToggle" name="criticalCases" type="checkbox" />
+								<label for="tablePopulationToggle" class="label-success"></label>
+							</div>
+						</div>
                         <br>
                         <br>
                         <div class="table-responsive">
@@ -305,7 +312,7 @@
                                         <th>% of Doses Administered <span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'><i class="far fa-question-circle"></i></span></th>
                                         <th>Doses Administered / 100k Population</th>-->
                                         <th>People Fully Vaccinated <span data-toggle='tooltip' title='The number of people reported as having received both required doses'><i class="far fa-question-circle"></i></span></th>
-										<th>% At Least One Dose</th>
+										<th>% With at least One Dose</th>
 										<th>% Fully Vaccinated</th>
                                     </tr>
                                 </thead>
@@ -384,7 +391,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h3>Data by Age Group</h3>
-                        Vaccine data by age is sourced from PHAC, and may not align with provincial reporting. PHAC data is updated each Friday, with data current as of the previous Saturday.
+                        Vaccine data by age is sourced provincially or from PHAC, and may not align with provincial reporting. PHAC data is updated each Friday, with data current as of the previous Saturday.
   
                 <br>
 				

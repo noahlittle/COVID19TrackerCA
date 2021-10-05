@@ -92,14 +92,14 @@
 
                         <p>A few important notes:</p>
                         <ul>
-                        <li>Hospitalization data includes those receiving both inpatient and ICU care; ICU (or criticals) are a subset of hospitalizations.</li>
-                        <li>Most provinces do not report during weekends or holidays. When possible, we backfill data to the proper 'reported' date during the weekend or holiday. If this is not possible, all data is included in the day after the weekend or holiday.</li>
-                        <li>Saskatchewan data is reported for 13 regions by the Saskatchewn Government; it previously was reported for only 6 regions. This change took place in August of 2020 and historical data for the new regions was never provided. As such, we combine the 13 regions and continue to report by the original 6 regions to ensure a full, accurate historical dataset.</li>
-                        <li>Data is not final until the status for a province is set to "Reported". When marked as "In Progress" or "Waiting for Report", data is incomplete or not final.</li>
-
+                        <li>If a case is removed from any region, the latest case from that specific region is removed from the dataset</li>
+                        <li>Some provinces report testing as 'people tested' (such as Quebec) whereas others report as 'total tests conducted'</li>
+                        <li>Some provinces (such as British Columbia) do not report cases on weekends and others do not report cases on holidays; however they do report the number of Weekend/Holiday cases on the next weekday, resulting in correct case numbers but arbitrary regional distribution</li>
+                        <li>If cases in a province are removed from a 'pending' region, they are added to the region with the greatest number of new cases on that particular day</li>
+                        <li>In the event of changes in regional boundaries, any cases from regions with decreases in case numbers are moved to the closest region with the greatest increase of cases as a result of such regional distribution</li>
                         </ul>
 
-                        <p>If you have any questions regarding any notes above or have any other questions, please <a href="mailto:noah.little@usask.ca">reach out</a>.</p>
+                        <p>If you have any questions regarding any notes above, please <a href="mailto:noah.little@usask.ca">reach out</a>.</p>
 
                     </div>
                 </div>
