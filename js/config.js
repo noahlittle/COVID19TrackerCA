@@ -241,79 +241,79 @@ function provinceProperties(code, name) {
     var hashmap = {
         "QC": {
             name: "Quebec",
-            population : 8585523,
+            population : 8604495,
             code: "QC",
 			displayNotes: false
         },
         "NL": {
             name: "Newfoundland and Labrador",
-            population : 520286,
+            population : 520553,
             code: "NL",
 			displayNotes: false
         },
         "BC": {
             name: "British Columbia",
-            population : 5174724,
+            population : 5214805,
             code: "BC",
 			displayNotes: false
         },
         "NU": {
             name: "Nunavut",
-            population : 39536,
+            population : 39403,
             code: "NU",
 			displayNotes: false
         },
         "NT": {
             name: "Northwest Territories",
-            population : 44991,
+            population : 45504,
             code: "NT",
 			displayNotes: false
         },
         "NB": {
             name: "New Brunswick",
-            population : 783721,
+            population : 789225,
             code: "NB",
 			displayNotes: false
         },
         "NS": {
             name: "Nova Scotia",
-            population : 982326,
+            population : 992055,
             code: "NS",
 			displayNotes: false
         },
         "SK": {
             name: "Saskatchewan",
-            population : 1179906,
+            population : 1179844,
             code: "SK",
 			displayNotes: true
         },
         "AB": {
             name: "Alberta",
-            population : 4444277,
+            population : 4442879,
             code: "AB",
 			displayNotes: false
         },
         "PE": {
             name: "Prince Edward Island",
-            population : 160536,
+            population : 164318,
             code: "PE",
 			displayNotes: false
         },
         "YT": {
             name: "Yukon",
-            population : 42596,
+            population : 42986,
             code: "YT",
 			displayNotes: false
         },
         "MB": {
             name: "Manitoba",
-            population : 1382904,
+            population : 1383765,
             code: "MB",
 			displayNotes: false
         },
         "ON": {
             name: "Ontario",
-            population : 14789778,
+            population : 14826276,
             code: "ON",
 			displayNotes: false
         }
