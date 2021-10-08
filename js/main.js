@@ -52,7 +52,7 @@ $(document).ready(() => {
         $(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
 
         // update province table footer
-        var canadaPopulation = 37679286;
+        var canadaPopulation = 38246108;
         var casesPer100000 = Math.floor(((100000 * data.total_cases) / canadaPopulation) * 100) / 100;
         var fatalitiesPer100000 = Math.floor(((100000 * data.total_fatalities) / canadaPopulation) * 100) / 100;
         var hospitalizationsPer100000 = Math.floor(((100000 * data.total_hospitalizations) / canadaPopulation) * 100) / 100;
