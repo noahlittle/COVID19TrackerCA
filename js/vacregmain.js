@@ -21,8 +21,8 @@ var _hrDataTable = [];
 var _hrResponse = [];
 var populationObj = [{
 	"province": "AB",
-	"population": 4458350,
-	"populationEligible": 3796376,
+	"population": 4442879,
+	"populationEligible": 3791830,
 	"regionsPopulation": {
 		"4831": 309575, // "South Zone"
 		"4832": 1728648, // "Calgary Zone"
@@ -39,8 +39,8 @@ var populationObj = [{
 	}
 }, {
 	"province": "BC",
-	"population": 5200115,
-	"populationEligible": 4626822,
+	"population": 5214805,
+	"populationEligible": 4644749,
 	"regionsPopulation": {
 		"591": 1961951, // "Fraser Health"
 		"592": 823346, // "Interior Health"
@@ -57,8 +57,8 @@ var populationObj = [{
 	}
 }, {
 	"province": "MB",
-	"population": 1383946,
-	"populationEligible": 1173441,
+	"population": 1383765,
+	"populationEligible": 1176028,
 	"regionsPopulation": {
 		"4601": 788084, // "Winnipeg Regional Health Authority"
 		"4602": 172995, // "Prairie Mountain Health"
@@ -75,8 +75,8 @@ var populationObj = [{
 	}
 }, {
 	"province": "NB",
-	"population": 785456,
-	"populationEligible": 697340,
+	"population": 789225,
+	"populationEligible": 701879,
 	"regionsPopulation": {
 		"1301": 229755, // "Zone 1 (Moncton area)"
 		"1302": 177667, // "Zone 2 (Saint John area)"
@@ -98,8 +98,8 @@ var populationObj = [{
 }, {
 
 	"province": "NL",
-	"population": 520468,
-	"populationEligible": 466771,
+	"population": 520553,
+	"populationEligible": 467760,
 	"regionsPopulation": {
 		"1011": 318005, // "Eastern Regional Health Authority"
 		"1012": 90299, // "Central Regional Health Authority"
@@ -115,19 +115,19 @@ var populationObj = [{
 }, {
 
 	"province": "NT",
-	"population": 45242,
-	"populationEligible": 38006,
+	"population": 45504,
+	"populationEligible": 38364,
 	"regionsPopulation": {
-		"6101": 45242 // "Northwest Territories"
+		"6101": 45504 // "Northwest Territories"
 	},
 	"regionsPopulationEligible": {
-		"6101": 38006 // "Northwest Territories"
+		"6101": 38364 // "Northwest Territories"
 	}
 }, {
 
 	"province": "NS",
-	"population": 985125,
-	"populationEligible": 876367,
+	"population": 992055,
+	"populationEligible": 884353,
 	"regionsPopulation": {
 		"1201": 199520, // "Zone 1 - Western"
 		"1202": 148718, // "Zone 2 - Northern"
@@ -142,18 +142,18 @@ var populationObj = [{
 	}
 }, {
 	"province": "NU",
-	"population": 39631,
-	"populationEligible": 29402,
+	"population": 39403,
+	"populationEligible": 29429,
 	"regionsPopulation": {
-		"6201": 39631 // "Nunavut"
+		"6201": 39403 // "Nunavut"
 	},
 	"regionsPopulationEligible": {
-		"6201": 29402 // "Nunavut"
+		"6201": 29429 // "Nunavut"
 	}
 }, {
 	"province": "ON",
-	"population": 14845710, // 14845710
-	"populationEligible": 13035262,
+	"population": 14826276, // 14845710
+	"populationEligible": 13038032,
 	"regionsPopulation": {
 		"3526": 117433, //"The District of Algoma Health Unit"
 		"3527": 154616, //"Brant County Health Unit"
@@ -229,18 +229,18 @@ var populationObj = [{
 }, {
 
 	"province": "PE",
-	"population": 160756,
-	"populationEligible": 141775,
+	"population": 164318,
+	"populationEligible": 145431,
 	"regionsPopulation": {
-		"1100": 160756 // "Prince Edward Island"
+		"1100": 164318 // "Prince Edward Island"
 	},
 	"regionsPopulationEligible": {
-		"1100": 141775 // "Prince Edward Island"
+		"1100": 145431 // "Prince Edward Island"
 	}
 }, {
 	"province": "QC",
-	"population": 8601265,
-	"populationEligible": 7519942,
+	"population": 8604495,
+	"populationEligible": 7532471,
 	"regionsPopulation": {
 		"2401": 197856, // "Région du Bas-Saint-Laurent"
 		"2402": 278851, // "Région du Saguenay—Lac-Saint-Jean"
@@ -284,8 +284,8 @@ var populationObj = [{
 },
 {
 	"province": "SK",
-	"population": 1182051,
-	"populationEligible": 996979,
+	"population": 1179844,
+	"populationEligible": 996896,
 	"regionsPopulation": {
 		"471": 51710, // "Far North"
 		"472": 202809, // "North"
@@ -304,13 +304,13 @@ var populationObj = [{
 	}
 }, {
 	"province": "YT",
-	"population": 42444,
-	"populationEligible": 36571,
+	"population": 42986,
+	"populationEligible": 37203,
 	"regionsPopulation": {
-		"6001": 42444 // "Yukon"
+		"6001": 42986 // "Yukon"
 	},
 	"regionsPopulationEligible": {
-		"6001": 36571 // "Yukon"
+		"6001": 37203 // "Yukon"
 	}
 }];
 
