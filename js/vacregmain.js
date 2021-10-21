@@ -419,7 +419,6 @@ $(document).ready(() => {
 
         var population16 = populationObj.find(function (_p) { return pCode === _p.province; }).population;
         var pText = province.name;
-		var boostie = latest.total_boosters_1 > 0 ? latest.total_boosters_1 : 0;
         noDataText = pText + " does not release regional vaccination data";
         $(".display-province").text(pText);
         //$(".display-select").hide();
