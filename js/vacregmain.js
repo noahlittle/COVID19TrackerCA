@@ -419,7 +419,7 @@ $(document).ready(() => {
 
         var population16 = populationObj.find(function (_p) { return pCode === _p.province; }).population;
         var pText = province.name;
-		var booster = latest.total_boosters_1 > 0 ? latest.total_boosters_1 : 0;
+		var boostie = latest.total_boosters_1 > 0 ? latest.total_boosters_1 : 0;
         noDataText = pText + " does not release regional vaccination data";
         $(".display-province").text(pText);
         //$(".display-select").hide();
@@ -505,13 +505,13 @@ $(document).ready(() => {
 			$("#criticalCases").prop("checked", false);
 
 			vaccinations = data.total_vaccinations;
-			peopleVaccinated = data.total_vaccinations - (data.total_vaccinated + booster);
+			peopleVaccinated = data.total_vaccinations - data.total_vaccinated - data.total_boosters_1;
 			twoDoses = data.total_vaccinated;
-			percentVaccinated = Math.floor((data.total_vaccinations - (data.total_vaccinated + booster)) / population * 100) / 100;
+			percentVaccinated = Math.floor((data.total_vaccinations - data.total_vaccinated - data.total_boosters_1) / population * 100) / 100;
 			vaccinationsChange = data.change_vaccinations;
 			vaccinesDistributed = data.total_vaccines_distributed;
-			totalPopulationVaccinated = ((data.total_vaccinations - (data.total_vaccinated + booster)) / population) * 100;
-			totalPopulationVaccinated16 = ((data.total_vaccinations - (data.total_vaccinated + booster)) / populationEligible) * 100;
+			totalPopulationVaccinated = ((data.total_vaccinations - data.total_vaccinated - data.total_boosters_1) / population) * 100;
+			totalPopulationVaccinated16 = ((data.total_vaccinations - data.total_vaccinated - data.total_boosters_1) / populationEligible) * 100;
 			totalPopulationVaccinated2 = ((data.total_vaccinated) / population) * 100;
 			totalPopulationVaccinated216 = ((data.total_vaccinated) / populationEligible) * 100;
 			date = data.last_updated;
@@ -521,7 +521,7 @@ $(document).ready(() => {
 			$("#updateVax").text(format(data.total_vaccinations));
 			$("#updateChangeVax").text(format(data.change_vaccinations));
 			$("#updateTwoDoses").text(format(data.total_vaccinated));
-			$("#updateVaxPpl").text(format(data.total_vaccinations - (data.total_vaccinated + booster)));
+			$("#updateVaxPpl").text(format(data.total_vaccinations - (data.total_vaccinated + data.total_boosters_1)));
 			$("#updateTotalDel").text(format(data.total_vaccines_distributed));
 			$("#updatePerAdm").text((((data.total_vaccinations) / (data.total_vaccines_distributed)) * 100).toFixed(1) + "%")
 
@@ -534,7 +534,7 @@ $(document).ready(() => {
 			$(".summary-header-hospitalized > b").text(displayNewCases(data.change_hospitalizations));
 			$(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
 			$(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
-			$(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - (data.total_vaccinated + booster)) / population) * 100).toFixed(3) + "%");
+			$(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - (data.total_vaccinated + data.total_boosters_1)) / population) * 100).toFixed(3) + "%");
 			$(".summary-header-percentVaccinated > b").text("of all people in " + pText + " have received at least one dose");
 			$(".summary-header-percentVaccinated2 > h1").text((((data.total_vaccinated) / population) * 100).toFixed(3) + "%");
 			$(".summary-header-percentVaccinated2 > b").text("of all people in " + pText + " are fully vaccinated");
@@ -547,12 +547,12 @@ $(document).ready(() => {
 
 			$("#tablePopulationToggle").on('change', function () {
 				var checked = $("#tablePopulationToggle").prop("checked");
-				buildRegionTable(_hrDataTable, _hrResponse, checked, booster);
+				buildRegionTable(_hrDataTable, _hrResponse, checked);
 				if (checked) {
-					$('#totalOneDoseProvince').text((((data.total_vaccinations - (data.total_vaccinated + booster)) / populationEligible) * 100).toFixed(2) + '%');
+					$('#totalOneDoseProvince').text((((data.total_vaccinations - (data.total_vaccinated + data.total_boosters_1)) / populationEligible) * 100).toFixed(2) + '%');
 					$('#totalFullDoseProvince').text(((data.total_vaccinated / populationEligible) * 100).toFixed(2) + '%');
 				} else {
-					$('#totalOneDoseProvince').text((((data.total_vaccinations - (data.total_vaccinated + booster)) / population) * 100).toFixed(2) + '%');
+					$('#totalOneDoseProvince').text((((data.total_vaccinations - (data.total_vaccinated + data.total_boosters_1)) / population) * 100).toFixed(2) + '%');
 					$('#totalFullDoseProvince').text(((data.total_vaccinated / population) * 100).toFixed(2) + '%');
 				}
 			});
@@ -566,6 +566,16 @@ $(document).ready(() => {
 			var testsPer100000 = Math.floor(((100000 * data.total_tests) / population) * 100) / 100;
 			var vaccinationsPer100000 = Math.floor(((100000 * data.total_vaccinations) / population) * 100) / 100;
 			var vaccinationsPercent = Math.floor(((100000 * data.total_vaccinations) / data.total_vaccines_distributed) * 100) / 100;
+			var tempBoost = data.total_boosters_1;
+
+
+		if (tempBoost === 0) {
+			tempBoost = "No Data";
+		}
+
+
+
+
 			$('#totalCasesCanada').attr("data-per-capita", casesPer100000);
 			$('#totalFatalitiesCanada').attr("data-per-capita", fatalitiesPer100000);
 			$('#totalHospitalizationsCanada').attr("data-per-capita", hospitalizationsPer100000);
@@ -585,11 +595,14 @@ $(document).ready(() => {
 			$('#totalVaccinationsDistCanada').text(data.total_vaccines_distributed);
 			$('#totalVaccinationsPercentCanada').text((((data.total_vaccinations) / (data.total_vaccines_distributed)) * 100).toFixed(1) + "%")
 			$('#totalVaccinationsChangeCanada').text(data.change_vaccinations);
-			$('#totalVaccinatedCanada').text(data.total_vaccinated);
+			$('#totalVaccinatedCanada').text(data.total_vaccinated + (data.change_vaccinated ? (" " + displayNewCases(data.change_vaccinated)) : ""));
 			$('#vaccinatedPerCanada').text(vaccinationsPer100000);
 			$('#infectedPerCanada').text(casesPer100000);
-			$('#totalOneDoseProvince').text((((data.total_vaccinations - (data.total_vaccinated + booster)) / population) * 100).toFixed(2) + '%');
+			$('#totalOneDoseProvince').text((((data.total_vaccinations - (data.total_vaccinated + data.total_boosters_1)) / population) * 100).toFixed(2) + '%');
+			$('#totalBoosterCanada').text(tempBoost + (data.change_boosters_1 ? (" " + displayNewCases(data.change_boosters_1)) : ""));
 			$('#totalFullDoseProvince').text(((data.total_vaccinated / population) * 100).toFixed(2) + '%');
+
+
         });
 
         $.ajax({
@@ -615,7 +628,7 @@ $(document).ready(() => {
 				_hrDataTable = hrDataTable;
 				_hrResponse = res2;
                 barGraph2(hrData, "#provinceCasesChart");
-                buildRegionTable(hrDataTable, res2, false, booster);
+                buildRegionTable(hrDataTable, res2, false);
             });
         });
 
@@ -704,21 +717,24 @@ $(document).ready(() => {
     });
 });
 
-function buildRegionTable(data, regionData, isEligible, booster) {
+function buildRegionTable(data, regionData, isEligible) {
 	$('#vaccinationsProvinceTable').children().remove();
     data.forEach(function (item) {
         var regProvinceData = regionData.find(function (r) { return r.hr_uid === item.hr_uid; });
         var regName = typeof regProvinceData !== "undefined" ? regProvinceData.engname : "Region " + item.hr_uid;
         var itemTotalVaccinations = (item.total_vaccinations === null || item.total_vaccinations === undefined) ? "No Data" : item.total_vaccinations;
         var itemTotalVaccinated = (item.total_vaccinated === null || item.total_vaccinated === undefined) ? "No Data" : item.total_vaccinated;
-		var oneDosePercentage = itemTotalVaccinated === "No Data" ? "No Data" : ((((itemTotalVaccinations - (itemTotalVaccinated)) / (isEligible ? item.regPopulationEligible : item.regPopulation)) * 100).toFixed(2) + "%");
+        var itemTotalBoosted = item.total_boosters_1;
+		var oneDosePercentage = itemTotalVaccinated === "No Data" ? "No Data" : ((((itemTotalVaccinations - (itemTotalVaccinated) - (itemTotalBoosted)) / (isEligible ? item.regPopulationEligible : item.regPopulation)) * 100).toFixed(2) + "%");
 		var fullDosePercentage = itemTotalVaccinated === "No Data" ? "No Data" : (((itemTotalVaccinated / (isEligible ? item.regPopulationEligible : item.regPopulation)) * 100).toFixed(2) + "%");
+
+		var itemTotalBoostedFormat = (item.total_boosters_1 === null || item.total_boosters_1 === undefined) ? "No Data" : item.total_boosters_1;
 		
 		if (oneDosePercentage === NaN) {
 			oneDosePercentage = "No Data";
 		}
 		
-		if (oneDosePercentage === NaN) {
+		if (itemTotalBoosted === 0) {
 			oneDosePercentage = "No Data";
 		}
 
@@ -729,7 +745,8 @@ function buildRegionTable(data, regionData, isEligible, booster) {
             "<span>" + regName + "</span>" +
             "</td>" +
             "<td><i>" + format(itemTotalVaccinations) + (item.change_vaccinations ? ("<i>" + " " + displayNewCases(item.change_vaccinations)) : "" + "</i>") + "</i></td>" +
-            "<td><i>" + format(itemTotalVaccinated) + "</i></td>" +
+            "<td><i>" + format(itemTotalVaccinated) + (item.change_vaccinated ? ("<i>" + " " + displayNewCases(item.change_vaccinated)) : "" + "</i>") + "</i></td>" +
+            "<td><i>" + format(itemTotalBoostedFormat) + (item.change_boosters_1 ? ("<i>" + " " + displayNewCases(item.change_boosters_1)) : "" + "</i>") + "</i></td>" +
 			"<td><i>" + format(oneDosePercentage) + "</i></td>" +
 			"<td><i>" + format(fullDosePercentage) + "</i></td>" +
             "</tr>"

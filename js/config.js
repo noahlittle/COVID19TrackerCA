@@ -1,8 +1,8 @@
 // current url (should update links to not require this)
 var url = window.location.protocol + '//' + window.location.hostname + '/'; 
 // api  
-var api_url = "https://api.covid19tracker.ca/";
-var devapi_url = "https://api.covid19tracker.ca/";
+var api_url = "https://devapi.covid19tracker.ca/";
+var devapi_url = "https://devapi.covid19tracker.ca/";
 var provinceAgeGroup = {
 	"NL": {
 		population: 436312,
