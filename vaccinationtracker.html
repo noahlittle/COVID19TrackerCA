@@ -105,12 +105,6 @@
                 <br>
                 <h1><i class="fab fa-canadian-maple-leaf"></i> COVID-19 Vaccination Tracker</h1>
 
-                <br>
-                <div class="card">
-                    <div class="card-body">
-                        The latest Statistics Canada estimates (Q3 2021) are used for population values, unless otherwise specified. Population values were updated October 8, 2021; small changes to percentage values may be observed as a result of updated population values and the recent inclusion of 3rd doses.
-                    </div>
-                </div>
                 <br />
 
 
@@ -180,7 +174,7 @@
                                 <br>
                                 <p>As provinces across Canada continue their COVID-19 vaccination programs, we're tracking doses administered in every region of Canada. <b><i><span id="updateChangeVax"></span></i></b> new doses have been reported administered today.</p>
                                 <p>In total, <b><i><span id="updateTotalDel"></span></i></b> doses of COVID-19 vaccines (including Moderna, Pfizer-BioNTech and AstraZeneca) have been delivered to the provinces for administration. As of today, <b><i><span id="updatePerAdm"></span></i></b> of doses delivered to the provinces have been administered.
-                                <p>The Pfizer-BioNTech, Moderna and AstraZeneca vaccines require two doses, a number of weeks apart, for full efficacy. Consequently, we report both the total number of doses administered, and the total number of Canadians who have been fully vaccinated. As of today, more than <b><span id="updateVaxPpl"></span></b> Canadians have received at least one dose of an approved COVID-19 vaccine. <b><span id="updateTwoDoses"></span></b> Canadians are fully vaccinated against COVID-19, having received both required doses.</p>
+                                <p>The Pfizer-BioNTech, Moderna and AstraZeneca vaccines require two doses, a number of weeks apart, for full efficacy. Consequently, we report both the total number of doses administered, and the total number of Canadians who have been fully vaccinated. As of today, more than <b><span id="updateVaxPpl"></span></b> Canadians have received at least one dose of an approved COVID-19 vaccine. <b><span id="totalBoost"></span></b> 3rd doses have been administered, and <b><span id="updateTwoDoses"></span></b> Canadians are fully vaccinated against COVID-19, having received both required doses.</p>
                                 <hr />
                                 <p>
                                     Our data is aggregated by volunteers exclusively from official government sources, updated throughout the day in near real-time. All of our data is freely available for use via our <a href="https://api.covid19tracker.ca">API</a> or in <a href="https://docs.google.com/spreadsheets/d/1PjkemMdFSZgA-M8Esr6rbNjHiyfcXcBxPeMjselJIso/edit?usp=sharing">CSV format</a>. Find more information on the sources we use <a href="https://covid19tracker.ca/vacsources.html">here</a>.
@@ -333,6 +327,7 @@
                                         <th>% of Doses Administered <span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'><i class="far fa-question-circle"></i></span></th>
                                         <th>Doses Administered / 100k Population</th>
                                         <th>People Fully Vaccinated <span data-toggle='tooltip' title='The number of people reported as having received both required doses'><i class="far fa-question-circle"></i></span></th>
+                                        <th>Additional Doses <span data-toggle='tooltip' title='The number of doses administered classified as a 3rd or 4th booster dose'><i class="far fa-question-circle"></i></span></th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -344,6 +339,7 @@
                                         <td><i><b id="totalVaccinationsPercentCanada" data-per-capita=""></b></i></td>
                                         <td><i><b id="vaccinatedPerCanada"></b></i></td>
                                         <td><i><b id="totalVaccinatedCanada"> </b></i></td>
+                                        <td><i><b id="totalBoostedCanada"> </b></i></td>
                                     </tr>
                                 </tfoot>
                                 <tbody id="vaccinationsProvinceTable"></tbody>
