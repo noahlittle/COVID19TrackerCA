@@ -57,9 +57,9 @@ $(document).ready(() => {
 			vaccinesDistributed = data.total_vaccines_distributed;
 
 			totalPopulationVaccinated = ((data.total_vaccinations - data.total_vaccinated - data.total_boosters_1) / 38246108) * 100;
-			totalPopulationVaccinated16 = ((data.total_vaccinations - data.total_vaccinated - data.total_boosters_1) / 33484425) * 100;
+			totalPopulationVaccinated16 = ((data.total_vaccinations - data.total_vaccinated - data.total_boosters_1) / 36363537) * 100;
 			totalPopulationFullVaccinated = ((data.total_vaccinated) / 38246108) * 100;
-			totalPopulationFullVaccinated16 = ((data.total_vaccinated) / 33484425) * 100;
+			totalPopulationFullVaccinated16 = ((data.total_vaccinated) / 36363537) * 100;
 
 			// update timestamp
 
@@ -215,7 +215,7 @@ $(document).ready(() => {
 			var checked = $("#popDoseToggle").prop("checked");
 			if (checked) {
 				$(".summary-header-percentVaccinated > h1").text((totalPopulationVaccinated16).toFixed(3) + "%");
-				$(".summary-header-percentVaccinated > b").text("of Canadians 12+ have received at least one dose");
+				$(".summary-header-percentVaccinated > b").text("of Canadians 5+ have received at least one dose");
 
 			}
 			else {
@@ -228,7 +228,7 @@ $(document).ready(() => {
 			var checked = $("#popDoseToggle1").prop("checked");
 			if (checked) {
 				$(".summary-header-percentFullyVaccinated > h1").text((totalPopulationFullVaccinated16).toFixed(3) + "%");
-				$(".summary-header-percentFullyVaccinated > b").text("of Canadians 12+ are fully vaccinated");
+				$(".summary-header-percentFullyVaccinated > b").text("of Canadians 5+ are fully vaccinated");
 
 			}
 			else {
