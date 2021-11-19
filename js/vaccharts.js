@@ -181,7 +181,7 @@ function lineGraph2(data, id, type, info, r) {
             labels: name,
             datasets: [
                 {
-                    label: "0-17",
+                    label: "5-17",
                     lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 4,
