@@ -22,7 +22,7 @@ var _hrResponse = [];
 var populationObj = [{
 	"province": "AB",
 	"population": 4442879,
-	"populationEligible": 3791830,
+	"populationEligible": 4184210,
 	"regionsPopulation": {
 		"4831": 309575, // "South Zone"
 		"4832": 1728648, // "Calgary Zone"
@@ -40,7 +40,7 @@ var populationObj = [{
 }, {
 	"province": "BC",
 	"population": 5214805,
-	"populationEligible": 4644749,
+	"populationEligible": 4990758,
 	"regionsPopulation": {
 		"591": 1961951, // "Fraser Health"
 		"592": 823346, // "Interior Health"
@@ -58,7 +58,7 @@ var populationObj = [{
 }, {
 	"province": "MB",
 	"population": 1383765,
-	"populationEligible": 1176028,
+	"populationEligible": 1301505,
 	"regionsPopulation": {
 		"4601": 788084, // "Winnipeg Regional Health Authority"
 		"4602": 172995, // "Prairie Mountain Health"
@@ -76,7 +76,7 @@ var populationObj = [{
 }, {
 	"province": "NB",
 	"population": 789225,
-	"populationEligible": 701879,
+	"populationEligible": 756177,
 	"regionsPopulation": {
 		"1301": 229755, // "Zone 1 (Moncton area)"
 		"1302": 177667, // "Zone 2 (Saint John area)"
@@ -99,7 +99,7 @@ var populationObj = [{
 
 	"province": "NL",
 	"population": 520553,
-	"populationEligible": 467760,
+	"populationEligible": 500997,
 	"regionsPopulation": {
 		"1011": 318005, // "Eastern Regional Health Authority"
 		"1012": 90299, // "Central Regional Health Authority"
@@ -116,7 +116,7 @@ var populationObj = [{
 
 	"province": "NT",
 	"population": 45504,
-	"populationEligible": 38364,
+	"populationEligible": 42654,
 	"regionsPopulation": {
 		"6101": 45504 // "Northwest Territories"
 	},
@@ -127,7 +127,7 @@ var populationObj = [{
 
 	"province": "NS",
 	"population": 992055,
-	"populationEligible": 884353,
+	"populationEligible": 950604,
 	"regionsPopulation": {
 		"1201": 199520, // "Zone 1 - Western"
 		"1202": 148718, // "Zone 2 - Northern"
@@ -143,7 +143,7 @@ var populationObj = [{
 }, {
 	"province": "NU",
 	"population": 39403,
-	"populationEligible": 29429,
+	"populationEligible": 35328,
 	"regionsPopulation": {
 		"6201": 39403 // "Nunavut"
 	},
@@ -153,7 +153,7 @@ var populationObj = [{
 }, {
 	"province": "ON",
 	"population": 14826276, // 14845710
-	"populationEligible": 13038032,
+	"populationEligible": 14113455,
 	"regionsPopulation": {
 		"3526": 117433, //"The District of Algoma Health Unit"
 		"3527": 154616, //"Brant County Health Unit"
@@ -230,7 +230,7 @@ var populationObj = [{
 
 	"province": "PE",
 	"population": 164318,
-	"populationEligible": 145431,
+	"populationEligible": 157223,
 	"regionsPopulation": {
 		"1100": 164318 // "Prince Edward Island"
 	},
@@ -240,7 +240,7 @@ var populationObj = [{
 }, {
 	"province": "QC",
 	"population": 8604495,
-	"populationEligible": 7532471,
+	"populationEligible": 8182825,
 	"regionsPopulation": {
 		"2401": 197856, // "Région du Bas-Saint-Laurent"
 		"2402": 278851, // "Région du Saguenay—Lac-Saint-Jean"
@@ -285,7 +285,7 @@ var populationObj = [{
 {
 	"province": "SK",
 	"population": 1179844,
-	"populationEligible": 996896,
+	"populationEligible": 1107019,
 	"regionsPopulation": {
 		"471": 51710, // "Far North"
 		"472": 202809, // "North"
@@ -305,7 +305,7 @@ var populationObj = [{
 }, {
 	"province": "YT",
 	"population": 42986,
-	"populationEligible": 37203,
+	"populationEligible": 40782,
 	"regionsPopulation": {
 		"6001": 42986 // "Yukon"
 	},
@@ -455,7 +455,7 @@ $(document).ready(() => {
         var checked = $("#popDoseToggle").prop("checked");
         if (checked) {
             $(".summary-header-percentVaccinated > h1").text((totalPopulationVaccinated16).toFixed(3) + "%");
-            $(".summary-header-percentVaccinated > b").text("of people 12+ in " + pText + " have received at least one dose");
+            $(".summary-header-percentVaccinated > b").text("of people 5+ in " + pText + " have received at least one dose");
 
         }
         else {
@@ -468,7 +468,7 @@ $(document).ready(() => {
         var checked = $("#popDose2Toggle").prop("checked");
         if (checked) {
             $(".summary-header-percentVaccinated2 > h1").text((totalPopulationVaccinated216).toFixed(3) + "%");
-            $(".summary-header-percentVaccinated2 > b").text("of people 12+ in " + pText + " are fully vaccinated");
+            $(".summary-header-percentVaccinated2 > b").text("of people 5+ in " + pText + " are fully vaccinated");
 
         }
         else {
