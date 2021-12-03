@@ -101,7 +101,9 @@ function lineGraph(data, id, flag, type) {
 function lineGraph2(data, id, type, info, r) {
     var name = [];
     var allData = {
-        "0-17": [],
+        "0-4": [],
+        "05-11": [],
+        "12-17": [],
         "18-29": [],
         "30-39": [],
         "40-49": [],
@@ -122,10 +124,23 @@ function lineGraph2(data, id, type, info, r) {
 
         var aData = JSON.parse(data[i].data);
 
-        if (typeof aData["0-17"] !== "undefined") {
-            allData["0-17"].push(parseFloat(((aData["0-17"][info] / ageGroupPopulation[r]["0-17"]) * 100).toFixed(2)));
+        if (typeof aData["0-4"] !== "undefined") {
+            allData["0-4"].push(parseFloat(((aData["0-4"][info] / ageGroupPopulation[r]["0-4"]) * 100).toFixed(2)));
         } else {
-            allData["0-17"].push(0);
+            allData["0-4"].push(0);
+        }
+
+
+        if (typeof aData["05-11"] !== "undefined") {
+            allData["05-11"].push(parseFloat(((aData["05-11"][info] / ageGroupPopulation[r]["05-11"]) * 100).toFixed(2)));
+        } else {
+            allData["05-11"].push(0);
+        }
+
+        if (typeof aData["12-17"] !== "undefined") {
+            allData["12-17"].push(parseFloat(((aData["12-17"][info] / ageGroupPopulation[r]["12-17"]) * 100).toFixed(2)));
+        } else {
+            allData["12-17"].push(0);
         }
         
         if (typeof aData["18-29"] !== "undefined") {
@@ -181,7 +196,7 @@ function lineGraph2(data, id, type, info, r) {
             labels: name,
             datasets: [
                 {
-                    label: "5-17",
+                    label: "0-4",
                     lineTension: 0.2,
                     pointRadius: 0,
                     pointHoverRadius: 4,
@@ -192,7 +207,37 @@ function lineGraph2(data, id, type, info, r) {
                     pointHoverBackgroundColor: "#6e757c",
                     backgroundColor: "rgba(0, 0, 0, 0)",
                     borderColor: "#6e757c",
-                    data: allData["0-17"],
+                    data: allData["0-4"],
+                    hidden: false
+                },
+                                {
+                    label: "5-11",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 7,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "#6e757c",
+                    pointBackgroundColor: "#6e757c",
+                    pointHoverBackgroundColor: "#6e757c",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#6e757c",
+                    data: allData["05-11"],
+                    hidden: false
+                },
+                                {
+                    label: "12-17",
+                    lineTension: 0.2,
+                    pointRadius: 0,
+                    pointHoverRadius: 4,
+                    pointHitRadius: 7,
+                    pointBorderWidth: 1,
+                    pointBorderColor: "#6e757c",
+                    pointBackgroundColor: "#6e757c",
+                    pointHoverBackgroundColor: "#6e757c",
+                    backgroundColor: "rgba(0, 0, 0, 0)",
+                    borderColor: "#6e757c",
+                    data: allData["12-17"],
                     hidden: false
                 },
                 {
@@ -562,8 +607,8 @@ function barGraph3(data, id) {
 
 // bar graph for age groups
 function barGraph4(data, id, r) {
-    var keys = ["0-17", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"];
-    var name = ["0-17", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"];
+    var keys = ["05-11", "12-17", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"];
+    var name = ["05-11", "12-17", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"];
     var allData = {
         "partial": [],
         "full": []
@@ -797,52 +842,64 @@ function updateAgeGroupChart(graphContainer, t, d, info) {
         for (var i in d) {
             var aData = JSON.parse(d[i].data);
 
-            if (typeof aData["0-17"] !== "undefined") {
-                data.datasets[0].data.push(aData["0-17"][info]);
+            if (typeof aData["0-4"] !== "undefined") {
+                data.datasets[0].data.push(aData["0-4"][info]);
             } else {
                 data.datasets[0].data.push(0);
             }
-            
-            if (typeof aData["18-29"] !== "undefined") {
-                data.datasets[1].data.push(aData["18-29"][info]);
+
+            if (typeof aData["05-11"] !== "undefined") {
+                data.datasets[1].data.push(aData["05-11"][info]);
             } else {
                 data.datasets[1].data.push(0);
             }
-            
-            if (typeof aData["30-39"] !== "undefined") {
-                data.datasets[2].data.push(aData["30-39"][info]);
+
+            if (typeof aData["12-17"] !== "undefined") {
+                data.datasets[2].data.push(aData["12-17"][info]);
             } else {
                 data.datasets[2].data.push(0);
             }
             
-            if (typeof aData["40-49"] !== "undefined") {
-                data.datasets[3].data.push(aData["40-49"][info]);
+            if (typeof aData["18-29"] !== "undefined") {
+                data.datasets[3].data.push(aData["18-29"][info]);
             } else {
                 data.datasets[3].data.push(0);
             }
             
-            if (typeof aData["50-59"] !== "undefined") {
-                data.datasets[4].data.push(aData["50-59"][info]);
+            if (typeof aData["30-39"] !== "undefined") {
+                data.datasets[4].data.push(aData["30-39"][info]);
             } else {
                 data.datasets[4].data.push(0);
             }
             
-            if (typeof aData["60-69"] !== "undefined") {
-                data.datasets[5].data.push(aData["60-69"][info]);
+            if (typeof aData["40-49"] !== "undefined") {
+                data.datasets[5].data.push(aData["40-49"][info]);
             } else {
                 data.datasets[5].data.push(0);
             }
             
-            if (typeof aData["70-79"] !== "undefined") {
-                data.datasets[6].data.push(aData["70-79"][info]);
+            if (typeof aData["50-59"] !== "undefined") {
+                data.datasets[6].data.push(aData["50-59"][info]);
             } else {
                 data.datasets[6].data.push(0);
             }
             
-            if (typeof aData["80+"] !== "undefined") {
-                data.datasets[7].data.push(aData["80+"][info]);
+            if (typeof aData["60-69"] !== "undefined") {
+                data.datasets[7].data.push(aData["60-69"][info]);
             } else {
                 data.datasets[7].data.push(0);
+            }
+            
+            if (typeof aData["70-79"] !== "undefined") {
+                data.datasets[8].data.push(aData["70-79"][info]);
+            } else {
+                data.datasets[8].data.push(0);
+            }
+            
+            if (typeof aData["80+"] !== "undefined") {
+                data.datasets[9].data.push(aData["80+"][info]);
+            } else {
+                data.datasets[9].data.push(0);
             }
         }
     } else {
@@ -865,7 +922,7 @@ function updateAgeGroupBar(graphContainer, t, d) {
             return value;
         }
         
-        var keys = ["0-17", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"];
+        var keys = ["0-4", "05-11", "12-17", "18-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"];
         
         data.datasets.forEach(dataset => {
             dataset.data = [];
