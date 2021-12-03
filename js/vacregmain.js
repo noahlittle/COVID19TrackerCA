@@ -31,11 +31,11 @@ var populationObj = [{
 		"4835": 459426 // "North Zone"
 	},
 	"regionsPopulationEligible": {
-		"4831": 261159, // "South Zone"
-		"4832": 1480861, // "Calgary Zone"
-		"4833": 409091, // "Central Zone"
-		"4834": 1265708, // "Edmonton Zone"
-		"4835": 379557 // "North Zone"
+		"4831": 290339, // "South Zone"
+		"4832": 1630225, // "Calgary Zone"
+		"4833": 452702, // "Central Zone"
+		"4834": 1391544, // "Edmonton Zone"
+		"4835": 425825 // "North Zone"
 	}
 }, {
 	"province": "BC",
@@ -49,11 +49,11 @@ var populationObj = [{
 		"595": 1249689 // "Vancouver  Coastal Health"
 	},
 	"regionsPopulationEligible": {
-		"591": 1721508, // "Fraser Health"
-		"592": 735765, // "Interior Health"
-		"593": 776715, // "Vancouver Island Health"
-		"594": 258457, // "Northern Health"
-		"595": 1134377 // "Vancouver  Coastal Health"
+		"591": 1866645, // "Fraser Health"
+		"592": 789587, // "Interior Health"
+		"593": 830722, // "Vancouver Island Health"
+		"594": 284375, // "Northern Health"
+		"595": 1202689 // "Vancouver  Coastal Health"
 	}
 }, {
 	"province": "MB",
@@ -67,11 +67,11 @@ var populationObj = [{
 		"4605": 212268 // "Southern Health—Santé Sud"
 	},
 	"regionsPopulationEligible": {
-		"4601": 683093, // "Winnipeg Regional Health Authority"
-		"4602": 145682, // "Prairie Mountain Health"
-		"4603": 115508, // "Interlake-Eastern Regional Health Authority"
-		"4604": 57004, // "Northern Regional Health Authority"
-		"4605": 172154 // "Southern Health—Santé Sud"
+		"4601": 745637, // "Winnipeg Regional Health Authority"
+		"4602": 162016, // "Prairie Mountain Health"
+		"4603": 127040, // "Interlake-Eastern Regional Health Authority"
+		"4604": 67676, // "Northern Regional Health Authority"
+		"4605": 196477 // "Southern Health—Santé Sud"
 	}
 }, {
 	"province": "NB",
@@ -87,13 +87,13 @@ var populationObj = [{
 		"1307": 43741 // "Zone 7 (Miramichi area)"
 	},
 	"regionsPopulationEligible": {
-		"1301": 203484, // "Zone 1 (Moncton area)"
-		"1302": 156294, // "Zone 2 (Saint John area)"
-		"1303": 162593, // "Zone 3 (Fredericton area)"
-		"1304": 42916, // "Zone 4 (Edmundston area)"
-		"1305": 22714, // "Zone 5 (Campbellton area)"
-		"1306": 69952, // "Zone 6 (Bathurst area)"
-		"1307": 39387 // "Zone 7 (Miramichi area)"
+		"1301": 219673, // "Zone 1 (Moncton area)"
+		"1302": 169490, // "Zone 2 (Saint John area)"
+		"1303": 176671, // "Zone 3 (Fredericton area)"
+		"1304": 45918, // "Zone 4 (Edmundston area)"
+		"1305": 24062, // "Zone 5 (Campbellton area)"
+		"1306": 74000, // "Zone 6 (Bathurst area)"
+		"1307": 42112 // "Zone 7 (Miramichi area)"
 	}
 }, {
 
@@ -107,10 +107,10 @@ var populationObj = [{
 		"1014": 35957 // "Labrador-Grenfell Regional Health Authority"
 	},
 	"regionsPopulationEligible": {
-		"1011": 284280, // "Eastern Regional Health Authority"
-		"1012": 82183, // "Central Regional Health Authority"
-		"1013": 69288, // "Western Regional Health Authority"
-		"1014": 31020 // "Labrador-Grenfell Regional Health Authority"
+		"1011": 305223, // "Eastern Regional Health Authority"
+		"1012": 87384, // "Central Regional Health Authority"
+		"1013": 73677, // "Western Regional Health Authority"
+		"1014": 34098 // "Labrador-Grenfell Regional Health Authority"
 	}
 }, {
 
@@ -135,10 +135,10 @@ var populationObj = [{
 		"1204": 475049 // "Zone 4 - Central"
 	},
 	"regionsPopulationEligible": {
-		"1201": 179438, // "Zone 1 - Western"
-		"1202": 131897, // "Zone 2 - Northern"
-		"1203": 145071, // "Zone 3 - Eastern"
-		"1204": 419961 // "Zone 4 - Central"
+		"1201": 191693, // "Zone 1 - Western"
+		"1202": 142318, // "Zone 2 - Northern"
+		"1203": 155370, // "Zone 3 - Eastern"
+		"1204": 453185 // "Zone 4 - Central"
 	}
 }, {
 	"province": "NU",
@@ -191,40 +191,40 @@ var populationObj = [{
 		"3595": 3012445 //"City of Toronto Health Unit"
 	},
 	"regionsPopulationEligible": {
-		"3526": 104643, //"The District of Algoma Health Unit"
-		"3527": 133015, //"Brant County Health Unit"
-		"3530": 618162, //"Durham Regional Health Unit"
-		"3533": 154649, //"Grey Bruce Health Unit"
-		"3534": 105459, //"Haldimand-Norfolk Health Unit"
-		"3535": 172692, //"Haliburton, Kawartha, Pine Ridge District Health Unit"
-		"3536": 531835, //"Halton Regional Health Unit"
-		"3537": 513431, //"City of Hamilton Health Unit"
-		"3538": 153530, //"Hastings and Prince Edward Counties Health Unit"
-		"3539": 126842, //"Huron Perth Public Health Unit"
-		"3540": 93772, //"Chatham-Kent Health Unit"
-		"3541": 187084, //"Kingston, Frontenac and Lennox and Addington Health Unit"
-		"3542": 117294, //"Lambton Health Unit"
-		"3543": 160810, //"Leeds, Grenville and Lanark District Health Unit"
-		"3544": 451138, //"Middlesex-London Health Unit"
-		"3546": 430520, //"Niagara Regional Area Health Unit"
-		"3547": 115443, //"North Bay Parry Sound District Health Unit"
-		"3549": 68724, //"Northwestern Health Unit"
-		"3551": 922250, //"City of Ottawa Health Unit"
-		"3553": 1378144, //"Peel Regional Health Unit"
-		"3555": 131858, //"Peterborough County–City Health Unit"
-		"3556": 73483, //"Porcupine Health Unit"
-		"3557": 94951, //"Renfrew County and District Health Unit"
-		"3558": 189253, //"The Eastern Ontario Health Unit"
-		"3560": 535157, //"Simcoe Muskoka District Health Unit"
-		"3561": 181536, //"Sudbury and District Health Unit"
-		"3562": 138008, //"Thunder Bay District Health Unit"
-		"3563": 29551, //"Timiskaming Health Unit"
-		"3565": 532183, //"Waterloo Health Unit"
-		"3566": 271461, //"Wellington-Dufferin-Guelph Health Unit"
-		"3568": 379734, //"Windsor-Essex County Health Unit"
-		"3570": 1060671, //"York Regional Health Unit"
-		"3575": 188874, //"Southwestern Public Health Unit"
-		"3595": 2689105 //"City of Toronto Health Unit"
+		"3526": 112461, //"The District of Algoma Health Unit"
+		"3527": 145946, //"Brant County Health Unit"
+		"3530": 677674, //"Durham Regional Health Unit"
+		"3533": 167632, //"Grey Bruce Health Unit"
+		"3534": 114390, //"Haldimand-Norfolk Health Unit"
+		"3535": 183906, //"Haliburton, Kawartha, Pine Ridge District Health Unit"
+		"3536": 585451, //"Halton Regional Health Unit"
+		"3537": 556207, //"City of Hamilton Health Unit"
+		"3538": 165296, //"Hastings and Prince Edward Counties Health Unit"
+		"3539": 138717, //"Huron Perth Public Health Unit"
+		"3540": 101727, //"Chatham-Kent Health Unit"
+		"3541": 200862, //"Kingston, Frontenac and Lennox and Addington Health Unit"
+		"3542": 126872, //"Lambton Health Unit"
+		"3543": 172534, //"Leeds, Grenville and Lanark District Health Unit"
+		"3544": 490209, //"Middlesex-London Health Unit"
+		"3546": 463147, //"Niagara Regional Area Health Unit"
+		"3547": 123906, //"North Bay Parry Sound District Health Unit"
+		"3549": 76129, //"Northwestern Health Unit"
+		"3551": 1000972, //"City of Ottawa Health Unit"
+		"3553": 1500964, //"Peel Regional Health Unit"
+		"3555": 141854, //"Peterborough County–City Health Unit"
+		"3556": 80521, //"Porcupine Health Unit"
+		"3557": 103105, //"Renfrew County and District Health Unit"
+		"3558": 205756, //"The Eastern Ontario Health Unit"
+		"3560": 579050, //"Simcoe Muskoka District Health Unit"
+		"3561": 196000, //"Sudbury and District Health Unit"
+		"3562": 149311, //"Thunder Bay District Health Unit"
+		"3563": 32027, //"Timiskaming Health Unit"
+		"3565": 580069, //"Waterloo Health Unit"
+		"3566": 296763, //"Wellington-Dufferin-Guelph Health Unit"
+		"3568": 411875, //"Windsor-Essex County Health Unit"
+		"3570": 1154484, //"York Regional Health Unit"
+		"3575": 207351, //"Southwestern Public Health Unit"
+		"3595": 2874075 //"City of Toronto Health Unit"
 	}
 }, {
 
@@ -235,7 +235,7 @@ var populationObj = [{
 		"1100": 164318 // "Prince Edward Island"
 	},
 	"regionsPopulationEligible": {
-		"1100": 145431 // "Prince Edward Island"
+		"1100": 153571 // "Prince Edward Island"
 	}
 }, {
 	"province": "QC",
@@ -262,24 +262,24 @@ var populationObj = [{
 		"2418": 17946 // "Région des Terres-Cries-de-la-Baie-James"
 	},
 	"regionsPopulationEligible": {
-		"2401": 176123, // "Région du Bas-Saint-Laurent"
-		"2402": 246351, // "Région du Saguenay—Lac-Saint-Jean"
-		"2403": 669511, // "Région de la Capitale-Nationale"
-		"2404": 465010, // "Région de la Mauricie et du Centre-du-Québec"
-		"2405": 439679, // "Région de l'Estrie"
-		"2406": 1819303, // "Région de Montréal"
-		"2407": 348570, // "Région de l'Outaouais"
-		"2408": 127909, // "Région de l'Abitibi-Témiscamingue"
-		"2409": 78733, // "Région de la Côte-Nord"
-		"2410": 12522, // "Région du Nord-du-Québec"
-		"2411": 81810, // "Région de la Gaspésie—Îles-de-la-Madeleine"
-		"2412": 379155, // "Région de la Chaudière-Appalaches"
-		"2413": 387166, // "Région de Laval"
-		"2414": 455071, // "Région de Lanaudière"
-		"2415": 555005, // "Région des Laurentides"
-		"2416": 1254427, // "Région de la Montérégie"
-		"2417": 9866, // "Région du Nunavik"
-		"2418": 13731 // "Région des Terres-Cries-de-la-Baie-James"
+		"2401": 189446, // "Région du Bas-Saint-Laurent"
+		"2402": 266120, // "Région du Saguenay—Lac-Saint-Jean"
+		"2403": 724088, // "Région de la Capitale-Nationale"
+		"2404": 502205, // "Région de la Mauricie et du Centre-du-Québec"
+		"2405": 476454, // "Région de l'Estrie"
+		"2406": 1968742, // "Région de Montréal"
+		"2407": 382164, // "Région de l'Outaouais"
+		"2408": 139534, // "Région de l'Abitibi-Témiscamingue"
+		"2409": 85538, // "Région de la Côte-Nord"
+		"2410": 13539, // "Région du Nord-du-Québec"
+		"2411": 87097, // "Région de la Gaspésie—Îles-de-la-Madeleine"
+		"2412": 412830, // "Région de la Chaudière-Appalaches"
+		"2413": 422931, // "Région de Laval"
+		"2414": 499293, // "Région de Lanaudière"
+		"2415": 604175, // "Région des Laurentides"
+		"2416": 1372043, // "Région de la Montérégie"
+		"2417": 11846, // "Région du Nunavik"
+		"2418": 16302 // "Région des Terres-Cries-de-la-Baie-James"
 	}
 },
 {
@@ -295,12 +295,12 @@ var populationObj = [{
 		"476": 184251 // "South"
 	},
 	"regionsPopulationEligible": {
-		"471": 39865, // "Far North"
-		"472": 168145, // "North"
-		"473": 113577, // "Central"
-		"474": 289664, // "Saskatoon"
-		"475": 228633, // "Regina"
-		"476": 157095 // "South"
+		"471": 43979, // "Far North"
+		"472": 188755, // "North"
+		"473": 124678, // "Central"
+		"474": 320662, // "Saskatoon"
+		"475": 252864, // "Regina"
+		"476": 173804 // "South"
 	}
 }, {
 	"province": "YT",
