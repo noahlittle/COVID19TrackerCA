@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Real-time COVID-19 vaccination updates for every region in Canada, tracking doses of Moderna, Pfizer-BioNTech and AstraZeneca COVID-19 vaccine delivered and administered to Canadians." />
+    <meta name="author" content="" />
+    <title>COVID-19 Tracker Canada - Rapid Antigen Test Tracker</title>
+
+
+
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5.1.6/turf.min.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <link rel="stylesheet" href="css/styles.css?v=5" />
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160029240-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-160029240-1');
+    </script>
+
+    <script>
+    	$(document).ready( function() {
+    var now = new Date();
+    var month = (now.getMonth() + 1);               
+    var day = now.getDate();
+    if (month < 10) 
+        month = "0" + month;
+    if (day < 10) 
+        day = "0" + day;
+    var today = now.getFullYear() + '-' + month + '-' + day;
+    $('#datePicker').val(today);
+});
+    </script>
+
+    <!--
+    <script>
+        $(document).ready(function () {
+        // Check if user saw the modal
+        var key = 'hadModal',
+            hadModal = localStorage.getItem(key);
+
+        // Show the modal only if new user
+       // if (!hadModal)
+       {
+            $('#myModal').modal('show');
+        }
+
+        // If modal is displayed, store that in localStorage
+        $('#myModal').on('shown.bs.modal', function () {
+            localStorage.setItem(key, true);
+        })
+    });
+
+    </script>
+    -->
+
+
+
+
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">COVID-19 Tracker Canada</a>
+
+        <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></div>
+
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Menu</b></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="about.html">About</a>
+                    <a class="dropdown-item" href="sources.html">Sources</a>
+                    <a class="dropdown-item" href="ontario.html">Ontario Data</a>
+                    <a class="dropdown-item" href="notes.html">Data Notes</a>
+                    <a class="dropdown-item" href="https://api.covid19tracker.ca">API Access</a>
+                    <a class="dropdown-item" href="acknowledgements.html">Acknowledgments</a>
+                    <a class="dropdown-item" href="licensing.html">Citation</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="mailto:noah.little@usask.ca">Contact</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="sb-sidenav-footer"></div>
+    <div id="layoutSidenav_content">
+        <main id="mainData">
+            <div class="container-fluid">
+                <br>
+                <br>
+                <br>
+                <h1><i class="fab fa-canadian-maple-leaf"></i> Rapid Test Tracker</h1>
+
+                <br />
+
+                 <div class="col-xl-12 col-md-12">
+                    <div class="card bg-dark text-white mb-12">
+                        <div class="card-body">The <i><a style="color: white;" href="https://covid19tracker.ca/about.html">COVID-19 Tracker Canada project</a></i> is an independent, non-government initiative. No personal information is collected and all data is made publicly available.</div>
+                    </div>
+                    <br>
+                </div>
+
+
+
+                <div class="row">
+
+
+                    <div class="col-xl-6" id="displayRapid">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fab fa-canadian-maple-leaf"></i> About The Rapid Test Tracker</div>
+                            <div class="card-body overflow-auto">
+                                <h3>We're tracking Rapid Antigen Test results in Canadian communities.</h3>
+                                <br>
+                                <p>Since March 2020, the<a href="https://covid19tracker.ca/about.html"> COVID-19 Tracker Canada initiative</a> has been aggregating official COVID-19 data from communities across the nation in order to make this data more accessible and to help inform Canada's COVID-19 response.</p>
+
+                                <p>Now, we're focusing our efforts to create a platform for recording and reporting results from Rapid Antigen tests, to better understand the true spread of COVID-19 in Canada. Many Canadians no longer have access to timely PCR testing; as a result, reported case numbers are becoming less indicative of the current situation.</p>
+
+                                <p>We encourage Canadians from every province and territory to report their rapid test results with this tool (both positive and negative) to create a more complete picture of COVID-19 spread in Canada. Please submit only one entry per test performed.</p>
+
+                                <p>If you have any questions about the project including more information on using the tool, please <a href="mailto:noah.little@usask.ca">reach out</a>.</p>
+
+
+                                <hr />
+                                <p>No personal information is collected and all data remains anonymous. We're committed to ensuring that our data is open and freely available to researchers, governments, other initiatives and the general public. </p>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="col-xl-6" id="displayRapid">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-vial"></i> Report Your Rapid Test</div>
+                            <div class="card-body">
+ 							<form id='rapid' action="" method="POST">
+  <div class="form-group">
+    <label for="form-control">Test Result</label>
+	<select class="form-control">
+  <option disabled selected>Select Result</option>
+  <option>Positive</option>
+  <option>Negative</option>
+  <option>Invalid Result</option>
+	</select>
+    <small id="emailHelp" class="form-text text-muted">This information remains anonymous.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Postal Code</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="XXX" maxlength="3">
+    <small id="emailHelp" class="form-text text-muted">Please enter only the first 3 characters of your postal code.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Date of Test</label>
+    <input type="date" class="form-control" id="datePicker">
+    <small id="emailHelp" class="form-text text-muted">Please enter the date when your test was performed.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="form-control">Age</label>
+	<select class="form-control">
+  <option disabled selected>Select Your Age</option>
+  <option>0-9</option>
+  <option>10-19</option>
+  <option>20-29</option>
+  <option>30-39</option>
+  <option>40-49</option>
+  <option>50-59</option>
+  <option>60-69</option>
+  <option>70-79</option>
+  <option>80+</option>
+	</select>
+    <small id="emailHelp" class="form-text text-muted">This information remains anonymous.</small>
+  </div>
+  <div class="g-recaptcha" data-sitekey="6LdiQ-wdAAAAAKYBFU88QP5tshDZaS-Wt5__GZpK"></div> 
+  <br>
+  <button type="submit" class="btn btn-dark">Submit</button>
+</form>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    
+
+
+
+
+                </div>
+				
+               
+
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Download Data</h4>
+                                <p>We're making all data collected open and available for download.</p>
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Select Format
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="">CSV (available soon)</a>
+                                    <a class="dropdown-item" href="">API (available soon)</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>View Data</h4>
+                                <p>Visualize rapid test data with maps, graphs, tables and more.</p>
+                                <a class="btn btn-secondary" href="" role="button">Available Soon</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                   
+
+            </div>
+        </div>
+                <br>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; COVID19Tracker.ca 2022 // Near real-time COVID-19 data updates for every region in Canada, tracking cases, deaths, vaccinations, hospitalizations, ICU, recoveries and testing // <a href="mailto:noah.little@usask.ca">noah.little@usask.ca</a></div><a class="btn btn-dark" href="https://ko-fi.com/covid19trackerca" role="button">Donate</a>
+                    
+                </div>
+
+
+
+
+
+            </div>
+        </footer>
+    </div>
+    <!--
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><b>Tracker Temporarily Unavailable</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+           <h5>Due to unscheduled maintenance, the Vaccination Tracker is temporarily unavailable.</h5>
+    <br>
+
+    <p>The server used for our systems is currently undergoing emergency maintenance. This impacts all services powered by our API. We are working to restore services as soon as possible, and apologize for any inconvenience this downtime may cause.</p>
+
+    <p>Please wait, and load the page again later. Data will appear again once services are restored.</p>
+
+    <p>Up-to-date information regarding the situation will be available via <a href="https://twitter.com/covid_canada">Twitter</a>.</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    -->
+</body>
+
+</html>

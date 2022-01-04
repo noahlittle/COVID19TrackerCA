@@ -10328,6 +10328,14 @@ body {
   padding-bottom: 50px;
 }
 
+
+#displayRapid .card-body
+{
+  position: relative;
+  height: 65vh;
+  padding-bottom: 50px;
+}
+
 #provinceCasesChartDiv {
   height: 55vh;
 }
@@ -10335,6 +10343,11 @@ body {
 @media screen and (max-width: 700px) {
   #displayMap .card-body {
     height: 30vh;
+  }
+
+  @media screen and (max-width: 700px) {
+  #displayRapid .card-body {
+    height: 65vh;
   }
 
   #dailyCaseChartDiv,
