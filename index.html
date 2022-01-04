@@ -44,7 +44,7 @@
     </script>
 
 
-<!--
+
 
 <script>
     $(document).ready(function () {
@@ -53,21 +53,21 @@
         hadModal = localStorage.getItem(key);
 
     // Show the modal only if new user
-     //  if (!hadModal) 
+     if (!hadModal) 
 
        {
       $('#myModal').modal('show');
   }
 
     // If modal is displayed, store that in localStorage
-    $('#myModal').on('shown.bs.modal', function () {
-    localStorage.setItem(key, true);
-    })
+   $('#myModal').on('shown.bs.modal', function () {
+   localStorage.setItem(key, true);
+   })
 });
 
 </script>
 
--->
+
 
 <script data-ad-client="ca-pub-5158964525165314" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -78,6 +78,7 @@
         <a class="navbar-brand" href="index.html">COVID-19 Tracker Canada</a>
 
         <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></div>
+        <a class="btn btn-outline-light" href="https://covid19tracker.ca/rapid.html" role="button">Report Rapid Test</a>
 
     <ul class="navbar-nav ml-auto ml-md-0">
                 <li class="nav-item dropdown">
@@ -316,26 +317,43 @@
         </footer>
     </div>
 
-<!--
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"><b>Tracker Temporarily Unavailable</b></h5>
+        <h3 class="modal-title" id="exampleModalLongTitle"><span class="badge badge-success">New</span> Rapid Test Tracker</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
 
-        <h5>Due to unscheduled maintenance, COVID19Tracker.ca is temporarily unavailable.</h5>
+          <div class="row">
+    <div class="col">
+<a href="https://covid19tracker.ca/rapid.html"><img src="rapid.png" style="max-width:90%; display: block;
+  margin-left: auto;
+  margin-right: auto;"></a>
+<br>
+    </div>
+    <div class="col">
+             <h4>Report your rapid test results</h4>
+
+             <p>With limited access to PCR testing across Canada, we're tracking Rapid Antigen Tests done in the community.</p>
+             <p>Report both positive and negative results with our new tool. No personal information is collected, and this data will remain anonymous. All data will be made publicly available for researchers, governments and the general public.</p>
+    <a href="https://covid19tracker.ca/rapid.html" class="btn btn-primary">Rapid Test Tracker</a>
+
+</div>
+    </div>
+  </div>
+
+        
+
 <br>
 
-<p>The server used for our systems is currently undergoing emergency maintenance. This impacts all services powered by our API. We are working to restore services as soon as possible, and apologize for any inconvenience this downtime may cause.</p>
 
-<p>Please wait, and load the page again later. Data will appear again once services are restored.</p>
 
-<p>Up-to-date information regarding the situation will be available via <a href="https://twitter.com/covid_canada">Twitter</a>.</p>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
@@ -343,7 +361,7 @@
   </div>
 </div>
 
--->
+
 
 
 
