@@ -10344,10 +10344,10 @@ body {
   #displayMap .card-body {
     height: 30vh;
   }
-
-  @media screen and (max-width: 700px) {
-  #displayRapid .card-body {
+    #displayRapid .card-body {
     height: 65vh;
+  }
+
   }
 
   #dailyCaseChartDiv,
