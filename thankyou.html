@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Real-time COVID-19 vaccination updates for every region in Canada, tracking doses of Moderna, Pfizer-BioNTech and AstraZeneca COVID-19 vaccine delivered and administered to Canadians." />
+        <meta name="author" content="" />
+        <title>COVID-19 Tracker Canada - Rapid Antigen Test Tracker</title>
+
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5.1.6/turf.min.js"></script>
+        <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="css/styles.css?v=5" />
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160029240-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "UA-160029240-1");
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                var now = new Date();
+                var month = now.getMonth() + 1;
+                var day = now.getDate();
+                if (month < 10) month = "0" + month;
+                if (day < 10) day = "0" + day;
+                var today = now.getFullYear() + "-" + month + "-" + day;
+                $("#datePicker").val(today);
+            });
+        </script>
+
+    <script>
+        $(document).ready(function(){
+            var url_string = window.location.href; //
+            var url = new URL(url_string);
+            var result = url.searchParams.get("result");
+            $("#showresult").html(result);
+        })
+    </script>
+
+        <!--
+    <script>
+        $(document).ready(function () {
+        // Check if user saw the modal
+        var key = 'hadModal',
+            hadModal = localStorage.getItem(key);
+
+        // Show the modal only if new user
+       // if (!hadModal)
+       {
+            $('#myModal').modal('show');
+        }
+
+        // If modal is displayed, store that in localStorage
+        $('#myModal').on('shown.bs.modal', function () {
+            localStorage.setItem(key, true);
+        })
+    });
+
+    </script>
+    --></head>
+
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">COVID-19 Tracker Canada</a>
+
+            <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></div>
+
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Menu</b></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="about.html">About</a>
+                        <a class="dropdown-item" href="sources.html">Sources</a>
+                        <a class="dropdown-item" href="ontario.html">Ontario Data</a>
+                        <a class="dropdown-item" href="notes.html">Data Notes</a>
+                        <a class="dropdown-item" href="https://api.covid19tracker.ca">API Access</a>
+                        <a class="dropdown-item" href="acknowledgements.html">Acknowledgments</a>
+                        <a class="dropdown-item" href="licensing.html">Citation</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="mailto:noah.little@usask.ca">Contact</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="sb-sidenav-footer"></div>
+        <div id="layoutSidenav_content">
+            <main id="mainData">
+                <div class="container-fluid">
+                    <br />
+                    <br />
+                    <br />
+                    <h1><i class="fab fa-canadian-maple-leaf"></i> Rapid Test Tracker</h1>
+
+                    <br />
+
+
+
+
+    <div class="card">
+  <h5 class="card-header">Thank you!</h5>
+  <div class="card-body">
+    <h5 class="card-title">Your rapid test result has been reported.</h5>
+    <p class="card-text">Thank you for your contribution to creating a more accurate, up-to-date picture of COVID-19 spread in Canada. No personal information was collected, and your data remains anonymous.</p> <p>Please report each test only once. If you test positive repeatedly, only report your first positive test.</p>
+
+    <a href="https://covid19tracker.ca" class="btn btn-primary">View Main Tracker</a>
+  </div>
+</div>
+
+<!--
+    <br>
+    <br>
+    <i><p>success: <span id="showresult"></span></p></i>
+
+-->
+
+<br>
+
+
+
+                  
+            </main>
+        </div>
+        <!--
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><b>Tracker Temporarily Unavailable</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+           <h5>Due to unscheduled maintenance, the Vaccination Tracker is temporarily unavailable.</h5>
+    <br>
+
+    <p>The server used for our systems is currently undergoing emergency maintenance. This impacts all services powered by our API. We are working to restore services as soon as possible, and apologize for any inconvenience this downtime may cause.</p>
+
+    <p>Please wait, and load the page again later. Data will appear again once services are restored.</p>
+
+    <p>Up-to-date information regarding the situation will be available via <a href="https://twitter.com/covid_canada">Twitter</a>.</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    --></body>
+</html>
