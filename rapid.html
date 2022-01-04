@@ -49,24 +49,6 @@
             });
         </script>
 
-        <script>
-
-function get_action(form) 
-{
-    var v = grecaptcha.getResponse();
-    if(v.length == 0)
-    {
-        document.getElementById('captcha').innerHTML="You can't leave Captcha Code empty";
-        return false;
-    }
-    else
-    {
-         document.getElementById('captcha').innerHTML="Captcha completed";
-        return true; 
-    }
-}
-
-</script>
 
         <!--
     <script>
@@ -285,6 +267,18 @@ function get_action(form)
                 </div>
             </footer>
         </div>
+
+
+
+
+
+
+    
+
+
+
+
+
         <!--
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
