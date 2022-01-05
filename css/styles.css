@@ -10332,7 +10332,7 @@ body {
 #displayRapid .card-body
 {
   position: relative;
-  height: 70vh;
+  min-height: 70vh;
   padding-bottom: 50px;
 }
 
@@ -10358,7 +10358,7 @@ body {
   }
 
   #displayRapid .card-body {
-    height: 70vh;
+    min-height: 70vh;
   }
 
 }
