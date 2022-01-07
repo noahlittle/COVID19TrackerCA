@@ -70,7 +70,7 @@ function drawProvinces(data) {
             ['linear'],
             ["number", ['get', 'province_cases_per_population']],
             fillRange[0], '#007000',
-            fillRange[1] * 0.1, '#FFFF00',
+            fillRange[1] * 0.6, '#FFFF00',
             fillRange[1] * 0.7, '#FFA500',
             fillRange[1] * 0.8, '#FF0000', 
             fillRange[1] * 0.9, '#ff0800'
