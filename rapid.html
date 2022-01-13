@@ -162,19 +162,19 @@
                                                 <option disabled selected value="">Select Result</option>
                                                 <option value="positive">Positive</option>
                                                 <option value="negative">Negative</option>
-                                                <option value="invalid">Invalid Result</option>
+                                                <option value="invalid result">Invalid Result</option>
                                             </select>
                                             <small id="emailHelp" class="form-text text-muted">This information remains anonymous.</small>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Postal Code</label>
-                                            <input required type="text" class="form-control" name="postal_code" id="exampleInputPassword1" placeholder="XXX" maxlength="3" />
+                                            <input required type="text" class="form-control" name="postal_code" id="exampleInputPassword1" placeholder="XXX" maxlength="3" pattern="[a-zA-Z][0-9]+[a-zA-Z]"/>
                                             <small id="emailHelp" class="form-text text-muted">Please enter only the first 3 characters of your postal code.</small>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Date of Test</label>
-                                            <input required type="date" class="form-control" id="datePicker" name="test_date" />
+                                            <input required type="date" class="form-control" id="datePicker" name="test_date" min='2021-12-01' />
                                             <small id="emailHelp" class="form-text text-muted">Please enter the date when your test was performed.</small>
                                         </div>
 
