@@ -22,7 +22,7 @@ function drawMap(data) {
 }
 
 function drawProvinces(data) {
-     fetch('https://covid19tracker.ca/assets/data/provinces.json').then(resp => resp.json()).then(response => {
+     fetch('https://dev.covid19tracker.ca/assets/data/provinces.json').then(resp => resp.json()).then(response => {
 
         var centroidGeoJSON = {
             type: "FeatureCollection",
