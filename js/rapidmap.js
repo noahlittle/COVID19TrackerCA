@@ -22,7 +22,7 @@ function drawMap(data) {
 }
 
 function drawProvinces(data) {
-     fetch('https://dev.covid19tracker.ca/assets/data/provinces.json').then(resp => resp.json()).then(response => {
+     fetch('https://covid19tracker.ca/assets/data/provinces.json').then(resp => resp.json()).then(response => {
 
         var centroidGeoJSON = {
             type: "FeatureCollection",
@@ -38,8 +38,9 @@ function drawProvinces(data) {
             feature.properties.province_vaccinations_inv = provinceData.total_invalid;
             feature.properties.province_vaccinations_tot = provinceData.total_positive + provinceData.total_invalid + provinceData.total_negative;
            // feature.properties.province_cases_per_population = provinceData.total_cases / (feature.properties.population / 100000);
-            feature.properties.province_vaccinations_per_population = ( Math.floor(((provinceData.total_positive) / (provinceData.total_positive + provinceData.total_negative + provinceData.total_invalid)) * 100) / 100 * 100 );
-            feature.properties.province_vaccinations_per_population_display = ( Math.floor(((provinceData.total_positive) / (provinceData.total_positive + provinceData.total_negative + provinceData.total_invalid)) * 100) / 100 * 100 ) + "%";
+            feature.properties.province_vaccinations_per_population = ( Math.round(((provinceData.total_positive / (provinceData.total_invalid + provinceData.total_positive + provinceData.total_negative)) + Number.EPSILON) * 10 * 100) / 10);
+
+            feature.properties.province_vaccinations_per_population_display = ( Math.round(((provinceData.total_positive / (provinceData.total_invalid + provinceData.total_positive + provinceData.total_negative)) + Number.EPSILON) * 10 * 100) / 10) + "%";
            // feature.properties.province_cases_active = provinceData.total_cases - provinceData.total_fatalities - provinceData.total_recoveries;
            // feature.properties.province_deaths_total = provinceData.total_fatalities;
            // feature.properties.province_hospitalizations_total = provinceData.total_hospitalizations;

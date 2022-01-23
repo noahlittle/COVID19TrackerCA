@@ -20,7 +20,7 @@ $(document).ready(() => {
 		
 		// get and update header, and cases by province table footer
 		$.ajax({
-			url: "https://devapi.covid19tracker.ca/rapid-tests/"
+			url: "https://api.covid19tracker.ca/rapid-tests/"
 		}).then(res => {
 			var data = res.data[0];
 			var update = res.last_updated;
@@ -248,7 +248,7 @@ $(document).ready(() => {
 
 		// draw map and cases by province graph and table
 		$.ajax({
-			url: "https://devapi.covid19tracker.ca/rapid-tests/split",
+			url: "https://api.covid19tracker.ca/rapid-tests/split",
 			type: "GET",
 		}).then(res => {
 			drawMap(res.data);
@@ -262,7 +262,7 @@ $(document).ready(() => {
 
 		// draw new and cumulative cases graphs
 		$.ajax({
-			url: "https://devapi.covid19tracker.ca/rapid-tests/report",
+			url: "https://api.covid19tracker.ca/rapid-tests/report",
 			type: "GET",
 		}).then(res => {
 			fillNulls(res.data);
@@ -319,7 +319,7 @@ $(document).ready(() => {
 
 		// get notice
 		$.ajax({
-			url: "https://devapi.covid19tracker.ca/" + "notes/tag/vac",
+			url: "https://api.covid19tracker.ca/" + "notes/tag/vac",
 			type: "GET",
 		}).then(res => {
 			var data = res;
@@ -484,10 +484,10 @@ function buildProvinceTable(data, provinceData) {
 
 
         var itemTotalVaccinated = item.total_vaccinated;
-         var itemPositivity = Math.floor(item.total_positive / (item.total_invalid + item.total_positive + item.total_negative) * 100) / 100 * 100;
+         var itemPositivity = Math.round(((item.total_positive / (item.total_invalid + item.total_positive + item.total_negative)) + Number.EPSILON) * 100) / 100;
 
          if (itemPositivity === 0 || itemPositivity === undefined) itemPositivity = "N/A";
-        else itemPositivity = Math.floor(item.total_positive / (item.total_invalid + item.total_positive + item.total_negative) * 100) / 100 * 100 + "%";
+        else itemPositivity = Math.round(((item.total_positive / (item.total_invalid + item.total_positive + item.total_negative)) + Number.EPSILON) * 100 * 100) / 100 + "%";
 
         if (itemTotalVaccinated === null || itemTotalVaccinated === undefined) itemTotalVaccinated = "N/A";
         else itemTotalVaccinated = item.total_vaccinated;
