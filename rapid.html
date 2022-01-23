@@ -22,6 +22,11 @@
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+    <script type="text/javascript" src="js/config.js?v=9.5.2"></script>
+    <script type="text/javascript" src="js/rapidmap.js?v=8.4.3"></script>
+    <script type="text/javascript" src="js/rapidcharts.js?v=8.3.4"></script>
+    <script type="text/javascript" src="js/rapidmain.js?v=11.4.0"></script>
+
         <link rel="stylesheet" href="css/styles.css?v=7" />
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -228,34 +233,362 @@
                 <hr>
                 <br>
 
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4>Download Data</h4>
-                                    <p>We're making all data collected open and available for download.</p>
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Select Format
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="https://covid19tracker.ca/rapid_results.csv">CSV (updated daily)</a>
-                                        <a class="dropdown-item" href="">API (available soon)</a>
-                                    </div>
-                                </div>
+ <div class="card mb-4 display-select">
+     <div class="card-header"><i class="fas fa-chart-bar"></i> Rapid Test Tracker - Results</div>
+                    <div class="card-body">
+        <main id="mainData">
+            <div class="container-fluid">
+                <br> 
+                <h1><i class="fab fa-canadian-maple-leaf"></i> Rapid Test Tracker - Data</h1>
+                <h4 id="updateTime"></h4>
+
+                <br />
+
+
+
+                <div class="row">
+
+
+                    <div class="col-md">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body summary-header-rapidtotal">
+                                <h1></h1> <b>since December 15th, 2021</b>
+                                
                             </div>
                         </div>
-                        <div class="col-xl-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4>View Data</h4>
-                                    <p>Visualize rapid test data with maps, graphs, tables and more.</p>
-                                    <a class="btn btn-secondary" href="" role="button">Available Soon</a>
+                    </div>
+
+                                        <div class="col-md">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body summary-header-positivity"><h1></h1><b>on reported results</b> <span data-toggle='tooltip' title='Percentage of total self-reported rapid antigen tests which were positive'><i class="far fa-question-circle"></i></span></div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body summary-header-rapidpositive">
+                                <h1></h1> <b>self-reported overall</b>
+                
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                                                          <div class="col-md">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body summary-header-rapidnegative">
+                                <h1></h1> <b>self-reported overall</b>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+  
+                </div>
+
+                <div class="row">
+
+                    <div class="col-xl-6" id="displayMap">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-map"></i> By Map</div>
+                            <div class="card-body" style="padding:0px;">
+                                <div id="map"></div>
+                                <div id="map-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="newCasesByDay">Canada Results Reported by Day</span></div>
+                            <div class="card-body" id="dailyCaseChartDiv">
+                                <canvas id="dailyCaseChart" width="100%" height="40"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                    
+
+
+
+
+
                 </div>
+
+                <div class="row">
+
+
+
+                    <div class="col-xl-12">
+                        <div class="card mb-8">
+                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="newCasesByDay">Canada Percent Positivity Reported by Day</span></div>
+                            <div class="card-body" id="dailyCaseChartDiv">
+                                <canvas id="dailyPositiveChart" width="100%" height="40"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+
+
+
+
+
+                </div>
+
+                <br>
+
+                
+
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Report Your Rapid Test Results</h4>
+                                <p>Self-report the results of rapid tests taken since December 1, 2021.</p>
+                                <a class="btn btn-secondary" href="https://covid19tracker.ca/rapid.html#" role="button">Report Your Results</a>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="col-xl-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>View Main Tracker</h4>
+                                <p>Explore officially confirmed data, including cases, fatalities, hospitalizations, criticals, recoveries and more.</p>
+                                <a class="btn btn-secondary" href="https://covid19tracker.ca/" role="button">Data Tracker</a>
+                            </div>
+                                
+                        </div>
+                    </div>
+
+
+                    
+                </div>
+                <br>
+                <div class="col-xl-12 col-md-12" id="statisticsNotice">
+                    <div class="card bg-dark text-white mb-12">
+                        <div class="card-body"></div>
+                    </div>
+                    <br>
+                </div>
+                <div class="card mb-4 display-select">
+                    <div class="card-body">
+                        <h3>Data by Province</h3>
+                        Explore reported rapid test result data by province with the table below. Data is updated throughout the day in near real-time as reports are received. Note that while regularly validated and cleaned, data on this page is self-reported and may not be accurate. 
+                        <br>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover" id="dataTable2" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Province</th>
+                                        <th>Percent Positivity <span data-toggle='tooltip' title='Percentage of total tests reported that were positive'><i class="far fa-question-circle"></i></span></th>
+                                        <th>Positive Results</th>
+                                        <th>Negative Results</th>
+                                        <th>Invalid Results</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                </tfoot>
+                                <tbody id="vaccinationsProvinceTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <br>
+        </main>
+
+               <!--
+
+                <div class="col-xl-12">
+                            <div class="card mb-8">
+                                <div class="card-header"><i class="fas fa-chart-bar"></i> Data Visualizations</div>
+                                <div class="card-body">
+
+
+                    <br>
+                    <div class="row">
+                        <div class="col-md">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body summary-header-rapidtotal">
+                                <h1></h1> <b>since January 4th, 2022</b>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                                        <div class="col-md">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body summary-header-positivity"><h1></h1><b>on reported results</b> <span data-toggle='tooltip' title='Percentage of total self-reported rapid antigen tests which were positive'><i class="far fa-question-circle"></i></span></div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body summary-header-rapidpositive">
+                                <h1></h1> <b>self-reported overall</b>
+                
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                                                          <div class="col-md">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body summary-header-rapidnegative">
+                                <h1></h1> <b>self-reported overall</b>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+  
+                </div>
+                    </div>
+
                 <br />
+
+
+
+
+
+
+
+
+                <div class="row">
+
+                    <div class="col-xl-6" id="displayMap">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-map"></i> By Map</div>
+                            <div class="card-body" style="padding:0px;">
+                                <div id="map"></div>
+                                <div id="map-overlay"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                                        <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-area mr-1"></i><span id="newCasesByDay">Canada Results Reported by Day</span></div>
+                            <div class="card-body" id="dailyCaseChartDiv">
+                                <canvas id="dailyCaseChart" width="100%" height="40"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+
+
+
+
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-bar mr-1"></i><span id="newCasesByProvince">Doses By Province</span></div>
+                            <div class="card-body" id="provinceCasesChartDiv">
+                                <canvas id="provinceCasesChart" width="100%"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-chart-bar mr-1"></i><span id="newCasesByProvince">Doses By Province</span></div>
+                            <div class="card-body" id="provinceCasesChartDiv">
+                                <canvas id="provinceCasesChart" width="100%"></canvas>
+                                <div class="chart-options text-center">
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Last 3 Weeks</label>
+                                    </span>
+                                    <span class="mx-2">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Logarithmic Scale</label>
+                                    </span>
+                                    <span class="mx-2 d-none">
+                                        <label><input type="checkbox" onclick="toggleChartSetting(this)" />Rolling Average (7 Days)</label>
+                                    </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+                        </div>
+                    -->
+
+                    <br>
+                    <br>
+
+
+                </div>
+
+
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
