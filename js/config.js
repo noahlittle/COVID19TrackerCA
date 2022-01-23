@@ -414,6 +414,10 @@ function goVax() {
     window.location.href = url + "vaccinationtracker.html";
 }
 
+function goRap() {
+    window.location.href = url + "rapid.html";
+}
+
 function compareProvinces() {
     window.location.href = url + "compareprovinces.html";
 }
