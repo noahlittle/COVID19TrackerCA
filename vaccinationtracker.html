@@ -26,8 +26,8 @@
 
     <script type="text/javascript" src="js/config.js?v=9.5.2"></script>
     <script type="text/javascript" src="js/vacmap.js?v=8.4.3"></script>
-    <script type="text/javascript" src="js/vaccharts.js?v=8.3.4"></script>
-    <script type="text/javascript" src="js/vacmain.js?v=11.4.0"></script>
+    <script type="text/javascript" src="js/vaccharts.js?v=8.4.4"></script>
+    <script type="text/javascript" src="js/vacmain.js?v=11.5.0"></script>
 
     <link rel="stylesheet" href="css/styles.css?v=6" />
 
@@ -127,11 +127,14 @@
                             </div>
                         </div>
                     </div>
+
+                    <!--
                     <div class="col-md">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body summary-header-vaccineDelivered"><h1></h1><b></b> <span data-toggle='tooltip' title='Percentage of doses distributed to the provinces that have been reported as administered'><i class="far fa-question-circle"></i></span></div>
                         </div>
                     </div>
+                -->
                     <div class="col-md">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body summary-header-percentVaccinated">
@@ -148,7 +151,7 @@
                         </div>
                     </div>
 
-                                        <div class="col-md">
+                <div class="col-md">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body summary-header-percentFullyVaccinated">
                                 <h1></h1> <b></b>
@@ -163,8 +166,26 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                
 
+                <div class="col-md">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body summary-header-percentBoosted">
+                                <h1></h1> <b></b>
+
+                                <!--
+                                <div class="material-switch pull-right">
+                                        <div class="switch-label d-inline-block">Eligible <span data-toggle='tooltip' title='When toggled, this value indicates the percentage of people older than 5 who are fully vaccinated'><i class="far fa-question-circle"></i></span></div>
+                                        <div class="d-inline-block">
+                                            <input id="popDoseToggle1" name="popDoseToggle1" type="checkbox" />
+                                            <label for="popDoseToggle1" class="label-success"></label>
+                                        </div>
+                                    </div>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xl-6" id="displayMap">
                         <div class="card mb-4">
