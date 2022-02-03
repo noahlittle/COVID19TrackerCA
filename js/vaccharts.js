@@ -375,7 +375,7 @@ function lineGraph3(data, id) {
             day: 'numeric'
         }).format(date));
 
-		allData["first_doses"].push(data[i].change_vaccinations - (data[i].change_vaccinated + data[i].change_boosters_1));
+		allData["first_doses"].push(data[i].change_vaccinations - (data[i].change_vaccinated + data[i].change_boosters_1 + data[i].change_boosters_2));
 		allData["second_doses"].push(data[i].change_vaccinated);
 		allData["third_doses"].push(data[i].change_boosters_1);
     }

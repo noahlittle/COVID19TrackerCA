@@ -48,7 +48,7 @@ $(document).ready(() => {
 			// hospitalizationsChange = data.change_hospitalizations;
 
 			vaccinations = data.total_vaccinations;
-			peopleVaccinated = data.total_vaccinations - data.total_vaccinated - data.total_boosters_1;
+			peopleVaccinated = data.total_vaccinations - data.total_vaccinated - data.total_boosters_1 - data.total_boosters_2;
 			totalBoosters = data.total_boosters_1;
 			twoDoses = data.total_vaccinated;
 			percentVaccinated = Math.floor((data.total_vaccinations - data.total_vaccinated) / canadaPopulation * 100) / 100;
@@ -56,8 +56,8 @@ $(document).ready(() => {
 			vaccinationsChange = data.change_vaccinations;
 			vaccinesDistributed = data.total_vaccines_distributed;
 
-			totalPopulationVaccinated = ((data.total_vaccinations - data.total_vaccinated - data.total_boosters_1) / 38246108) * 100;
-			totalPopulationVaccinated16 = ((data.total_vaccinations - data.total_vaccinated - data.total_boosters_1) / 36363537) * 100;
+			totalPopulationVaccinated = ((data.total_vaccinations - data.total_vaccinated - data.total_boosters_1 - data.total_boosters_2) / 38246108) * 100;
+			totalPopulationVaccinated16 = ((data.total_vaccinations - data.total_vaccinated - data.total_boosters_1 - data.total_boosters_2) / 36363537) * 100;
 			totalPopulationFullVaccinated = ((data.total_vaccinated) / 38246108) * 100;
 			totalPopulationFullVaccinated16 = ((data.total_vaccinated) / 36363537) * 100;
 
@@ -88,10 +88,12 @@ $(document).ready(() => {
 			$(".summary-header-hospitalized > b").text(displayNewCases(data.change_hospitalizations));
 			$(".summary-header-recoveries > h1").text(data.total_recoveries + " recoveries");
 			$(".summary-header-recoveries > b").text(displayNewCases(data.change_recoveries));
-			$(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - (data.total_vaccinated) - (data.total_boosters_1)) / 38246108) * 100).toFixed(3) + "%");
+			$(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - (data.total_vaccinated) - (data.total_boosters_1) - (data.total_boosters_2)) / 38246108) * 100).toFixed(3) + "%");
 			$(".summary-header-percentVaccinated > b").text("of the Canadian population has received at least one dose");
 			$(".summary-header-percentFullyVaccinated > h1").text(((data.total_vaccinated / 38246108) * 100).toFixed(3) + "%");
-			$(".summary-header-percentFullyVaccinated > b").text("of the Canadian population is fully vaccinated");
+			$(".summary-header-percentFullyVaccinated > b").text("of the Canadian population has received at least two doses");
+			$(".summary-header-percentBoosted > h1").text(((data.total_boosters_1 / 38246108) * 100).toFixed(3) + "%");
+			$(".summary-header-percentBoosted > b").text("of the Canadian population is fully vaccinated with a third dose");
 			$(".summary-header-vaccinations > h1").text(format(data.total_vaccinations) + " doses administered");
 			$(".summary-header-vaccinations > b").text(displayNewCases(data.change_vaccinations));
 			$(".summary-header-pplVac > h1").text(data.total_vaccinations);
