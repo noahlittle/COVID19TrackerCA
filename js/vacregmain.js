@@ -554,7 +554,7 @@ $(document).ready(() => {
 			$(".summary-header-percentVaccinated > h1").text((((data.total_vaccinations - (data.total_vaccinated + data.total_boosters_1 + data.total_boosters_2)) / population) * 100).toFixed(3) + "%");
 			$(".summary-header-percentVaccinated > b").text("of all people in " + pText + " have received at least one dose");
 			$(".summary-header-percentVaccinated2 > h1").text((((data.total_vaccinated) / population) * 100).toFixed(3) + "%");
-			$(".summary-header-percentVaccinated2 > b").text("of all people in " + pText + " have received at least one dose");
+			$(".summary-header-percentVaccinated2 > b").text("of all people in " + pText + " have received at least two doses");
 			$(".summary-header-percentVaccinated3 > h1").text((((data.total_boosters_1) / population) * 100).toFixed(3) + "%");
 			$(".summary-header-percentVaccinated3 > b").text("of all people in " + pText + " are fully vaccinated with a third dose");
 			$(".summary-header-vaccinations > h1").text(format(data.total_vaccinations) + " doses administered");
