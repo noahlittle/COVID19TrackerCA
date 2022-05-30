@@ -44,18 +44,18 @@ var populationObj = [{
 	"population": 5214805,
 	"populationEligible": 4990758,
 	"regionsPopulation": {
-		"591": 1961951, // "Fraser Health"
-		"592": 823346, // "Interior Health"
-		"593": 864079, // "Vancouver Island Health"
-		"594": 301050, // "Northern Health"
-		"595": 1249689 // "Vancouver  Coastal Health"
+		"591": 823346, // "Interior Health"
+		"592": 1961951, // "Fraser Health"
+		"593": 1249689, // "Vancouver Coastal Health"
+		"594": 864079, // "Vancouver Island Health"
+		"595": 301050// "Northern Health"
 	},
 	"regionsPopulationEligible": {
-		"591": 1866645, // "Fraser Health"
-		"592": 789587, // "Interior Health"
-		"593": 830722, // "Vancouver Island Health"
-		"594": 284375, // "Northern Health"
-		"595": 1202689 // "Vancouver  Coastal Health"
+		"591": 789587, // "1. Interior Health"
+		"592": 1866645, // "2. Fraser Health"
+		"593": 1202689, // "3. Vancouver  Coastal Health"
+		"594": 830722, // "4. Vancouver Island Health"
+		"595": 284375 // "5. Northern Health"
 	}
 }, {
 	"province": "MB",
