@@ -174,10 +174,29 @@ function draw(graphConfig) {
                     }
                 }],
             },
+            hover: {
+                intersect: false,
+                mode: 'index',
+            },
             legend: {
                 display: true
             },
             tooltips: {
+                callbacks: {
+                    // Show the tooltip rows as nicely formatted numbers
+                    label: function(tooltipItem, data) {
+                        var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+                        if (label) {
+                            label += ': ';
+                        }
+                        label += tooltipItem.yLabel.toLocaleString();
+                        return label; 
+                    }
+                },
+
+                // Ensure that the user does not have to hover over a point to view the tooltip
+                intersect: false,
                 mode: 'index'
             }
         }
