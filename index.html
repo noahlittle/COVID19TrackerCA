@@ -48,23 +48,27 @@
 
 <script>
     $(document).ready(function () {
-    // Check if user saw the modal
-    var key = 'hadModal',
-        hadModal = localStorage.getItem(key);
+        // Always show the archive notice modal to all users
+        $('#myModal').modal('show');
+        
+        // Optional: If you want to only show it once per user session
+        // uncomment the localStorage code below
+        /*
+        // Check if user saw the modal in this session
+        var key = 'sawArchiveNotice',
+            sawNotice = sessionStorage.getItem(key);
 
-    // Show the modal only if new user
-     if (!hadModal) 
+        // Show the modal if they haven't seen it this session
+        if (!sawNotice) {
+            $('#myModal').modal('show');
+        }
 
-       {
-      $('#myModal').modal('show');
-  }
-
-    // If modal is displayed, store that in localStorage
-   $('#myModal').on('shown.bs.modal', function () {
-   localStorage.setItem(key, true);
-   })
-});
-
+        // If modal is displayed, store that in sessionStorage
+        $('#myModal').on('shown.bs.modal', function () {
+            sessionStorage.setItem(key, true);
+        });
+        */
+    });
 </script>
 
 
@@ -318,43 +322,52 @@
         </footer>
     </div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLongTitle"><span class="badge badge-success">New</span> Rapid Test Tracker</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-warning">
+              <h3 class="modal-title" id="exampleModalLongTitle"><span class="badge badge-danger">Important Notice</span></h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="text-center mb-4">
+                <i class="fas fa-archive fa-4x text-secondary mb-3"></i>
+                <h4>COVID-19 Tracker Canada is No Longer Actively Updated</h4>
+              </div>
+              
+              <div class="alert alert-warning">
+                <p><strong>The COVID-19 Tracker Canada website is no longer being updated with new data as of August 2024.</strong></p>
+                
+                <p>This website and associated dataset and API will remain available as a historical resource.</p>
+                <p>We will resume updates to the website again if the public health need arises.</p>
+                
+                <p>We want to thank everyone who used and supported this site throughout the pandemic, including the Government of Canada for their financial assistance. For current COVID-19 information, please visit official government health websites.</p>
+              </div>
+              
+              <div class="alert alert-success">
+                <div class="d-flex align-items-center">
+                  <div class="mr-3">
+                    <i class="fas fa-vial fa-3x"></i>
+                  </div>
+                  <div>
+                    <h5 class="mb-1"><strong>The Rapid Test Tracker is still being updated!</strong></h5>
+                    <p class="mb-0">Please continue to report your rapid test results. Your contributions remain valuable for ongoing public health monitoring.</p>
+                    <a href="https://covid19tracker.ca/rapid.html" class="btn btn-success mt-2">Report Rapid Test Results</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="text-center mt-3">
+                <a href="https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19.html" class="btn btn-primary" target="_blank">Visit Public Health Agency of Canada</a>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">I Understand</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-
-
-<a href="https://covid19tracker.ca/rapid.html"><img src="rapid.png" style="max-width:40%; display: block;
-  margin-left: auto;
-  margin-right: auto;"></a>
-<br>
-
-             <h4>Report your rapid test results</h4>
-
-             <p>With limited access to PCR testing across Canada, we're tracking Rapid Antigen Tests done in the community.</p>
-             <p>Report both positive and negative results with our new tool. No personal information is collected, and this data will remain anonymous. All data will be made publicly available for researchers, governments and the general public.</p>
-    <a href="https://covid19tracker.ca/rapid.html" class="btn btn-primary">Rapid Test Tracker</a>
-
-  </div>
-
-        
-
-<br>
-
-
-
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 </body>
 
 </html>
